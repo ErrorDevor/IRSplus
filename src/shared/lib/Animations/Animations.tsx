@@ -11,6 +11,12 @@ const useAnim = false;
 
 type AnimationType = 'fade' | 'slide-left' | 'slide-right' | 'slide-top' | 'slide-bottom';
 
+type FromVars = {
+    opacity: number;
+    x?: number;
+    y?: number;
+  };
+
 interface GsapAnimProps {
     children: React.ReactNode;
     animation?: AnimationType;
@@ -37,7 +43,7 @@ export const GsapAnim = ({
     useLayoutEffect(() => {
         if (!el.current || !targets) return;
 
-        const fromVars: any = { opacity: 0, x: 0, y: 0 };
+        const fromVars: FromVars = { opacity: 0, x: 0, y: 0 };
         switch (animation) {
             case 'slide-left':
                 fromVars.x = -100;

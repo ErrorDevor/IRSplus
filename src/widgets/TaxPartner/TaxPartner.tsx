@@ -32,11 +32,11 @@ export const TaxPartner = ({ className }: { className?: string }) => {
                         <div className={styles.taxPartnerSection__innerBlock__mobileText}>
                             <h1 data-anim="title">You Deserve a Tax Partner That Puts You
                                 & Your Business First</h1>
-                            <p data-anim="text">Discover how IRSplus Tax Firm can help your business maximize it’s tax credits and achieve financial stability</p>
+                            <p data-anim="text">Discover how IRSplus Tax Firm can help your business maximize it&apos;s tax credits and achieve financial stability</p>
                         </div>
                         <div className={styles.taxPartnerSection__innerBlock__mainText}>
                             <h1 data-anim="title">Unlock Your Financial Advantages</h1>
-                            <p data-anim="text">Don't let the maze of regulations hold you back — take advantage of expert assistance to unlock your financial advantages.</p>
+                            <p data-anim="text">Don&apos;t let the maze of regulations hold you back — take advantage of expert assistance to unlock your financial advantages.</p>
                         </div>
                         <div data-anim="buttons" className={styles.taxPartnerSection__innerBlock__buttons}>
                             <Button text="Schedule a Discovery Call" textSize="14px" textColor="#000"

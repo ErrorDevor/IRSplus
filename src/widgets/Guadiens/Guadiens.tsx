@@ -28,7 +28,7 @@ export const Guadiens = ({ className }: { className?: string }) => {
                 </div>
 
                 <div className={styles.guadiensSection__leftSide__buttonFrame}>
-                    <h4>Get started with America's&nbsp;
+                    <h4>Get started with America&apos;s&nbsp;
                         <span className={styles.coloredText}>Top Rated ERC Tax Firm
                         </span>&nbsp;Today
                     </h4>
@@ -105,7 +105,7 @@ export const Guadiens = ({ className }: { className?: string }) => {
                                 borderRadius="50px"
                             />
                             <h1>Maximizing Benefits</h1>
-                            <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don't overlook your potential savings.</p>
+                            <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don&apos;t overlook your potential savings.</p>
                         </div>
                         <div className={styles.cardCircle}></div>
                     </div>
@@ -113,7 +113,7 @@ export const Guadiens = ({ className }: { className?: string }) => {
             </div>
 
             <div className={styles.buttonFrameMobile}>
-                <h4>Get started with America's&nbsp;
+                <h4>Get started with America&apos;s&nbsp;
                     <span className={styles.coloredText}>Top Rated ERC Tax Firm
                     </span>&nbsp;Today
                 </h4>
