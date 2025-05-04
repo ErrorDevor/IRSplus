@@ -4,8 +4,8 @@ import styles from './Assurance.module.scss';
 import clsx from 'clsx'
 import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { GradientText } from '@/shared/ui/GradientText';
-import { CircleIcon } from '@/shared/ui/CircleIcon';
-import { Tag } from '@/shared/ui/Tag';
+// import { CircleIcon } from '@/shared/ui/CircleIcon';
+// import { Tag } from '@/shared/ui/Tag';
 
 export const Assurance = ({ className }: { className?: string }) => {
 
