@@ -17,7 +17,7 @@
         color: $color-foreground-dark;
 
         h1 {
-            white-space: nowrap;
+            // white-space: nowrap;
             text-align: center;
             font-size: clamp-font(32, 65);
             font-weight: $font-weight-medium;
