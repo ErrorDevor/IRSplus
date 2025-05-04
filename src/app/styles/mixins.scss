@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+$base-font-size: 16; // 1rem = 16px
+
+// px -> rem
+@function rem($px) {
+    @return #{math.div($px, $base-font-size)}rem;
+}
+
+// px -> vw
+@function vw($px, $viewport: 1520) {
+    @return #{math.div($px * 100, $viewport)}vw;
+}
+
+// px -> vh
+@function vh($px, $viewport: 900) {
+    @return #{math.div($px * 100, $viewport)}vh;
+}
+
+// Clamp
+@function clamp-font($min-px, $max-px, $min-vw: 320, $max-vw: 1520) {
+    $min-rem: math.div($min-px, $base-font-size);
+    $max-rem: math.div($max-px, $base-font-size);
+    $slope: math.div(($max-px - $min-px), ($max-vw - $min-vw)) * 100;
+
+    @return clamp(#{$min-rem}rem,
+        #{$min-rem}rem + #{$slope}vw,
+        #{$max-rem}rem);
+}

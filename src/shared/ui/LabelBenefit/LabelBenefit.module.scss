@@ -1,0 +1,28 @@
+@use '/src/app/styles/variables.scss' as *;
+
+.labelBenefit {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 14px 6px 6px;
+  box-shadow: 0 2px 26px rgba(31, 31, 31, 0.10);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.labelTitle {
+  font-weight: $font-weight-bold;
+  user-select: none;
+  line-height: 120%;
+}
+
+.labelText {
+  line-height: 140%;
+  font-weight: $font-weight-medium;
+  user-select: none;
+  white-space: nowrap;
+}

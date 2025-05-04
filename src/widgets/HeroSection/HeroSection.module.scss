@@ -1,0 +1,77 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.heroSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: rem(234) vw(30) rem(100) vw(30);
+
+    &__title {
+        text-align: center;
+        color: $color-foreground-dark;
+        opacity: 0;
+
+        h1 {
+            white-space: nowrap;
+            font-size: clamp-font(22, 80);
+            font-weight: $font-weight-medium;
+            line-height: 1.05;
+            letter-spacing: $letter-spacing-minus-2;
+        }
+    }
+
+    &__subtitle {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        font-weight: $font-weight-medium;
+        line-height: 1.4;
+        letter-spacing: $letter-spacing-2;
+        margin-top: rem(24);
+        opacity: 0;
+    }
+
+    &__subtitle2 {
+        position: relative;
+    }
+
+    &__coloredText {
+        color: $color-primary;
+    }
+}
+
+.svgArrow {
+    position: absolute;
+    bottom: rem(-30);
+    right: rem(-50);
+    transform: rotate(200deg) scaleX(-1);
+}
+
+.union {
+    position: absolute;
+    top: rem(120);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+@media (max-width: 580px) {
+    .heroSection {
+        padding: rem(159) vw(25) rem(25) vw(25);
+    }
+}

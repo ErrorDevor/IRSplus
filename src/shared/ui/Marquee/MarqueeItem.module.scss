@@ -1,0 +1,42 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.marqueeWrapper {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: rem(100);
+    z-index: -1;
+  }
+  
+  .marqueeContent {
+    display: flex;
+    gap: rem(40);
+    animation: marquee 130s linear infinite;
+    width: max-content;
+  }
+  
+  .marqueeItem {
+    display: flex;
+    align-items: center;
+    gap: rem(20);
+  
+    h1 {
+      white-space: nowrap;
+      font-size: clamp-font(38, 90);
+      font-weight: 457;
+      line-height: 1.05;
+      letter-spacing: $letter-spacing-minus-2;
+      color: $color-foreground-dark;
+    }
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  

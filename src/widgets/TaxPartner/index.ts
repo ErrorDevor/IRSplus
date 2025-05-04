@@ -1,0 +1,1 @@
+export { TaxPartner } from './TaxPartner'

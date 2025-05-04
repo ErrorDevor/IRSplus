@@ -1,0 +1,119 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.challengesSection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: rem(60);
+    padding: rem(69) vw(204) rem(87) vw(204);
+
+    &__title {
+        width: 70%;
+        color: $color-foreground-dark;
+        opacity: 0;
+
+        h1 {
+            text-align: center;
+            font-size: clamp-font(30, 48);
+            font-weight: $font-weight-medium;
+            line-height: 1.2;
+            letter-spacing: $letter-spacing-2;
+        }
+    }
+
+    &__cardBlock {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(70);
+        z-index: 1;
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 330px;
+            gap: rem(40);
+            opacity: 0;
+
+            &__title {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: rem(40);
+
+                h1 {
+                    font-size: clamp-font(20, 24);
+                    font-weight: $font-weight-medium;
+                    line-height: 1.3;
+                    letter-spacing: $letter-spacing-minus-2;
+                }
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: $font-weight-medium;
+                line-height: 1.4;
+                letter-spacing: $letter-spacing-2;
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+.backgroundImage {
+    position: absolute;
+    bottom: rem(140);
+    left: 0;
+    z-index: -1;
+}
+
+@media (max-width: 980px) {
+    .challengesSection {
+        padding: rem(20) vw(58);
+
+        &__title {
+            width: 90%;
+        }
+
+        &__cardBlock {
+            flex-direction: column;
+            gap: rem(20);
+            margin-bottom: 120px;
+
+            &__item {
+                gap: rem(20);
+
+                &__title {
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 16px;
+                }
+            }
+        }
+    }
+
+    .backgroundImage {
+        transform: scale(0.8);
+        bottom: -40px;
+        left: -80px;
+    }
+}
+
+@media (max-width: 460px) {
+    .challengesSection {
+        align-items: flex-start;
+        &__title {
+            width: 100%;
+            h1 {
+                text-align: start;
+            }
+        }
+    }
+}

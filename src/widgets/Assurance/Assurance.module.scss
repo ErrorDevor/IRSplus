@@ -1,0 +1,71 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.assuranceSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: rem(125) vw(118) rem(105) vw(118);
+    gap: rem(78);
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(30);
+        color: $color-foreground-dark;
+
+        h1 {
+            white-space: nowrap;
+            text-align: center;
+            font-size: clamp-font(32, 65);
+            font-weight: $font-weight-medium;
+            line-height: 1.05;
+            letter-spacing: $letter-spacing-minus-2;
+        }
+
+        p {
+            width: 60%;
+            text-align: center;
+            font-size: clamp-font(16, 18);
+            font-weight: $font-weight-medium;
+            line-height: 1.4;
+            letter-spacing: $letter-spacing-2;
+            opacity: 0.8;
+        }
+    }
+
+    &__slider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        min-height: 572px;
+        border-radius: 36px;
+        border: 2px solid $color-primary;
+        background-color: $color-secondary;
+
+        h1 {
+            white-space: nowrap;
+            text-align: center;
+            font-size: clamp-font(32, 48);
+            font-weight: $font-weight-medium;
+            line-height: 1.04;
+            letter-spacing: $letter-spacing-minus-2;
+            color: $color-primary;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .assuranceSection {
+        padding: rem(26) vw(70) rem(26) vw(70);
+        &__title {
+            p {
+                width: 96%;
+            }
+        }
+    }
+}

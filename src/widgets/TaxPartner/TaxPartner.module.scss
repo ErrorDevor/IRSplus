@@ -1,0 +1,143 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.taxPartnerSection {
+  position: relative;
+  padding: rem(20) rem(16);
+  height: rem(654);
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 rem(131) 0 rem(60);
+    border-radius: rem(36);
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  &__image {
+    z-index: 0;
+    border-radius: rem(36);
+    transform: scaleX(-1) !important;
+    object-fit: cover;
+    object-position: 140px -10px;
+    opacity: 0;
+
+    @media (max-width: 480px) {
+      transform: scaleX(1);
+      object-position: -408px top;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(57, 108, 240, 0.2) 40%, #396CF0 100%);
+    opacity: 0;
+  }
+
+  &__innerBlock {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    max-width: rem(540);
+    gap: rem(24);
+    padding: rem(60) 0;
+
+    &__mainText,
+    &__mobileText {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(24);
+
+      h1 {
+        font-size: clamp-font(32, 55);
+        font-weight: $font-weight-medium;
+        line-height: 1.1;
+        letter-spacing: $letter-spacing-minus-2;
+        color: $color-foreground-light;
+        opacity: 0;
+      }
+
+      p {
+        width: 90%;
+        font-size: clamp-font(18, 20);
+        font-weight: $font-weight-regular;
+        line-height: 1.4;
+        letter-spacing: $letter-spacing-2;
+        color: $color-foreground-light;
+        opacity: 0;
+      }
+    }
+
+    &__mobileText {
+      display: none;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: rem(16);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .taxPartnerSection {
+    height: rem(700);
+    margin-top: rem(40);
+
+    &__wrapper {
+      justify-content: center;
+      padding: rem(38) rem(20);
+    }
+
+    &__overlay {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(57, 108, 240, 0.2) 40%, #396CF0 100%);
+    }
+
+    &__innerBlock {
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding: 0;
+
+      &__mainText,
+      &__mobileText {
+        align-items: center;
+      }
+
+      &__buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .taxPartnerSection__innerBlock__mobileText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: rem(24);
+  }
+
+  .taxPartnerSection__innerBlock__mainText {
+    display: none;
+  }
+}

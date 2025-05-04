@@ -1,0 +1,8 @@
+@use '/src/app/styles/variables.scss' as *;
+
+.backgroundText {
+  display: inline-block;
+  padding: 0.01em 0.1em;
+  background: $color-secondary;
+  line-height: 1;
+}

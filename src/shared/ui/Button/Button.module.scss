@@ -1,0 +1,27 @@
+@use '/src/app/styles/variables.scss' as *;
+
+.button {
+  cursor: pointer;
+  width: auto;
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+  letter-spacing: $letter-spacing-4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  transition: transform 0.15s ease, background-color 0.3s ease, color 0.3s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+}

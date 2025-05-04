@@ -1,0 +1,183 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.headerSection {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    padding: rem(47) vw(40) rem(27) vw(40);
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: rem(10);
+        cursor: pointer;
+
+        &__logoImage {
+            width: 75px;
+            height: auto;
+        }
+
+        &__phoneNumber {
+            min-width: vw(114);
+            font-weight: $font-weight-bold;
+            font-size: clamp-font(16, 18);
+            line-height: 1.1;
+            letter-spacing: $letter-spacing-4;
+            background: linear-gradient(45deg, #7A9CF5 33%, #A4BDFE 66%);
+            background-clip: text;
+            color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        width: auto;
+        height: vw(50);
+        gap: rem(10);
+
+        &__main,
+        &__reg {
+            display: flex;
+            justify-content: center;
+            width: auto;
+            height: vw(50);
+            gap: rem(10);
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 48px;
+    border-radius: 18px;
+    background: rgba(250, 249, 255, 1);
+
+    &__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0 vw(6);
+        gap: rem(6);
+
+        li {
+            text-align: center;
+            white-space: nowrap;
+            height: 32px;
+
+            a,
+            .nav__menu__dropdownTrigger {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                padding: 0 vw(6);
+                font-size: 16px;
+                font-weight: $font-weight-medium;
+                line-height: 1;
+                letter-spacing: $letter-spacing-4;
+                color: $color-foreground-dark;
+                text-decoration: none;
+            }
+
+            &.active {
+                padding: 8px 14px;
+                border-radius: 14px;
+                background-color: $color-secondary;
+            }
+        }
+
+
+        &__dropdownTrigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            display: flex;
+            align-items: center;
+            gap: rem(6);
+
+            .icon {
+                vertical-align: middle;
+                width: 18px;
+                height: 18px;
+                background-image: url('/icons/arrowDown.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #F7F9FC;
+    gap: 5px;
+    margin-right: 12px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 1.5vw rgb(0 0 0 / 10%);
+
+    .line {
+        display: block;
+        width: 12px;
+        height: 1px;
+        background-color: #0B101B;
+    }
+}
+
+@media (max-width: 1470px) {
+    .headerSection__buttons__main {
+        display: none;
+    }
+}
+
+@media (max-width: 1280px) {
+
+    .nav,
+    .headerSection__logo__phoneNumber {
+        display: none;
+    }
+
+    .headerSection__logo {
+        flex-direction: row;
+        gap: rem(12);
+        padding: 0 vw(40);
+    }
+
+    .burger {
+        display: flex;
+    }
+}
+
+@media (max-width: 980px) {
+    .headerSection__buttons__reg {
+        display: none;
+    }
+}
