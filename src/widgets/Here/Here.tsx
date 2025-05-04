@@ -29,7 +29,8 @@ export const Here = ({ className }: { className?: string }) => {
                     `[data-anim="title1"]`,
                     `[data-anim="text"]`,
                     `[data-anim="win"]`,
-                    `[data-anim="button"]`
+                    `[data-anim="button"]`,
+                    `[data-anim="marquee"]`
                   ]}
             >
             <div className={styles.hereSection__textBlock}>
@@ -49,13 +50,11 @@ export const Here = ({ className }: { className?: string }) => {
                 <div data-anim="button" className={styles.button}>
                     <Button text="Talk to Specialist" textSize="14px" textColor="#396CF0"
                         borderRadius="18px" bg="#fff" iconSrc="/icons/messages.svg"
-                        iconPosition="left" iconSize="18px"
-                        withShadow={true} shadowColor="rgba(75, 75, 75, 0.1)"
-                        shadowOffsetX="0px" shadowOffsetY="5px" shadowBlur="40px" />
+                        iconPosition="left" iconSize="18px"/>
                 </div>
             </div>
 
-            <div className={styles.marqueeBackground}>
+            <div data-anim="marquee" data-opacity="0.1" className={styles.marqueeBackground}>
                 <MarqueeItem items={marqueeItems} />
             </div>
             </GsapAnim>

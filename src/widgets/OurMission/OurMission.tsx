@@ -39,7 +39,7 @@ export const OurMission = ({ className }: { className?: string }) => {
             <GsapAnim animation="fade"
                 duration={2.2}
                 ease="power3.out"
-                stagger={0.2}
+                stagger={0.4}
                 triggerStart="top 90%"
                 targets={[
                     `[data-anim="left"]`,

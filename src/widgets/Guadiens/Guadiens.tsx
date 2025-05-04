@@ -2,6 +2,7 @@
 
 import styles from './Guadiens.module.scss';
 import clsx from 'clsx'
+import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { Tag } from '@/shared/ui/Tag';
 import { GradientText } from '@/shared/ui/GradientText';
 import { CircleIcon } from '@/shared/ui/CircleIcon';
@@ -11,32 +12,51 @@ export const Guadiens = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.guadiensSection, className)}>
             <div className={styles.guadiensSection__leftSide}>
-                <div className={styles.guadiensSection__leftSide__tags}>
-                    <CircleIcon
-                        color="#fff"
-                        iconSrc="/icons/likeShapes.svg"
-                        size={47}
-                        iconSize={20}
-                        borderRadius="50px"
-                    />
-                    <Tag text="Professional Guidance" colorBg="transparent" />
-                </div>
+                <GsapAnim
+                    animation="fade"
+                    duration={1.8}
+                    ease="power3.out"
+                    stagger={0.3}
+                    triggerStart="top 90%"
+                    targets={[
+                        `[data-anim="tag"]`,
+                        `[data-anim="h1"]`,
+                        `[data-anim="p"]`
+                    ]}>
+                    <div data-anim="tag" className={styles.guadiensSection__leftSide__tags}>
+                        <CircleIcon
+                            color="#fff"
+                            iconSrc="/icons/likeShapes.svg"
+                            size={47}
+                            iconSize={20}
+                            borderRadius="50px"
+                        />
+                        <Tag text="Professional Guidance" colorBg="transparent" />
+                    </div>
 
-                <div className={styles.guadiensSection__leftSide__title}>
-                    <h1>What Are the&nbsp;<GradientText>Benefits?</GradientText></h1>
-                    <p>Given the intricate nature of tax regulations, seeking professional guidance is a wise move:</p>
-                </div>
-
-                <div className={styles.guadiensSection__leftSide__buttonFrame}>
-                    <h4>Get started with America&apos;s&nbsp;
-                        <span className={styles.coloredText}>Top Rated ERC Tax Firm
-                        </span>&nbsp;Today
-                    </h4>
-                    <Button text="Contact us" textSize="14px" textColor="#fff"
-                        borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
-                        iconPosition="right"
-                    />
-                </div>
+                    <div className={styles.guadiensSection__leftSide__title}>
+                        <h1 data-anim="h1">What Are the&nbsp;<GradientText>Benefits?</GradientText></h1>
+                        <p data-anim="p" data-opacity="0.7">Given the intricate nature of tax regulations, seeking professional guidance is a wise move:</p>
+                    </div>
+                </GsapAnim>
+                <GsapAnim
+                    animation="slide-left"
+                    duration={1.2}
+                    ease="power2.out"
+                    triggerStart="top 90%"
+                    targets={[`[data-anim="buttonFrame"]`]}
+                >
+                    <div data-anim="buttonFrame" className={styles.guadiensSection__leftSide__buttonFrame}>
+                        <h4>Get started with America&apos;s&nbsp;
+                            <span className={styles.coloredText}>Top Rated ERC Tax Firm
+                            </span>&nbsp;Today
+                        </h4>
+                        <Button text="Contact us" textSize="14px" textColor="#fff"
+                            borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
+                            iconPosition="right"
+                        />
+                    </div>
+                </GsapAnim>
             </div>
 
             <div className={styles.guadiensSection__rightSide}>
@@ -112,16 +132,24 @@ export const Guadiens = ({ className }: { className?: string }) => {
                 </div>
             </div>
 
-            <div className={styles.buttonFrameMobile}>
-                <h4>Get started with America&apos;s&nbsp;
-                    <span className={styles.coloredText}>Top Rated ERC Tax Firm
-                    </span>&nbsp;Today
-                </h4>
-                <Button text="Contact us" textSize="14px" textColor="#fff"
-                    borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
-                    iconPosition="right"
-                />
-            </div>
+            <GsapAnim
+                animation="slide-left"
+                duration={1.2}
+                ease="power2.out"
+                triggerStart="top 90%"
+                targets={[`[data-anim="buttonFrame"]`]}
+            >
+                <div data-anim="buttonFrame" className={styles.buttonFrameMobile}>
+                    <h4>Get started with America&apos;s&nbsp;
+                        <span className={styles.coloredText}>Top Rated ERC Tax Firm
+                        </span>&nbsp;Today
+                    </h4>
+                    <Button text="Contact us" textSize="14px" textColor="#fff"
+                        borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
+                        iconPosition="right"
+                    />
+                </div>
+            </GsapAnim>
         </section>
     );
 };

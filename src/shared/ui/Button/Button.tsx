@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import cn from "classnames";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -25,10 +26,6 @@ interface ButtonProps {
   gap?: string;
 
   withShadow?: boolean;
-  shadowColor?: string;
-  shadowOffsetX?: string;
-  shadowOffsetY?: string;
-  shadowBlur?: string;
 
   iconSrc?: string;
   iconPosition?: "left" | "right";
@@ -57,11 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
   padding = "19px 28px",
   gap = "12px",
 
-  withShadow = false,
-  shadowColor = "rgba(0, 0, 0, 0.2)",
-  shadowOffsetX = "0px",
-  shadowOffsetY = "4px",
-  shadowBlur = "8px",
+  withShadow = true,
 
   iconSrc,
   iconPosition = "right",
@@ -83,10 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
     background: bg,
     padding,
     gap,
-    boxShadow: withShadow
-      ? `${shadowOffsetX} ${shadowOffsetY} ${shadowBlur} ${shadowColor}`
-      : "none",
-  };
+  } as React.CSSProperties;
 
   const iconStyle = {
     width: iconSize,
@@ -105,19 +95,23 @@ export const Button: React.FC<ButtonProps> = ({
     </>
   );
 
+  const buttonClass = cn(styles.button, {
+    [styles.withShadow]: withShadow,
+  });
+
   if (href) {
     const isInternal = href.startsWith("/");
 
     return isInternal ? (
-      <Link href={href} passHref>
-        <a className={styles.button} style={style}>
+      <Link href={href} passHref legacyBehavior>
+        <a className={buttonClass} style={style}>
           {content}
         </a>
       </Link>
     ) : (
       <a
         href={href}
-        className={styles.button}
+        className={buttonClass}
         style={style}
         rel="noopener noreferrer"
       >
@@ -127,7 +121,7 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button className={styles.button} onClick={onClick} style={style}>
+    <button className={buttonClass} onClick={onClick} style={style}>
       {content}
     </button>
   );

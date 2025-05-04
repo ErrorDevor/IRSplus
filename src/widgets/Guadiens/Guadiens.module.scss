@@ -24,6 +24,7 @@
             flex-direction: row;
             gap: rem(6);
             padding-left: vw(40);
+            opacity: 0;
         }
 
         &__title {
@@ -35,6 +36,7 @@
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 letter-spacing: $letter-spacing-minus-2;
+                opacity: 0;
             }
 
             p {
@@ -43,7 +45,7 @@
                 font-weight: $font-weight-medium;
                 line-height: 1.4;
                 letter-spacing: $letter-spacing-2;
-                opacity: 0.7;
+                opacity: 0;
             }
         }
 

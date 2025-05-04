@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useAnim = false;
+const useAnim = true;
 
 type AnimationType = 'fade' | 'slide-left' | 'slide-right' | 'slide-top' | 'slide-bottom';
 
@@ -15,7 +15,7 @@ type FromVars = {
     opacity: number;
     x?: number;
     y?: number;
-  };
+};
 
 interface GsapAnimProps {
     children: React.ReactNode;
@@ -26,6 +26,7 @@ interface GsapAnimProps {
     triggerStart?: string;
     className?: string;
     targets?: string | string[];
+    reverseOnLeave?: boolean;
 }
 
 export const GsapAnim = ({
@@ -37,6 +38,7 @@ export const GsapAnim = ({
     triggerStart = 'top 90%',
     className,
     targets,
+    reverseOnLeave = true,
 }: GsapAnimProps) => {
     const el = useRef<HTMLDivElement>(null);
 
@@ -69,12 +71,12 @@ export const GsapAnim = ({
 
         if (!useAnim) {
             elements.forEach(el => {
-              const customOpacity = el.getAttribute('data-opacity');
-              el.style.opacity = customOpacity ?? '1';
-              el.style.transform = 'none';
+                const customOpacity = el.getAttribute('data-opacity');
+                el.style.opacity = customOpacity ?? '1';
+                el.style.transform = 'none';
             });
             return;
-          }
+        }
 
         const triggers: ScrollTrigger[] = [];
 
@@ -97,11 +99,15 @@ export const GsapAnim = ({
             const trigger = ScrollTrigger.create({
                 trigger: element,
                 start: triggerStart,
-                end: 'top top',
+                end: 'bottom top',
                 onEnter: () => anim.play(),
-                onLeave: () => anim.reverse(),
+                onLeave: () => {
+                    if (reverseOnLeave) anim.reverse();
+                },
                 onEnterBack: () => anim.play(),
-                onLeaveBack: () => anim.reverse(),
+                onLeaveBack: () => {
+                    if (reverseOnLeave) anim.reverse();
+                },
                 markers: false,
             });
 
@@ -111,7 +117,7 @@ export const GsapAnim = ({
         return () => {
             triggers.forEach(trigger => trigger.kill());
         };
-    }, [animation, duration, ease, triggerStart, targets]);
+    }, [animation, duration, ease, triggerStart, targets, stagger, reverseOnLeave]);
 
     return (
         <div ref={el} className={cn(className)} style={{ display: 'contents' }}>
@@ -119,4 +125,3 @@ export const GsapAnim = ({
         </div>
     );
 };
-

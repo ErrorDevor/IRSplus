@@ -7,22 +7,29 @@
     justify-content: center;
     align-items: center;
     padding: rem(125) vw(118) rem(105) vw(118);
-    gap: rem(78);
+
+    &__tags {
+        display: flex;
+        flex-direction: row;
+        gap: rem(6);
+        opacity: 0;
+    }
 
     &__title {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: rem(30);
+        margin-top: rem(20);
         color: $color-foreground-dark;
 
         h1 {
-            // white-space: nowrap;
             text-align: center;
             font-size: clamp-font(32, 65);
             font-weight: $font-weight-medium;
             line-height: 1.05;
             letter-spacing: $letter-spacing-minus-2;
+            opacity: 0;
         }
 
         p {
@@ -32,7 +39,7 @@
             font-weight: $font-weight-medium;
             line-height: 1.4;
             letter-spacing: $letter-spacing-2;
-            opacity: 0.8;
+            opacity: 0;
         }
     }
 
@@ -43,9 +50,11 @@
         width: 100%;
         height: auto;
         min-height: 572px;
+        margin-top: rem(20);
         border-radius: 36px;
         border: 2px solid $color-primary;
         background-color: $color-secondary;
+        opacity: 0;
 
         h1 {
             white-space: nowrap;
@@ -62,6 +71,7 @@
 @media (max-width: 800px) {
     .assuranceSection {
         padding: rem(26) vw(70) rem(26) vw(70);
+
         &__title {
             p {
                 width: 96%;

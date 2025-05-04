@@ -87,6 +87,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
                 animation="fade"
                 duration={2.2}
                 ease="power3.out"
+                stagger={0.2}
                 triggerStart="top 90%"
                 targets={[
                     `[data-anim="image"]`,

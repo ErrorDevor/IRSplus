@@ -31,7 +31,7 @@ export const Challenges = ({ className }: { className?: string }) => {
                 duration={2.2}
                 ease="power3.out"
                 triggerStart="top 90%"
-                stagger={0.2}
+                stagger={0.4}
                 targets={[
                     `[data-anim="title"]`,
                     `[data-anim^="item-"]`
