@@ -10,10 +10,10 @@ export const TaxPartner = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.taxPartnerSection, className)}>
             <GsapAnim animation="fade"
-                duration={2.2}
-                ease="power3.out"
+                duration={1.6}
+                ease="power2.out"
                 stagger={0.2}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
                     `[data-anim="image"]`,
                     `[data-anim="overlay"]`,

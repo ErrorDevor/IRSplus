@@ -17,7 +17,7 @@ export const Guadiens = ({ className }: { className?: string }) => {
                     duration={1.8}
                     ease="power3.out"
                     stagger={0.3}
-                    triggerStart="top 90%"
+                    triggerStart="top 100%"
                     targets={[
                         `[data-anim="tag"]`,
                         `[data-anim="h1"]`,

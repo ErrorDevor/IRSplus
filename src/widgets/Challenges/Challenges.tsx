@@ -30,7 +30,7 @@ export const Challenges = ({ className }: { className?: string }) => {
             <GsapAnim animation="fade"
                 duration={2.2}
                 ease="power3.out"
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 stagger={0.4}
                 targets={[
                     `[data-anim="title"]`,

@@ -85,17 +85,14 @@ export const YourCredits = ({ className }: { className?: string }) => {
         <section className={clsx(styles.yourCreditsSection, className)}>
             <GsapAnim
                 animation="fade"
-                duration={2.2}
+                duration={1.8}
                 ease="power3.out"
                 stagger={0.2}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
                     `[data-anim="image"]`,
                     `[data-anim="union"]`,
-                    `[data-anim="tagRow1"]`,
-                    `[data-anim="tagRow2"]`,
-                    `[data-anim="tagRow3"]`,
-                    `[data-anim="tagRow4"]`,
+                    `[data-anim^="tagRow"]`,
                     `[data-anim="text"]`,
                     `[data-anim="button"]`,
                 ]}>

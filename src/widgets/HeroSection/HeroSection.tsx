@@ -29,7 +29,7 @@ export const HeroSection = ({ className }: { className?: string }) => {
                 duration={1.2}
                 ease="power3.out"
                 stagger={0.2}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
                     `[data-anim="title"]`,
                     `[data-anim="subtitle"]`,

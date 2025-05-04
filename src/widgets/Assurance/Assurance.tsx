@@ -16,14 +16,14 @@ export const Assurance = ({ className }: { className?: string }) => {
                 duration={2.2}
                 ease="power3.out"
                 stagger={0.4}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
-                    `[data-anim="tag"]`,
+                    // `[data-anim="tag"]`,
                     `[data-anim="h1"]`,
                     `[data-anim="p"]`,
                     `[data-anim="slider"]`
                 ]}>
-                <div data-anim="tag" className={styles.assuranceSection__tags}>
+                {/* <div data-anim="tag" className={styles.assuranceSection__tags}>
                     <CircleIcon
                         color="#fefefe"
                         iconSrc="/icons/likeShapes.svg"
@@ -32,7 +32,7 @@ export const Assurance = ({ className }: { className?: string }) => {
                         borderRadius="50px"
                     />
                     <Tag text="Assurance" colorBg="transparent" />
-                </div>
+                </div> */}
 
                 <div className={styles.assuranceSection__title}>
                     <h1 data-anim="h1">The IRSplus <GradientText>Process</GradientText></h1>

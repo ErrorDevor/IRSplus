@@ -22,7 +22,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                 duration={1.0}
                 ease="power3.out"
                 stagger={0.2}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
                     `[data-anim="logo"]`,
                     `[data-anim="text"]`,

@@ -40,7 +40,7 @@ export const OurMission = ({ className }: { className?: string }) => {
                 duration={2.2}
                 ease="power3.out"
                 stagger={0.4}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 targets={[
                     `[data-anim="left"]`,
                     `[data-anim="image"]`,

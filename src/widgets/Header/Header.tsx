@@ -16,7 +16,7 @@ export const Header = ({ className }: { className?: string }) => {
                 duration={2.2}
                 ease="power3.out"
                 stagger={0.4}
-                triggerStart="top 90%"
+                triggerStart="top 100%"
                 reverseOnLeave={false}
                 targets={[
                     `[data-anim="buttons1"]`,
