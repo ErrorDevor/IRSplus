@@ -59,6 +59,8 @@ export const Guadiens = ({ className }: { className?: string }) => {
                 </GsapAnim>
             </div>
 
+
+
             <div className={styles.guadiensSection__rightSide}>
                 <div className={styles.gridItems}>
                     <div className={styles.squareItems1}>
@@ -96,25 +98,32 @@ export const Guadiens = ({ className }: { className?: string }) => {
                             </svg>
                         </div>
                     </div>
-                    <div className={styles.squareItems2}>
-                        <div className={styles.cardsImagePlaceholder}>
-                            <div className={styles.cardsImagePlaceholder__border}></div>
-                            <div className={styles.cardsImagePlaceholder__image}></div>
+
+                    <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item2"]'>
+                        <div data-anim="item2" className={styles.squareItems2}>
+                            <div className={styles.cardsImagePlaceholder}>
+                                <div className={styles.cardsImagePlaceholder__border}></div>
+                                <div className={styles.cardsImagePlaceholder__image}></div>
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.squareItems3}>
-                        <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
-                            <CircleIcon
-                                color="#fff"
-                                iconSrc="/icons/oldPhone.svg"
-                                size={61}
-                                iconSize={24}
-                                borderRadius="50px"
-                            />
-                            <h1>Reducing Risks</h1>
-                            <p>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
+                    </GsapAnim>
+
+                    <GsapAnim animation="corner-left-dn" duration={1.1} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item3"]'>
+                        <div data-anim="item3" className={styles.squareItems3}>
+                            <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
+                                <CircleIcon
+                                    color="#fff"
+                                    iconSrc="/icons/oldPhone.svg"
+                                    size={61}
+                                    iconSize={24}
+                                    borderRadius="50px"
+                                />
+                                <h1>Reducing Risks</h1>
+                                <p>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
+                            </div>
                         </div>
-                    </div>
+                    </GsapAnim>
+
                     <div className={styles.squareItems4}>
                         <div className={styles.cardsItem}>
                             <CircleIcon

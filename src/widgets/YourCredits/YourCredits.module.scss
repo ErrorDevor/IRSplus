@@ -37,7 +37,7 @@
                 height: rem(488);
                 border-radius: rem(33);
                 overflow: hidden;
-                opacity: 0;
+                // opacity: 0;
             }
 
             &__union {
@@ -46,7 +46,7 @@
                 left: rem(-36);
                 z-index: -1;
                 pointer-events: none;
-                opacity: 0;
+                // opacity: 0;
             }
         }
 
