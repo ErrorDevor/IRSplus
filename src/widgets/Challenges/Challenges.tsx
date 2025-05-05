@@ -61,7 +61,7 @@ export const Challenges = ({ className }: { className?: string }) => {
                 </div>
 
                 <div className={styles.backgroundImage}>
-                    <svg width="732" height="206" viewBox="0 0 732 206" fill="none"
+                    <svg width="100%" viewBox="0 0 732 206" preserveAspectRatio="none" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 
                     22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 

@@ -67,13 +67,32 @@
     }
 }
 
+// .backgroundImage {
+//     position: absolute;
+//     bottom: rem(140);
+//     left: 0;
+//     z-index: -1;
+//     pointer-events: none;
+// }
+
 .backgroundImage {
     position: absolute;
     bottom: rem(140);
     left: 0;
+    right: 0;
+    width: 100%;
+    overflow: visible;
     z-index: -1;
+    display: flex;
+    justify-content: center;
     pointer-events: none;
+
+    svg {
+        width: 150%; // контролируй, насколько svg выходит за границы
+        max-width: none;
+    }
 }
+
 
 @media (max-width: 980px) {
     .challengesSection {
@@ -101,17 +120,17 @@
     }
 
     .backgroundImage {
-        transform: scale(0.8) !important;
-        bottom: -40px;
+        // transform: scale(0.8) !important;
+        bottom: 8px;
         left: -80px;
     }
 }
 
-@media (max-width: 980px) {
-    .backgroundImage {
-        display: none;
-    }
-}
+// @media (max-width: 980px) {
+//     .backgroundImage {
+//         display: none;
+//     }
+// }
 
 @media (max-width: 460px) {
     .challengesSection {
