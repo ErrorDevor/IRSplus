@@ -3,14 +3,12 @@
 html {
   box-sizing: border-box;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-body {
   color: $color-foreground-dark;
   background: $color-background;
   font-family: var(--font-inter), sans-serif;
