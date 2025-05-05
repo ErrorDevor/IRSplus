@@ -101,6 +101,7 @@ export const GsapAnim = ({
                 start: triggerStart,
                 end: 'bottom top',
                 onEnter: () => anim.play(),
+                once: !reverseOnLeave,
                 onLeave: () => {
                     if (reverseOnLeave) anim.reverse();
                 },
@@ -113,6 +114,8 @@ export const GsapAnim = ({
 
             triggers.push(trigger);
         });
+
+        ScrollTrigger.refresh();
 
         return () => {
             triggers.forEach(trigger => trigger.kill());
