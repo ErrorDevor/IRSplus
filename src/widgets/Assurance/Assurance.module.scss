@@ -84,7 +84,7 @@
     &__text {
         display: flex;
         flex-direction: column;
-        width: clamp(300px, 35vw, 462px);
+        width: clamp(300px, 35vw, 500px);
         gap: rem(55);
 
         div {
@@ -118,9 +118,9 @@
         justify-content: flex-start;
         align-items: center;
         flex-grow: 1;
-        width: 100%;
+        width: 70%;
         height: auto;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 14 / 8;
         margin-left: vw(40);
 
         &__pic {

@@ -27,7 +27,7 @@ const slides = [
 ];
 
 export const Assurance = ({ className }: { className?: string }) => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex] = useState(0);
 
     return (
         <section className={clsx(styles.assuranceSection, className)}>
