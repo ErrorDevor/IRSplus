@@ -74,7 +74,6 @@ export const Challenges = ({ className }: { className?: string }) => {
                             </linearGradient>
                         </defs>
                     </svg>
-
                 </div>
             </GsapAnim>
         </section>

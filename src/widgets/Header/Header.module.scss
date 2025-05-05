@@ -10,6 +10,7 @@
     left: 0;
     width: 100%;
     z-index: 10;
+    overflow: hidden;
     background-color: transparent;
     padding: rem(35) vw(35) 0 rem(20);
 
@@ -179,7 +180,9 @@
 }
 
 @media (max-width: 1150px) {
-
+    .headerSection {
+        padding: rem(20);
+    }
     .nav,
     .headerSection__buttons__reg,
     .headerSection__leftSide__logo__phoneNumber {

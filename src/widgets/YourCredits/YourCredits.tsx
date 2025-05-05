@@ -79,7 +79,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
     chunkPattern.forEach((size) => {
         labelChunks.push(labelData.slice(currentIndex, currentIndex + size));
         currentIndex += size;
-      });
+    });
 
     return (
         <section className={clsx(styles.yourCreditsSection, className)}>
@@ -127,23 +127,23 @@ export const YourCredits = ({ className }: { className?: string }) => {
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
                             </svg>
                         </div>
-                    </div>
 
-                    <div className={styles.yourCreditsSection__leftSide__tagsBlock}>
-                        {labelChunks.map((row, rowIndex) => (
-                            <div
-                                key={rowIndex}
-                                data-anim={`tagRow${rowIndex + 1}`}
-                                className={styles.tagRow}
-                            >
-                                {row.map((label, index) => (
-                                    <LabelBenefitWrapper
-                                        key={index + rowIndex * 10}
-                                        index={index + rowIndex * 10}
-                                        label={label}
-                                    />
-                                ))}
-                            </div>))}
+                        <div className={styles.yourCreditsSection__leftSide__tagsBlock}>
+                            {labelChunks.map((row, rowIndex) => (
+                                <div
+                                    key={rowIndex}
+                                    data-anim={`tagRow${rowIndex + 1}`}
+                                    className={styles.tagRow}
+                                >
+                                    {row.map((label, index) => (
+                                        <LabelBenefitWrapper
+                                            key={index + rowIndex * 10}
+                                            index={index + rowIndex * 10}
+                                            label={label}
+                                        />
+                                    ))}
+                                </div>))}
+                        </div>
                     </div>
                 </div>
 
