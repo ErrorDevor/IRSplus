@@ -28,85 +28,135 @@ const slides = [
 
 export const Assurance = ({ className }: { className?: string }) => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const scrollBlocked = useRef(false);
-    const sliderRef = useRef<HTMLDivElement>(null);
-    const sectionFullyVisible = useRef(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isScrolling = useRef(false);
+    const wasCentered = useRef(false);
 
     useEffect(() => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-
-        const handleWheel = (e: WheelEvent) => {
-            if (!sectionFullyVisible.current) return;
-            if (scrollBlocked.current) return;
-
-            e.preventDefault();
-
-            const isScrollDown = e.deltaY > 0;
-
-            if (isScrollDown) {
-                if (activeIndex < slides.length - 1) {
-                    setActiveIndex((prev) => prev + 1);
-                    blockScrollTemporarily();
-                } else {
-                    unlockPageScroll();
-                }
-            } else {
-                if (activeIndex > 0) {
-                    setActiveIndex((prev) => prev - 1);
-                    blockScrollTemporarily();
-                } else {
-                    unlockPageScroll();
-                }
+        let timeoutId: NodeJS.Timeout | null = null;
+    
+        const handleScroll = () => {
+            if (!sectionRef.current || wasCentered.current) return;
+    
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+    
+            const isInView = rect.top < windowHeight && rect.bottom > 0;
+    
+            if (isInView) {
+                if (timeoutId) clearTimeout(timeoutId);
+    
+                timeoutId = setTimeout(() => {
+                    if (wasCentered.current || !sectionRef.current) return;
+    
+                    wasCentered.current = true;
+    
+                    window.scrollTo({
+                        top: window.scrollY + rect.top - windowHeight / 2 + rect.height / 2,
+                        behavior: 'smooth',
+                    });
+                }, 300);
             }
         };
+    
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
-        const blockScrollTemporarily = () => {
-            scrollBlocked.current = true;
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            if (!sectionRef.current) return;
+    
+            const rect = sectionRef.current.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const viewportCenter = window.innerHeight / 2;
+            const isCentered = Math.abs(sectionCenter - viewportCenter) < 50;
+    
+            if (!isCentered) return;
+    
+            const delta = e.deltaY;
+            const isLast = activeIndex === slides.length - 1;
+            const isFirst = activeIndex === 0;
+    
+            if ((isFirst && delta < 0) || (isLast && delta > 0)) {
+                return;
+            }
+    
+            e.preventDefault();
+    
+            if (isScrolling.current) return;
+            isScrolling.current = true;
+    
+            if (delta > 0 && activeIndex < slides.length - 1) {
+                setActiveIndex((prev) => prev + 1);
+            } else if (delta < 0 && activeIndex > 0) {
+                setActiveIndex((prev) => prev - 1);
+            }
+    
             setTimeout(() => {
-                scrollBlocked.current = false;
+                isScrolling.current = false;
             }, 1000);
         };
-
-        const lockPageScroll = () => {
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-        };
-
-        const unlockPageScroll = () => {
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-        };
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                sectionFullyVisible.current = entry.intersectionRatio === 1;
-
-                if (sectionFullyVisible.current) {
-                    window.addEventListener('wheel', handleWheel, { passive: false });
-                    if (activeIndex > 0 && activeIndex < slides.length - 1) {
-                        lockPageScroll();
-                    }
-                } else {
-                    window.removeEventListener('wheel', handleWheel);
-                    unlockPageScroll();
-                }
-            },
-            {
-                root: null,
-                threshold: 1.0,
-            }
-        );
-
-        observer.observe(slider);
-
-        return () => {
-            observer.disconnect();
-            window.removeEventListener('wheel', handleWheel);
-            unlockPageScroll();
-        };
+    
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        return () => window.removeEventListener('wheel', handleWheel);
     }, [activeIndex]);
 
+    useEffect(() => {
+        let touchStartY = 0;
+        let touchEndY = 0;
+    
+        const handleTouchStart = (e: TouchEvent) => {
+            touchStartY = e.touches[0].clientY;
+        };
+    
+        const handleTouchEnd = () => {
+            const deltaY = touchStartY - touchEndY;
+            const rect = sectionRef.current?.getBoundingClientRect();
+            const sectionCenter = rect ? rect.top + rect.height / 2 : 0;
+            const viewportCenter = window.innerHeight / 2;
+            const isCentered = Math.abs(sectionCenter - viewportCenter) < 50;
+    
+            if (!isCentered || isScrolling.current) return;
+    
+            const isLast = activeIndex === slides.length - 1;
+            const isFirst = activeIndex === 0;
+    
+            if (deltaY > 40 && !isLast) {
+                setActiveIndex((prev) => prev + 1);
+                isScrolling.current = true;
+            } else if (deltaY < -40 && !isFirst) {
+                setActiveIndex((prev) => prev - 1);
+                isScrolling.current = true;
+            }
+    
+            setTimeout(() => {
+                isScrolling.current = false;
+            }, 1000);
+        };
+    
+        const handleTouchMove = (e: TouchEvent) => {
+            touchEndY = e.changedTouches[0].clientY;
+        };
+    
+        const node = sectionRef.current;
+        if (!node) return;
+    
+        node.addEventListener('touchstart', handleTouchStart, { passive: true });
+        node.addEventListener('touchmove', handleTouchMove, { passive: true });
+        node.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+        return () => {
+            node.removeEventListener('touchstart', handleTouchStart);
+            node.removeEventListener('touchmove', handleTouchMove);
+            node.removeEventListener('touchend', handleTouchEnd);
+        };
+    }, [activeIndex]);
+    
     return (
         <section className={clsx(styles.assuranceSection, className)}>
             <GsapAnim
@@ -129,7 +179,7 @@ export const Assurance = ({ className }: { className?: string }) => {
                 </div>
             </GsapAnim>
 
-            <div ref={sliderRef} className={styles.assuranceSection__slider}>
+            <div ref={sectionRef} className={styles.assuranceSection__slider}>
                 <div className={styles.assuranceSection__slider__dotScroll}>
                     <div className={styles.dots}>
                         {slides.map((_, i) => (

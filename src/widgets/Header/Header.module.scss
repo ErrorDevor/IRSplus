@@ -12,7 +12,7 @@
     z-index: 10;
     overflow: hidden;
     background-color: transparent;
-    padding: rem(35) vw(35) 0 rem(20);
+    padding: rem(35) vw(35) rem(12) rem(20);
 
     &__leftSide {
         display: flex;
@@ -28,10 +28,10 @@
             width: vw(114);
             cursor: pointer;
 
-            &__logoImage {
-                width: vw(75);
-                height: auto;
-            }
+            // &__logoImage {
+            //     max-width: vw(75);
+            //     height: auto;
+            // }
 
             &__phoneNumber {
                 font-weight: $font-weight-bold;
@@ -50,16 +50,17 @@
     &__buttons {
         display: flex;
         justify-content: center;
-        width: auto;
-        height: vw(50);
+        // width: auto;
+        // height: vw(50);
         gap: rem(10);
 
         &__main,
         &__reg {
             display: flex;
-            justify-content: center;
-            width: auto;
-            height: vw(50);
+            // justify-content: center;
+            // align-items: center;
+            // width: auto;
+            // height: vw(50);
             gap: rem(10);
         }
     }
@@ -183,6 +184,7 @@
     .headerSection {
         padding: rem(20);
     }
+
     .nav,
     .headerSection__buttons__reg,
     .headerSection__leftSide__logo__phoneNumber {
@@ -191,6 +193,7 @@
 
     .headerSection__leftSide__logo {
         flex-direction: row;
+        align-items: center;
         gap: rem(12);
     }
 

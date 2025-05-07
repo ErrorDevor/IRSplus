@@ -88,7 +88,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
                 duration={1.0}
                 ease="power3.out"
                 stagger={0.1}
-                triggerStart="top 100%"
+                triggerStart="top 80%"
                 targets={[
                     `[data-anim="image"]`,
                     `[data-anim="union"]`,
@@ -99,8 +99,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
                 <div className={styles.yourCreditsSection__leftSide}>
                     <div className={styles.yourCreditsSection__leftSide__imageBlock}>
                         <div data-anim="image" className={styles.yourCreditsSection__leftSide__imageBlock__image}>
-                            <Image
-                                priority
+                            <Image                    
                                 src="/images/YourCredits/img1.webp" alt="YourCreditsImage"
                                 width={318} height={488}
                                 style={{ objectFit: "cover", objectPosition: "-125px", }}

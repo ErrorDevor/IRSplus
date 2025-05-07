@@ -2,11 +2,14 @@
 @use '/src/app/styles/mixins.scss' as *;
 
 .assuranceSection {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 1512px;
+    // height: 100vh;
+    overflow: hidden;
     margin: 0 auto;
     padding: rem(125) vw(118) rem(105) vw(118);
 
@@ -79,7 +82,7 @@
             flex-direction: column;
             width: 100%;
             max-width: 400px;
-            gap: rem(55);
+            gap: rem(25);
 
             .textItem {
                 opacity: 0.2;
@@ -201,14 +204,3 @@
         }
     }
 }
-
-// @media (max-width: 800px) {
-//     .assuranceSection {
-
-//         &__title {
-//             p {
-//                 width: 96%;
-//             }
-//         }
-//     }
-// }
