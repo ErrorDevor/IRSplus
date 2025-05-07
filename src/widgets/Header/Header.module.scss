@@ -28,11 +28,6 @@
             width: vw(114);
             cursor: pointer;
 
-            // &__logoImage {
-            //     max-width: vw(75);
-            //     height: auto;
-            // }
-
             &__phoneNumber {
                 font-weight: $font-weight-bold;
                 font-size: clamp-font(12, 16);

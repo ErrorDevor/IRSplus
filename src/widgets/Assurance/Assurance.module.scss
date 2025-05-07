@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     max-width: 1512px;
-    // height: 100vh;
     overflow: hidden;
     margin: 0 auto;
     padding: rem(125) vw(118) rem(105) vw(118);
@@ -202,5 +201,25 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 480px) {
+    .assuranceSection__slider__text {
+        width: 92%;
+    }
+
+    .assuranceSection__slider__image {
+        .level1 {
+            transform: translateY(-15px) scale(0.9);
+        }
+
+        .level2 {
+            transform: translateY(-30px) scale(0.8);
+        }
+    }
+
+    .assuranceSection__slider__image__pic {
+        border-radius: 26px;
     }
 }

@@ -112,7 +112,9 @@
         }
 
         &__vector {
-            bottom: 0;
+            transform: scale(0.8) !important;
+            left: -78px;
+            bottom: -20px;
         }
     }
 }

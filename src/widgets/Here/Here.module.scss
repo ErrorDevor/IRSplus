@@ -146,6 +146,12 @@
     .hereSection {
         padding: rem(60) 0 rem(140) 0;
 
+        &__textBlock {
+            h1 {
+                text-align: center;
+            }
+        }
+
         &__window {
             width: rem(350);
             height: rem(245);

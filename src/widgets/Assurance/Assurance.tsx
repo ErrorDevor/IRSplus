@@ -114,8 +114,16 @@ export const Assurance = ({ className }: { className?: string }) => {
             touchStartY = e.touches[0].clientY;
         };
     
+        const handleTouchMove = (e: TouchEvent) => {
+            touchEndY = e.changedTouches[0].clientY;
+    
+            // Блокируем прокрутку страницы, если свайп происходит на секции слайдера
+            e.preventDefault();
+        };
+    
         const handleTouchEnd = () => {
             const deltaY = touchStartY - touchEndY;
+    
             const rect = sectionRef.current?.getBoundingClientRect();
             const sectionCenter = rect ? rect.top + rect.height / 2 : 0;
             const viewportCenter = window.innerHeight / 2;
@@ -126,10 +134,10 @@ export const Assurance = ({ className }: { className?: string }) => {
             const isLast = activeIndex === slides.length - 1;
             const isFirst = activeIndex === 0;
     
-            if (deltaY > 40 && !isLast) {
+            if (deltaY > 10 && !isLast) {
                 setActiveIndex((prev) => prev + 1);
                 isScrolling.current = true;
-            } else if (deltaY < -40 && !isFirst) {
+            } else if (deltaY < -10 && !isFirst) {
                 setActiveIndex((prev) => prev - 1);
                 isScrolling.current = true;
             }
@@ -139,15 +147,11 @@ export const Assurance = ({ className }: { className?: string }) => {
             }, 1000);
         };
     
-        const handleTouchMove = (e: TouchEvent) => {
-            touchEndY = e.changedTouches[0].clientY;
-        };
-    
         const node = sectionRef.current;
         if (!node) return;
     
         node.addEventListener('touchstart', handleTouchStart, { passive: true });
-        node.addEventListener('touchmove', handleTouchMove, { passive: true });
+        node.addEventListener('touchmove', handleTouchMove, { passive: false }); // false для блокировки прокрутки
         node.addEventListener('touchend', handleTouchEnd, { passive: true });
     
         return () => {
@@ -156,6 +160,7 @@ export const Assurance = ({ className }: { className?: string }) => {
             node.removeEventListener('touchend', handleTouchEnd);
         };
     }, [activeIndex]);
+    
     
     return (
         <section className={clsx(styles.assuranceSection, className)}>
