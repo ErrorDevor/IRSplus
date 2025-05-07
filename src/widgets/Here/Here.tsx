@@ -21,10 +21,10 @@ export const Here = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.hereSection, className)}>
             <GsapAnim animation="fade"
-                duration={1.8}
+                duration={1.0}
                 ease="power3.out"
                 triggerStart="top 100%"
-                stagger={0.2}
+                stagger={0.1}
                 targets={[
                     `[data-anim="title"]`,
                     `[data-anim="title1"]`,
@@ -51,6 +51,7 @@ export const Here = ({ className }: { className?: string }) => {
                         duration={2.0}
                         ease="power2.out"
                         triggerStart="top 100%"
+                        delay={0.8}
                         targets={[
                             `[data-anim="button"]`
                         ]}
@@ -58,7 +59,7 @@ export const Here = ({ className }: { className?: string }) => {
                         <div data-anim="button" className={styles.button}>
                             <Button text="Talk to Specialist" textSize="14px" textColor="#396CF0"
                                 borderRadius="18px" bg="#fff" iconSrc="/icons/messages.svg"
-                                iconPosition="left" iconSize="18px" />
+                                iconPosition="left" iconSize="18px" href="tel:+14244387382"/>
                         </div>
                     </GsapAnim>
                 </div>

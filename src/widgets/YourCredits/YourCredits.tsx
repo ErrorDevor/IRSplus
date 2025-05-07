@@ -85,9 +85,9 @@ export const YourCredits = ({ className }: { className?: string }) => {
         <section className={clsx(styles.yourCreditsSection, className)}>
             <GsapAnim
                 animation="fade"
-                duration={1.8}
+                duration={1.0}
                 ease="power3.out"
-                stagger={0.4}
+                stagger={0.1}
                 triggerStart="top 100%"
                 targets={[
                     `[data-anim="image"]`,

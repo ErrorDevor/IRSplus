@@ -10,9 +10,9 @@ export const TaxPartner = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.taxPartnerSection, className)}>
             <GsapAnim animation="fade"
-                duration={1.6}
+                duration={1.0}
                 ease="power2.out"
-                stagger={0.2}
+                stagger={0.1}
                 triggerStart="top 100%"
                 targets={[
                     `[data-anim="image"]`,
@@ -43,7 +43,7 @@ export const TaxPartner = ({ className }: { className?: string }) => {
                                 borderRadius="18px" bg="#fff" iconSrc="/icons/arrowUpDark.svg" iconPosition="right" href="https://irsplus.com/erc" />
 
                             <Button text="Call us Directly at (828) 342-3455" textSize="14px" textColor="#fff"
-                                borderRadius="18px" bg="transparent" borderWidth="1.5px" borderColor="#fff" />
+                                borderRadius="18px" bg="transparent" borderWidth="1.5px" borderColor="#fff" href="tel:+14244387382"/>
                         </div>
                     </div>
                 </div>

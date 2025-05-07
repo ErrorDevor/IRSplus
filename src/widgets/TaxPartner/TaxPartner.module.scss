@@ -3,6 +3,11 @@
 
 .taxPartnerSection {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1512px;
+  margin: 0 auto;
   padding: rem(20) rem(16);
   height: rem(654);
 
@@ -22,7 +27,7 @@
     border-radius: rem(36);
     transform: scaleX(-1) !important;
     object-fit: cover;
-    object-position: 140px -10px;
+    object-position: rem(140) -10px;
     opacity: 0;
 
     @media (max-width: 480px) {

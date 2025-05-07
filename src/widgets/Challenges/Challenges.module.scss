@@ -65,27 +65,13 @@
             }
         }
     }
-}
 
-.backgroundImage {
-    position: absolute;
-    bottom: rem(-10);
-    left: -150px;
-    right: 0;
-    width: 100%;
-    overflow: visible;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-
-    svg {
-        width: 100%;
-        max-width: none;
-        transform: scale(0.8) !important;
+    &__vector {
+        position: absolute;
+        left: 0;
+        bottom: 130px;
     }
 }
-
 
 @media (max-width: 980px) {
     .challengesSection {
@@ -111,11 +97,6 @@
             }
         }
     }
-
-    .backgroundImage {
-        bottom: 8px;
-        left: -80px;
-    }
 }
 
 @media (max-width: 460px) {
@@ -128,6 +109,10 @@
             h1 {
                 text-align: start;
             }
+        }
+
+        &__vector {
+            bottom: 0;
         }
     }
 }

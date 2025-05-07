@@ -28,10 +28,10 @@ export const Challenges = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.challengesSection, className)}>
             <GsapAnim animation="fade"
-                duration={2.2}
+                duration={1.0}
                 ease="power3.out"
                 triggerStart="top 100%"
-                stagger={0.4}
+                stagger={0.1}          
                 targets={[
                     `[data-anim="title"]`,
                     `[data-anim^="item-"]`
@@ -60,13 +60,9 @@ export const Challenges = ({ className }: { className?: string }) => {
                     ))}
                 </div>
 
-                <div className={styles.backgroundImage}>
-                    <svg width="100%" viewBox="0 0 732 206" preserveAspectRatio="none" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 
-                    22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 
-                    162.591C230.909 159.648 447.989 -21.03 722.321 193.491"
-                            stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
+                <div className={styles.challengesSection__vector}>
+                    <svg width="732" height="206" viewBox="0 0 732 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 162.591C230.909 159.648 447.989 -21.03 722.321 193.491" stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
                         <defs>
                             <linearGradient id="paint0_linear_4144_43148" x1="-39.1159" y1="77.5154" x2="813.43" y2="101.73" gradientUnits="userSpaceOnUse">
                                 <stop offset="0.156961" stopColor="#EBFDB8" />
@@ -74,6 +70,7 @@ export const Challenges = ({ className }: { className?: string }) => {
                             </linearGradient>
                         </defs>
                     </svg>
+
                 </div>
             </GsapAnim>
         </section>

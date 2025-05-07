@@ -5,21 +5,21 @@
     position: relative;
     display: flex;
     padding: rem(20) vw(16);
-    width: 100%;
     height: auto;
-    min-height: vw(662);
     gap: 20px;
 
     &__wrapper {
         position: relative;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        border-radius: 44px;
         background-color: #F7F9FC;
-        border-radius: rem(44);
         overflow: hidden;
         width: 100%;
+        max-width: 1512px;
+        margin: 0 auto;
 
         &__leftSide {
             display: flex;
@@ -27,8 +27,8 @@
             justify-content: center;
             align-items: flex-start;
             flex: 1 1 auto;
-            max-width: 50%;
-            padding: rem(80) 0 rem(80) vw(60);
+            max-width: 620px;
+            padding: rem(81) 0 rem(100) vw(60);
             opacity: 0;
 
             h1 {
@@ -54,9 +54,10 @@
             position: relative;
             display: flex;
             justify-content: center;
-            flex: 1;
-            max-width: 100%;
-            padding: rem(40) 0 rem(40) vw(20);
+            align-items: flex-end;
+            // flex: 1;
+            // max-width: 100%;
+            padding: rem(40) vw(160) rem(40) vw(20);
             z-index: 1;
 
             &__imageBlock {
@@ -123,6 +124,10 @@
     .rightSideLabelBenefit2 {
         left: -60px;
     }
+
+    .OurMissionSection__wrapper__rightSide {
+        padding-right: vw(100);
+    }
 }
 
 @media (max-width: 980px) {
@@ -137,6 +142,7 @@
             }
 
             &__rightSide {
+                margin-top: rem(45);
                 order: 1;
             }
         }

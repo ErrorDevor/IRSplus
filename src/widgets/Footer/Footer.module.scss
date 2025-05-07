@@ -5,6 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    max-width: 1512px;
+    margin: 0 auto;
     gap: rem(64);
     padding: rem(80) rem(40);
 

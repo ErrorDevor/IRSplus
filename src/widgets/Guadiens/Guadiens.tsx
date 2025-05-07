@@ -11,74 +11,81 @@ import { Button } from '@/shared/ui/Button';
 export const Guadiens = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.guadiensSection, className)}>
-            <div className={styles.guadiensSection__leftSide}>
-                <GsapAnim
-                    animation="fade"
-                    duration={1.8}
-                    ease="power3.out"
-                    stagger={0.3}
-                    triggerStart="top 100%"
-                    targets={[
-                        `[data-anim="tag"]`,
-                        `[data-anim="h1"]`,
-                        `[data-anim="p"]`
-                    ]}>
-                    <div data-anim="tag" className={styles.guadiensSection__leftSide__tags}>
-                        <CircleIcon
-                            color="#fff"
-                            iconSrc="/icons/likeShapes.svg"
-                            size={47}
-                            iconSize={20}
-                            borderRadius="50px"
-                        />
-                        <Tag text="Professional Guidance" colorBg="transparent" />
-                    </div>
-
-                    <div className={styles.guadiensSection__leftSide__title}>
-                        <h1 data-anim="h1">What Are the&nbsp;<GradientText>Benefits?</GradientText></h1>
-                        <p data-anim="p" data-opacity="0.7">Given the intricate nature of tax regulations, seeking professional guidance is a wise move:</p>
-                    </div>
-                </GsapAnim>
-                <GsapAnim
-                    animation="slide-left"
-                    duration={1.2}
-                    ease="power2.out"
-                    triggerStart="top 90%"
-                    targets={[`[data-anim="buttonFrame"]`]}
-                >
-                    <div data-anim="buttonFrame" className={styles.guadiensSection__leftSide__buttonFrame}>
-                        <h4>Get started with America&apos;s&nbsp;
-                            <span className={styles.coloredText}>Top Rated ERC Tax Firm
-                            </span>&nbsp;Today
-                        </h4>
-                        <Button text="Contact us" textSize="14px" textColor="#fff"
-                            borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
-                            iconPosition="right"
-                        />
-                    </div>
-                </GsapAnim>
-            </div>
-
-
-
-            <div className={styles.guadiensSection__rightSide}>
-                <div className={styles.gridItems}>
-                    <div className={styles.squareItems1}>
-                        <div className={styles.cardsItem}>
+            <div className={styles.guadiensSection__wrapper}>
+                <div className={styles.guadiensSection__wrapper__leftSide}>
+                    <GsapAnim
+                        animation="fade"
+                        duration={1.0}
+                        ease="power3.out"
+                        stagger={0.1}
+                        triggerStart="top 100%"
+                        targets={[
+                            `[data-anim="tag"]`,
+                            `[data-anim="h1"]`,
+                            `[data-anim="p"]`
+                        ]}>
+                        <div data-anim="tag" className={styles.guadiensSection__wrapper__leftSide__tags}>
                             <CircleIcon
-                                color="#396CF0"
-                                iconSrc="/icons/profile2user.svg"
-                                size={61}
-                                iconSize={24}
+                                color="#fff"
+                                iconSrc="/icons/likeShapes.svg"
+                                size={47}
+                                iconSize={20}
                                 borderRadius="50px"
                             />
-                            <h1>Tax Experts</h1>
-                            <p>We specialize in decoding complex regulations. This saves time,and money and helps prevent missed opportunities.</p>
+                            <Tag text="Professional Guidance" colorBg="transparent" />
                         </div>
 
-                        <div className={styles.cardUnion}>
-                            <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.1" fillRule="evenodd" clipRule="evenodd" d="M31.0327 5.17212C31.0327 2.31564 28.7171 0 25.8606 
+                        <div className={styles.guadiensSection__wrapper__leftSide__title}>
+                            <h1 data-anim="h1">What Are the&nbsp;<GradientText>Benefits?</GradientText></h1>
+                            <p data-anim="p" data-opacity="0.7">Given the intricate nature of tax regulations, seeking professional guidance is a wise move:</p>
+                        </div>
+                    </GsapAnim>
+                    
+                    <GsapAnim
+                        animation="slide-left"
+                        duration={1.2}
+                        ease="power2.out"
+                        triggerStart="top 90%"
+                        targets='[data-anim="buttonFrame"]'
+                    >
+                        <div data-anim="buttonFrame" className={styles.guadiensSection__wrapper__leftSide__buttonFrame}>
+                            <h4>Get started with America&apos;s&nbsp;
+                                <span className={styles.coloredText}>Top Rated ERC Tax Firm
+                                </span>&nbsp;Today
+                            </h4>
+                            <Button text="Contact us" textSize="14px" textColor="#fff"
+                                borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg"
+                                iconPosition="right"
+                            />
+                        </div>
+                    </GsapAnim>
+                </div>
+
+                <div className={styles.guadiensSection__wrapper__rightSide}>
+                    <div className={styles.gridItems}>
+                        <GsapAnim
+                            animation="fade"
+                            duration={1.0}
+                            ease="power2.out"
+                            triggerStart="top 90%"
+                            targets='[data-anim="item1"]'
+                        >
+                            <div data-anim="item1" className={styles.squareItems1}>
+                                <div className={styles.cardsItem}>
+                                    <CircleIcon
+                                        color="#396CF0"
+                                        iconSrc="/icons/profile2user.svg"
+                                        size={61}
+                                        iconSize={24}
+                                        borderRadius="50px"
+                                    />
+                                    <h1>Tax Experts</h1>
+                                    <p>We specialize in decoding complex regulations. This saves time,and money and helps prevent missed opportunities.</p>
+                                </div>
+
+                                <div className={styles.cardUnion}>
+                                    <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.1" fillRule="evenodd" clipRule="evenodd" d="M31.0327 5.17212C31.0327 2.31564 28.7171 0 25.8606 
                         0H5.17212C2.31564 0 0 2.31563 0 5.17212V25.8606C0 28.7171 2.31563 31.0327 5.17212 31.0327H25.8606C28.7171 31.0327 
                         31.0327 28.7171 31.0327 25.8606V5.17212ZM31.0327 65.1682C31.0327 62.3117 28.7171 59.9961 25.8606 59.9961H5.17212C2.31564 
                         59.9961 0 62.3117 0 65.1682V85.8567C0 88.7132 2.31563 91.0288 5.17212 91.0288H25.8606C28.7171 91.0288 31.0327 88.7132 
@@ -95,48 +102,58 @@ export const Guadiens = ({ className }: { className?: string }) => {
                         57.6805 62.0659 54.824V36.2048ZM124.132 98.2698C124.132 95.4133 121.817 93.0977 118.96 93.0977H98.2717C95.4152 
                         93.0977 93.0996 95.4133 93.0996 98.2698V118.958C93.0996 121.815 95.4152 124.13 98.2717 124.13H118.96C121.817 
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item2"]'>
-                        <div data-anim="item2" className={styles.squareItems2}>
-                            <div className={styles.cardsImagePlaceholder}>
-                                <div className={styles.cardsImagePlaceholder__border}></div>
-                                <div className={styles.cardsImagePlaceholder__image}></div>
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
-                    </GsapAnim>
+                        </GsapAnim>
 
-                    <GsapAnim animation="corner-left-dn" duration={1.1} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item3"]'>
-                        <div data-anim="item3" className={styles.squareItems3}>
-                            <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
-                                <CircleIcon
-                                    color="#fff"
-                                    iconSrc="/icons/oldPhone.svg"
-                                    size={61}
-                                    iconSize={24}
-                                    borderRadius="50px"
-                                />
-                                <h1>Reducing Risks</h1>
-                                <p>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
+                        <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item2"]'>
+                            <div data-anim="item2" className={styles.squareItems2}>
+                                <div className={styles.cardsImagePlaceholder}>
+                                    <div className={styles.cardsImagePlaceholder__border}></div>
+                                    <div className={styles.cardsImagePlaceholder__image}></div>
+                                </div>
                             </div>
-                        </div>
-                    </GsapAnim>
+                        </GsapAnim>
 
-                    <div className={styles.squareItems4}>
-                        <div className={styles.cardsItem}>
-                            <CircleIcon
-                                color="#396CF0"
-                                iconSrc="/icons/starWhite.svg"
-                                size={61}
-                                iconSize={24}
-                                borderRadius="50px"
-                            />
-                            <h1>Maximizing Benefits</h1>
-                            <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don&apos;t overlook your potential savings.</p>
-                        </div>
-                        <div className={styles.cardCircle}></div>
+                        <GsapAnim animation="corner-left-dn" duration={1.1} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item3"]'>
+                            <div data-anim="item3" className={styles.squareItems3}>
+                                <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
+                                    <CircleIcon
+                                        color="#fff"
+                                        iconSrc="/icons/oldPhone.svg"
+                                        size={61}
+                                        iconSize={24}
+                                        borderRadius="50px"
+                                    />
+                                    <h1>Reducing Risks</h1>
+                                    <p>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
+                                </div>
+                            </div>
+                        </GsapAnim>
+
+                        <GsapAnim
+                            animation="fade"
+                            duration={1.0}
+                            ease="power2.out"
+                            triggerStart="top 90%"
+                            targets='[data-anim="item1"]'
+                        >
+                            <div data-anim="item4" className={styles.squareItems4}>
+                                <div className={styles.cardsItem}>
+                                    <CircleIcon
+                                        color="#396CF0"
+                                        iconSrc="/icons/starWhite.svg"
+                                        size={61}
+                                        iconSize={24}
+                                        borderRadius="50px"
+                                    />
+                                    <h1>Maximizing Benefits</h1>
+                                    <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don&apos;t overlook your potential savings.</p>
+                                </div>
+                                <div className={styles.cardCircle}></div>
+                            </div>
+                        </GsapAnim>
                     </div>
                 </div>
             </div>

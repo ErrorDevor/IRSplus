@@ -21,7 +21,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <GsapAnim animation="slide-left"
                 duration={1.0}
                 ease="power3.out"
-                stagger={0.2}
+                stagger={0.1}
                 triggerStart="top 100%"
                 targets={[
                     `[data-anim="logo"]`,

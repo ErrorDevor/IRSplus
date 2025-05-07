@@ -36,6 +36,8 @@ interface GsapAnimProps {
   className?: string;
   targets?: string | string[];
   reverseOnLeave?: boolean;
+  delay?: number;
+  once?: boolean;
 }
 
 export const GsapAnim = ({
@@ -48,26 +50,35 @@ export const GsapAnim = ({
   className,
   targets,
   reverseOnLeave = true,
+  delay,
+  once = false,
 }: GsapAnimProps) => {
   const el = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!el.current || !targets) return;
 
-    const fromVars: FromVars = { opacity: 0, x: 0, y: 0 };
+    const fromVars: FromVars & { scale?: number } = { opacity: 0, x: 0, y: 0 };
 
     switch (animation) {
+      case 'fade':
+        fromVars.scale = 0.95;
+        break;
       case 'slide-left':
         fromVars.x = -100;
+        fromVars.scale = 0.95;
         break;
       case 'slide-right':
         fromVars.x = 100;
+        fromVars.scale = 0.95;
         break;
       case 'slide-top':
         fromVars.y = -100;
+        fromVars.scale = 0.95;
         break;
       case 'slide-bottom':
         fromVars.y = 100;
+        fromVars.scale = 0.95;
         break;
       case 'corner-right-up':
         fromVars.x = 100;
@@ -110,30 +121,48 @@ export const GsapAnim = ({
       const customOpacity = element.getAttribute('data-opacity');
       const toOpacity = customOpacity ? parseFloat(customOpacity) : 1;
 
+      const wasAnimated = element.getAttribute('data-animated') === 'true';
+
+      if (once && wasAnimated) {
+        // Не запускаем анимацию повторно
+        element.style.opacity = `${toOpacity}`;
+        element.style.transform = 'none';
+        return;
+      }
+
+      // Начальные стили от GSAP
       gsap.set(element, fromVars);
 
       const anim = gsap.to(element, {
         opacity: toOpacity,
         x: 0,
         y: 0,
+        scale: 1,
         duration,
         ease,
-        delay: stagger * index,
+        delay: (delay ?? 0) + stagger * index,
         paused: true,
+        onComplete: () => {
+          element.setAttribute('data-animated', 'true');
+          element.style.opacity = `${toOpacity}`;
+          element.style.transform = 'none';
+        },
       });
 
       const trigger = ScrollTrigger.create({
         trigger: element,
         start: triggerStart,
         end: 'bottom top',
+        once: once || !reverseOnLeave,
         onEnter: () => anim.play(),
-        once: !reverseOnLeave,
         onLeave: () => {
-          if (reverseOnLeave) anim.reverse();
+          if (!once && reverseOnLeave) anim.reverse();
         },
-        onEnterBack: () => anim.play(),
+        onEnterBack: () => {
+          if (!once) anim.play();
+        },
         onLeaveBack: () => {
-          if (reverseOnLeave) anim.reverse();
+          if (!once && reverseOnLeave) anim.reverse();
         },
         markers: false,
       });
@@ -146,7 +175,7 @@ export const GsapAnim = ({
     return () => {
       triggers.forEach(trigger => trigger.kill());
     };
-  }, [animation, duration, ease, triggerStart, targets, stagger, reverseOnLeave]);
+  }, [animation, duration, ease, triggerStart, targets, stagger, reverseOnLeave, once, delay]);
 
   return (
     <div ref={el} className={cn(className)} style={{ display: 'contents' }}>

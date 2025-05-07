@@ -26,9 +26,9 @@ export const HeroSection = ({ className }: { className?: string }) => {
         <section className={clsx(styles.heroSection, className)}>
             <GsapAnim
                 animation="slide-bottom"
-                duration={1.2}
-                ease="power3.out"
-                stagger={0.2}
+                duration={1.0}
+                ease="power2.out"
+                stagger={0.1}
                 triggerStart="top 100%"
                 targets={[
                     `[data-anim="title"]`,

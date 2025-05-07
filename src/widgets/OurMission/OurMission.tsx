@@ -37,9 +37,9 @@ export const OurMission = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.OurMissionSection, className)}>
             <GsapAnim animation="fade"
-                duration={2.2}
+                duration={1.0}
                 ease="power3.out"
-                stagger={0.4}
+                stagger={0.1}
                 triggerStart="top 100%"
                 targets={[
                     `[data-anim="left"]`,

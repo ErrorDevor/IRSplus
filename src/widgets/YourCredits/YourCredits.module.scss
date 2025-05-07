@@ -11,6 +11,8 @@
     height: auto;
     gap: rem(80);
     padding: rem(34) rem(80);
+    max-width: 1512px;
+    margin: 0 auto;
 
     &__leftSide,
     &__rightSide {
@@ -164,6 +166,7 @@
         &__leftSide {
             &__tagsBlock {
                 bottom: rem(-100);
+
                 .tagRow {
                     transform: scale(0.8) !important;
                 }

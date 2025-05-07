@@ -13,14 +13,15 @@ export const Header = ({ className }: { className?: string }) => {
         <header className={clsx(styles.headerSection, className)}>
             <GsapAnim
                 animation="fade"
-                duration={2.2}
+                duration={1.0}
                 ease="power3.out"
-                stagger={0.4}
+                stagger={0.1}
                 triggerStart="top 100%"
                 reverseOnLeave={false}
                 targets={[
                     `[data-anim="buttons1"]`,
                     `[data-anim="buttons2"]`,
+                    `[data-anim="nav"]`
                 ]}>
                 <div className={styles.headerOverlay} />
 
@@ -44,7 +45,7 @@ export const Header = ({ className }: { className?: string }) => {
                         </div>
                     </div>
 
-                    <nav className={clsx(styles.nav, className)}>
+                    <nav data-anim="nav" className={clsx(styles.nav, className)}>
                         <ul className={styles.nav__menu}>
                             {linksNav.map(({ label, href }, index) => (
                                 <li key={index} className={clsx(label === 'Home' && styles.active)}>
@@ -66,11 +67,11 @@ export const Header = ({ className }: { className?: string }) => {
                     <div data-anim="buttons1" className={styles.headerSection__buttons__main}>
                         <Button height="50px" text="ERC" textSize="14px" textColor="#000"
                             borderRadius="18px" bg="#F3F5F8"
-                            padding="19px 20px"
+                            padding="19px 20px" href="https://irsplus.com/erc"
                         />
                         <Button height="50px" text="SETC" textSize="14px" textColor="#000"
                             borderRadius="18px" bg="#F3F5F8"
-                            padding="19px 20px"
+                            padding="19px 20px" href="https://irsplus.com/setc"
                         />
                     </div>
 
