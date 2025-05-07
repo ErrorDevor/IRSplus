@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter_Tight } from 'next/font/google';
-import "./globals.scss";
 
 const interTight = Inter_Tight({
   subsets: ['latin'],
@@ -11,7 +10,7 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   title: 'IRSplus - Tax | Incentives | Advisory',
-  description: 'IRSplus - Tax | Incentives | Advisory',
+  description: 'Incentives and Credits',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
