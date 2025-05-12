@@ -14,6 +14,8 @@ import { EffectCreative } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
 
+import { useScrollLock } from '@/shared/hooks/useScrollLock';
+
 const slides = [
     {
         title: "Thorough Assessment",
@@ -36,6 +38,9 @@ export const Assurance = ({ className }: { className?: string }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [swiperCore, setSwiperCore] = useState<SwiperCore | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const isSliderCompleted = activeIndex >= TOTAL_SLIDES - 1;
+
+    useScrollLock(!isSliderCompleted);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -80,7 +85,7 @@ export const Assurance = ({ className }: { className?: string }) => {
                         The IRSplus <GradientText>Process</GradientText>
                     </h1>
                     <p data-anim="p" data-opacity="0.8">
-                    Understanding eligibility requirements and ensuring compliance is key to reaping the rewards of tax incentives and credits. Here’s our process:
+                        Understanding eligibility requirements and ensuring compliance is key to reaping the rewards of tax incentives and credits. Here’s our process:
                     </p>
                 </div>
 
