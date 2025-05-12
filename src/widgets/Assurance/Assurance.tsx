@@ -1,242 +1,168 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import styles from './Assurance.module.scss';
 import clsx from 'clsx';
 import classNames from "classnames";
-import Image from "next/image";
-import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { GradientText } from '@/shared/ui/GradientText';
+import { GsapAnim } from '@/shared/lib/Animations/Animations';
+import Image from "next/image";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from "swiper";
+import { EffectCreative } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-creative";
 
 const slides = [
     {
         title: "Thorough Assessment",
         text: "After our initial consultation, we carefully assess your eligibility for each incentive or credit. Different incentives have specific criteria that you need to meet and be checked for.",
-        imageSrc: "/images/Assurance/assuranceImg1.webp",
     },
     {
         title: "Documentation",
         text: "Proper documentation is essential to backup your claims. Our tax professionals will assist in compiling the necessary documentation needed.",
-        imageSrc: "/images/Assurance/assuranceImg2.webp",
     },
     {
         title: "Claiming Process",
         text: "Understanding the correct way to claim incentives is vital. We take the lead of the process, reducing the chance of any mistakes occuring.",
-        imageSrc: "/images/Assurance/assuranceImg3.webp",
     }
 ];
 
+const TOTAL_SLIDES = 3;
+let scrolling = false;
+
 export const Assurance = ({ className }: { className?: string }) => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const isScrolling = useRef(false);
-    const wasCentered = useRef(false);
+    const [swiperCore, setSwiperCore] = useState<SwiperCore | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        let timeoutId: NodeJS.Timeout | null = null;
-    
-        const handleScroll = () => {
-            if (!sectionRef.current || wasCentered.current) return;
-    
-            const rect = sectionRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-    
-            const isInView = rect.top < windowHeight && rect.bottom > 0;
-    
-            if (isInView) {
-                if (timeoutId) clearTimeout(timeoutId);
-    
-                timeoutId = setTimeout(() => {
-                    if (wasCentered.current || !sectionRef.current) return;
-    
-                    wasCentered.current = true;
-    
-                    window.scrollTo({
-                        top: window.scrollY + rect.top - windowHeight / 2 + rect.height / 2,
-                        behavior: 'smooth',
-                    });
-                }, 300);
-            }
-        };
-    
-        window.addEventListener('scroll', handleScroll, { passive: true });
-    
-        return () => {
-            if (timeoutId) clearTimeout(timeoutId);
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+        const container = containerRef.current;
+        if (!container || !swiperCore) return;
 
-    useEffect(() => {
-        const handleWheel = (e: WheelEvent) => {
-            if (!sectionRef.current) return;
-    
-            const rect = sectionRef.current.getBoundingClientRect();
-            const sectionCenter = rect.top + rect.height / 2;
-            const viewportCenter = window.innerHeight / 2;
-            const isCentered = Math.abs(sectionCenter - viewportCenter) < 50;
-    
-            if (!isCentered) return;
-    
-            const delta = e.deltaY;
-            const isLast = activeIndex === slides.length - 1;
-            const isFirst = activeIndex === 0;
-    
-            if ((isFirst && delta < 0) || (isLast && delta > 0)) {
-                return;
-            }
-    
+        const handleScroll = (e: WheelEvent) => {
             e.preventDefault();
-    
-            if (isScrolling.current) return;
-            isScrolling.current = true;
-    
-            if (delta > 0 && activeIndex < slides.length - 1) {
-                setActiveIndex((prev) => prev + 1);
-            } else if (delta < 0 && activeIndex > 0) {
-                setActiveIndex((prev) => prev - 1);
-            }
-    
-            setTimeout(() => {
-                isScrolling.current = false;
-            }, 1000);
-        };
-    
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        return () => window.removeEventListener('wheel', handleWheel);
-    }, [activeIndex]);
+            if (scrolling) return;
+            scrolling = true;
 
-    useEffect(() => {
-        let touchStartY = 0;
-        let touchEndY = 0;
-    
-        const handleTouchStart = (e: TouchEvent) => {
-            touchStartY = e.touches[0].clientY;
-        };
-    
-        const handleTouchMove = (e: TouchEvent) => {
-            touchEndY = e.changedTouches[0].clientY;
-    
-            // Блокируем прокрутку страницы, если свайп происходит на секции слайдера
-            e.preventDefault();
-        };
-    
-        const handleTouchEnd = () => {
-            const deltaY = touchStartY - touchEndY;
-    
-            const rect = sectionRef.current?.getBoundingClientRect();
-            const sectionCenter = rect ? rect.top + rect.height / 2 : 0;
-            const viewportCenter = window.innerHeight / 2;
-            const isCentered = Math.abs(sectionCenter - viewportCenter) < 50;
-    
-            if (!isCentered || isScrolling.current) return;
-    
-            const isLast = activeIndex === slides.length - 1;
-            const isFirst = activeIndex === 0;
-    
-            if (deltaY > 10 && !isLast) {
-                setActiveIndex((prev) => prev + 1);
-                isScrolling.current = true;
-            } else if (deltaY < -10 && !isFirst) {
-                setActiveIndex((prev) => prev - 1);
-                isScrolling.current = true;
+            if (e.deltaY > 0) {
+                if (swiperCore.activeIndex < TOTAL_SLIDES - 1) {
+                    swiperCore.slideNext();
+                }
+            } else {
+                if (swiperCore.activeIndex > 0) {
+                    swiperCore.slidePrev();
+                }
             }
-    
-            setTimeout(() => {
-                isScrolling.current = false;
-            }, 1000);
+
+            setTimeout(() => (scrolling = false), 1000);
         };
-    
-        const node = sectionRef.current;
-        if (!node) return;
-    
-        node.addEventListener('touchstart', handleTouchStart, { passive: true });
-        node.addEventListener('touchmove', handleTouchMove, { passive: false }); // false для блокировки прокрутки
-        node.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
-        return () => {
-            node.removeEventListener('touchstart', handleTouchStart);
-            node.removeEventListener('touchmove', handleTouchMove);
-            node.removeEventListener('touchend', handleTouchEnd);
-        };
-    }, [activeIndex]);
-    
-    
+
+        container.addEventListener("wheel", handleScroll, { passive: false });
+        return () => container.removeEventListener("wheel", handleScroll);
+    }, [swiperCore]);
+
     return (
         <section className={clsx(styles.assuranceSection, className)}>
             <GsapAnim
                 animation="fade"
                 duration={1.0}
-                ease="power3.out"
+                ease="power3.in"
                 stagger={0.1}
                 once={true}
-                reverseOnLeave={false}
+                reverseOnLeave={true}
                 triggerStart="top 100%"
-                targets={['[data-anim="h1"]', '[data-anim="p"]']}
+                targets={['[data-anim="h1"]', '[data-anim="p"]', '[data-anim="slider"]']}
             >
                 <div className={styles.assuranceSection__title}>
                     <h1 data-anim="h1">
                         The IRSplus <GradientText>Process</GradientText>
                     </h1>
                     <p data-anim="p" data-opacity="0.8">
-                        Understanding eligibility requirements and ensuring compliance is key to reaping the rewards of tax incentives and credits. Here’s our process:
+                    Understanding eligibility requirements and ensuring compliance is key to reaping the rewards of tax incentives and credits. Here’s our process:
                     </p>
                 </div>
-            </GsapAnim>
 
-            <div ref={sectionRef} className={styles.assuranceSection__slider}>
-                <div className={styles.assuranceSection__slider__dotScroll}>
-                    <div className={styles.dots}>
-                        {slides.map((_, i) => (
-                            <span
-                                key={i}
-                                className={classNames(styles.dot, { [styles.activeDot]: i === activeIndex })}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <div className={styles.assuranceSection__slider__text}>
-                    {slides.map((slide, i) => (
-                        <div
-                            key={i}
-                            className={classNames(styles.textItem, {
-                                [styles.activeText]: i === activeIndex,
-                            })}
-                        >
-                            <h1>{slide.title}</h1>
-                            <p>{slide.text}</p>
+                <div ref={containerRef} data-anim="slider" className={clsx(styles.sliderSection, className)}>
+                    <div className={styles.sliderSection__paginationBlock}>
+                        <div className={styles.dots}>
+                            {slides.map((_, i) => (
+                                <span
+                                    key={i}
+                                    className={classNames(styles.dot, { [styles.activeDot]: i === activeIndex })}
+                                />
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
 
-                <div className={styles.assuranceSection__slider__image}>
-                    {slides.map((slide, i) => {
-                        const isActive = i === activeIndex;
-                        const level = (i - activeIndex + slides.length) % slides.length;
-
-                        return (
+                    <div className={styles.sliderSection__textBlock}>
+                        {slides.map((slide, i) => (
                             <div
                                 key={i}
-                                className={classNames(styles.imageWrapper, {
-                                    [styles.activeImage]: isActive,
-                                    [styles.inactiveImage]: !isActive,
-                                    [styles.level1]: level === 1,
-                                    [styles.level2]: level === 2,
+                                className={classNames(styles.textItem, {
+                                    [styles.activeText]: i === activeIndex,
                                 })}
                             >
-                                <Image
-                                    className={styles.assuranceSection__slider__image__pic}
-                                    priority
-                                    src={slide.imageSrc}
-                                    alt={`AssuranceImage${i + 1}`}
-                                    fill
-                                />
+                                <h1>{slide.title}</h1>
+                                <p>{slide.text}</p>
                             </div>
-                        );
-                    })}
+                        ))}
+                    </div>
+
+                    <div className={styles.imageBlock}>
+                        <Swiper
+                            modules={[EffectCreative]}
+                            effect="creative"
+                            speed={1000}
+                            allowTouchMove={true}
+                            onInit={setSwiperCore}
+                            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                            creativeEffect={{
+                                limitProgress: 3,
+                                prev: {
+                                    shadow: true,
+                                    translate: [0, "-10%", -100],
+                                    opacity: 1,
+                                },
+                                next: {
+                                    translate: [0, "10%", 100],
+                                    opacity: 0,
+                                },
+                                perspective: true,
+                            }}
+                        >
+                            <SwiperSlide className={styles.slideItem}>
+                                <Image className={styles.img}
+                                    src="/images/Assurance/assuranceImg1.webp"
+                                    alt=""
+                                    priority
+                                    fill
+                                    sizes="(max-width: 980px) 100vw, 724px"
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide className={styles.slideItem}>
+                                <Image className={styles.img}
+                                    src="/images/Assurance/assuranceImg2.webp"
+                                    alt=""
+                                    priority
+                                    fill
+                                    sizes="(max-width: 980px) 100vw, 724px"
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide className={styles.slideItem}>
+                                <Image className={styles.img}
+                                    src="/images/Assurance/assuranceImg3.webp"
+                                    alt=""
+                                    priority
+                                    fill
+                                    sizes="(max-width: 980px) 100vw, 724px"
+                                />
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
                 </div>
-            </div>
+            </GsapAnim>
         </section>
     );
 };

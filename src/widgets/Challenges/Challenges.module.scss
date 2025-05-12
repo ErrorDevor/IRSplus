@@ -31,15 +31,15 @@
         align-items: center;
         gap: rem(70);
         z-index: 1;
+        overflow: hidden;
 
         &__item {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            max-width: 330px;
+            min-width: 330px;
             gap: rem(40);
-            opacity: 0;
 
             &__title {
                 display: flex;
@@ -70,6 +70,7 @@
         position: absolute;
         left: 0;
         bottom: 130px;
+        z-index: -1;
     }
 }
 
@@ -87,6 +88,7 @@
             margin-bottom: 120px;
 
             &__item {
+                min-width: 300px;
                 gap: rem(20);
 
                 &__title {
