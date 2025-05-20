@@ -85,7 +85,7 @@ export const Assurance = ({ className }: { className?: string }) => {
         const trigger = ScrollTrigger.create({
             trigger: sliderRef.current,
             start: 'top+=10% 20%',
-            end: `+=${numSlides * 200}%`,
+            end: `+=${numSlides * 100}%`,
             scrub: 1,
             pin: true,
             markers: false,

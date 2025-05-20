@@ -61,7 +61,7 @@
 .sliderSectionWrapper {
     position: relative;
     display: flex;
-    height: 600vh;
+    height: 300vh;
 }
 
 .paginationBlock {
@@ -96,12 +96,12 @@
 .textBlock {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     max-width: rem(400);
     height: 100%;
     gap: rem(25);
-    padding: rem(60) 0;
+    // padding: rem(60) 0;
     z-index: 2;
 
     .textItem {
