@@ -23,11 +23,12 @@
             gap: rem(32);
 
             p {
-                width: 80%;
+                width: 90%;
                 font-size: clamp-font(16, 18);
                 font-weight: $font-weight-medium;
                 line-height: 1.2;
                 color: $color-foreground-dark;
+                opacity: 0.8;
             }
         }
 

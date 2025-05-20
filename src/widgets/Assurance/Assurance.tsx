@@ -1,22 +1,25 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import styles from './Assurance.module.scss';
 import clsx from 'clsx';
 import classNames from "classnames";
 import { GradientText } from '@/shared/ui/GradientText';
-import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import Image from "next/image";
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from 'swiper';
 import SwiperCore from "swiper";
-import { EffectCreative } from "swiper/modules";
+import { EffectCreative, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
 
-import { useScrollLock } from '@/shared/hooks/useScrollLock';
+gsap.registerPlugin(ScrollTrigger);
 
-const slides = [
+const txtItem = [
     {
         title: "Thorough Assessment",
         text: "After our initial consultation, we carefully assess your eligibility for each incentive or credit. Different incentives have specific criteria that you need to meet and be checked for.",
@@ -31,98 +34,126 @@ const slides = [
     }
 ];
 
-const TOTAL_SLIDES = 3;
-let scrolling = false;
+const imgItem = [
+    '/images/Assurance/assuranceImg1.webp',
+    '/images/Assurance/assuranceImg2.webp',
+    '/images/Assurance/assuranceImg3.webp',
+];
 
 export const Assurance = ({ className }: { className?: string }) => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
     const [swiperCore, setSwiperCore] = useState<SwiperCore | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const isSliderCompleted = activeIndex >= TOTAL_SLIDES - 1;
-
-    useScrollLock(!isSliderCompleted);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const handleSlideChange = useCallback((swiper: SwiperType) => {
+        setActiveIndex(swiper.activeIndex);
+    }, []);
 
     useEffect(() => {
-        const container = containerRef.current;
-        if (!container || !swiperCore) return;
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 90%",
+                    end: "+=400",
+                    scrub: 1,
+                    pin: false,
+                    markers: false,
+                },
+            });
 
-        const handleScroll = (e: WheelEvent) => {
-            e.preventDefault();
-            if (scrolling) return;
-            scrolling = true;
+            tl.from(titleRef.current, {
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out",
+            }).from(textRef.current, {
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out",
+            });
 
-            if (e.deltaY > 0) {
-                if (swiperCore.activeIndex < TOTAL_SLIDES - 1) {
-                    swiperCore.slideNext();
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    useEffect(() => {
+        if (!swiperCore || !sliderRef.current) return;
+        const numSlides = imgItem.length;
+        const trigger = ScrollTrigger.create({
+            trigger: sliderRef.current,
+            start: 'top+=10% 20%',
+            end: `+=${numSlides * 200}%`,
+            scrub: 1,
+            pin: true,
+            markers: false,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const slideIndex = Math.floor(progress * numSlides);
+
+                if (swiperCore.activeIndex !== slideIndex) {
+                    swiperCore.slideTo(slideIndex);
                 }
-            } else {
-                if (swiperCore.activeIndex > 0) {
-                    swiperCore.slidePrev();
-                }
-            }
+            },
+        });
 
-            setTimeout(() => (scrolling = false), 1000);
+        return () => {
+            trigger.kill();
         };
-
-        container.addEventListener("wheel", handleScroll, { passive: false });
-        return () => container.removeEventListener("wheel", handleScroll);
-    }, [swiperCore]);
+    }, [swiperCore, imgItem.length]);
 
     return (
         <section className={clsx(styles.assuranceSection, className)}>
-            <GsapAnim
-                animation="fade"
-                duration={1.0}
-                ease="power3.in"
-                stagger={0.1}
-                once={true}
-                reverseOnLeave={true}
-                triggerStart="top 100%"
-                targets={['[data-anim="h1"]', '[data-anim="p"]', '[data-anim="slider"]']}
-            >
-                <div className={styles.assuranceSection__title}>
-                    <h1 data-anim="h1">
-                        The IRSplus <GradientText>Process</GradientText>
-                    </h1>
-                    <p data-anim="p" data-opacity="0.8">
-                        Understanding eligibility requirements and ensuring compliance is key to reaping the rewards of tax incentives and credits. Here’s our process:
-                    </p>
-                </div>
+            <div ref={sectionRef} className={styles.assuranceSection__title}>
+                <h1 ref={titleRef}>
+                    The IRSplus <GradientText>Process</GradientText>
+                </h1>
+                <p ref={textRef}>
+                    Understanding eligibility requirements and ensuring compliance is key
+                    to reaping the rewards of tax incentives and credits. Here’s our process:
+                </p>
+            </div>
 
-                <div ref={containerRef} data-anim="slider" className={clsx(styles.sliderSection, className)}>
-                    <div className={styles.sliderSection__paginationBlock}>
-                        <div className={styles.dots}>
-                            {slides.map((_, i) => (
-                                <span
-                                    key={i}
-                                    className={classNames(styles.dot, { [styles.activeDot]: i === activeIndex })}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className={styles.sliderSection__textBlock}>
-                        {slides.map((slide, i) => (
-                            <div
+            <div ref={sliderRef} className={styles.sliderSection}>
+                <div className={styles.paginationBlock}>
+                    <div className={styles.dots}>
+                        {txtItem.map((_, i) => (
+                            <span
                                 key={i}
-                                className={classNames(styles.textItem, {
-                                    [styles.activeText]: i === activeIndex,
-                                })}
-                            >
-                                <h1>{slide.title}</h1>
-                                <p>{slide.text}</p>
-                            </div>
+                                className={classNames(styles.dot, { [styles.activeDot]: i === activeIndex })}
+                            />
                         ))}
                     </div>
+                </div>
 
-                    <div className={styles.imageBlock}>
+                <div className={styles.textBlock}>
+                    {txtItem.map((slide, i) => (
+                        <div
+                            key={i}
+                            className={classNames(styles.textItem, {
+                                [styles.activeText]: i === activeIndex,
+                            })}
+                        >
+                            <h1>{slide.title}</h1>
+                            <p>{slide.text}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className={styles.imageBlock}>
+                    <div className={styles.imageInnerBlock}>
                         <Swiper
-                            modules={[EffectCreative]}
+                            modules={[Mousewheel, EffectCreative]}
                             effect="creative"
                             speed={1000}
                             allowTouchMove={true}
-                            onInit={setSwiperCore}
-                            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                            onInit={(swiper) => {
+                                setSwiperCore(swiper);
+                                setActiveIndex(swiper.activeIndex);
+                            }}
+                            onSlideChange={handleSlideChange}
                             creativeEffect={{
                                 limitProgress: 3,
                                 prev: {
@@ -137,37 +168,23 @@ export const Assurance = ({ className }: { className?: string }) => {
                                 perspective: true,
                             }}
                         >
-                            <SwiperSlide className={styles.slideItem}>
-                                <Image className={styles.img}
-                                    src="/images/Assurance/assuranceImg1.webp"
-                                    alt=""
-                                    priority
-                                    fill
-                                    sizes="(max-width: 980px) 100vw, 724px"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide className={styles.slideItem}>
-                                <Image className={styles.img}
-                                    src="/images/Assurance/assuranceImg2.webp"
-                                    alt=""
-                                    priority
-                                    fill
-                                    sizes="(max-width: 980px) 100vw, 724px"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide className={styles.slideItem}>
-                                <Image className={styles.img}
-                                    src="/images/Assurance/assuranceImg3.webp"
-                                    alt=""
-                                    priority
-                                    fill
-                                    sizes="(max-width: 980px) 100vw, 724px"
-                                />
-                            </SwiperSlide>
+                            {imgItem.map((src, i) => (
+                                <SwiperSlide key={i} className={styles.imagesItems}>
+                                    <Image className={styles.img}
+                                        src={src}
+                                        alt=""
+                                        priority
+                                        fill
+                                        sizes="(max-width: 724px) 100vw, 572px"
+                                    />
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     </div>
                 </div>
-            </GsapAnim>
+            </div>
+
+            <div className={styles.sliderSectionWrapper}></div>
         </section>
     );
 };

@@ -39,7 +39,7 @@ export const Challenges = ({ className }: { className?: string }) => {
 
             ScrollTrigger.create({
                 trigger: sectionSelector,
-                start: "top-=100 center",
+                start: "top-=100 80%",
                 end: "+=200 bottom",
                 pin: true,
                 markers: false,

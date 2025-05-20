@@ -18,26 +18,20 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 
     return (
         <footer className={clsx(styles.footer, className)}>
-            <GsapAnim animation="slide-left"
-                duration={1.0}
-                ease="power3.out"
-                stagger={0.1}
-                triggerStart="top 100%"
-                targets={[
-                    `[data-anim="logo"]`,
-                    `[data-anim="text"]`,
-                    `[data-anim="button"]`,
-                    `[data-anim="links"]`
-                ]}
-            >
-                <div className={styles.footer__leftSide}>
-                    <div className={styles.footer__leftSide__top}>
-                        <div data-anim="logo" className={styles.logo}>
-                            <img src="/images/logoBig.svg" />
-                        </div>
+            <div className={styles.footer__leftSide}>
+                <div className={styles.footer__leftSide__top}>
+                    <div className={styles.logo}>
+                        <img src="/images/logoBig.svg" />
+                    </div>
 
-                        <p data-anim="text" data-opacity="0.8">Navigating ERC Compliance has never been easier</p>
-
+                    <p>Navigating ERC Compliance has never been easier</p>
+                    <GsapAnim
+                        animation="fade-scale"
+                        stagger={0.2}
+                        markers={false}
+                        triggerStart="top 80%"
+                        targets={[`[data-anim="button"]`, `[data-anim="links"]`]}
+                    >
                         <div data-anim="button" className={styles.button}>
                             <Button text="Contact us" textSize="14px" textColor="#fff"
                                 borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg" iconPosition="right" />
@@ -47,13 +41,14 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                             <a className={styles.link} href="https://irsplus.com/erc">ERC Resource Center</a>
                             <a className={styles.link} href="https://irsplus.com/setc">SETC</a>
                         </div>
-                    </div>
-
-                    <div className={styles.footer__leftSide__bottom}>
-                        ©2025. All rights reserved.
-                    </div>
+                    </GsapAnim>
                 </div>
-            </GsapAnim>
+
+                <div className={styles.footer__leftSide__bottom}>
+                    ©2025. All rights reserved.
+                </div>
+            </div>
+
             <div className={styles.footer__rightSide}>
                 {columns.map((columnGroups, colIndex) => (
                     <div key={colIndex} className={styles.footer__column}>
@@ -72,7 +67,6 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                     </div>
                 ))}
             </div>
-
         </footer>
     );
 };

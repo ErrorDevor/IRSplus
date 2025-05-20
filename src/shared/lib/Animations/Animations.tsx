@@ -11,6 +11,9 @@ const useAnim = true;
 
 type AnimationType =
   | 'fade'
+  | 'fade-only'
+  | 'scale-only'
+  | 'fade-scale'
   | 'slide-left'
   | 'slide-right'
   | 'slide-top'
@@ -24,6 +27,7 @@ type FromVars = {
   opacity: number;
   x?: number;
   y?: number;
+  scale?: number;
 };
 
 interface GsapAnimProps {
@@ -33,11 +37,16 @@ interface GsapAnimProps {
   ease?: string;
   stagger?: number;
   triggerStart?: string;
+  end?: string;
   className?: string;
   targets?: string | string[];
   reverseOnLeave?: boolean;
   delay?: number;
   once?: boolean;
+  x?: number;
+  y?: number;
+  scale?: number;
+  markers?: boolean;
 }
 
 export const GsapAnim = ({
@@ -47,22 +56,37 @@ export const GsapAnim = ({
   ease = 'power3.out',
   stagger = 0,
   triggerStart = 'top 90%',
+  end = 'bottom top',
   className,
   targets,
   reverseOnLeave = true,
   delay,
   once = false,
+  x,
+  y,
+  scale,
+  markers,
 }: GsapAnimProps) => {
   const el = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!el.current || !targets) return;
 
-    const fromVars: FromVars & { scale?: number } = { opacity: 0, x: 0, y: 0 };
+    const fromVars: FromVars = { opacity: 0 };
 
     switch (animation) {
       case 'fade':
         fromVars.scale = 0.95;
+        break;
+      case 'fade-only':
+        break;
+      case 'scale-only':
+        fromVars.opacity = 1;
+        fromVars.scale = 0.8;
+        break;
+      case 'fade-scale':
+        fromVars.opacity = 0;
+        fromVars.scale = 0.8;
         break;
       case 'slide-left':
         fromVars.x = -100;
@@ -97,6 +121,10 @@ export const GsapAnim = ({
         fromVars.y = 100;
         break;
     }
+    
+    if (x !== undefined) fromVars.x = x;
+    if (y !== undefined) fromVars.y = y;
+    if (scale !== undefined) fromVars.scale = scale;
 
     const targetsArray = Array.isArray(targets) ? targets : [targets];
     const elements = targetsArray
@@ -120,17 +148,14 @@ export const GsapAnim = ({
     elements.forEach((element, index) => {
       const customOpacity = element.getAttribute('data-opacity');
       const toOpacity = customOpacity ? parseFloat(customOpacity) : 1;
-
       const wasAnimated = element.getAttribute('data-animated') === 'true';
 
       if (once && wasAnimated) {
-        // Не запускаем анимацию повторно
         element.style.opacity = `${toOpacity}`;
         element.style.transform = 'none';
         return;
       }
 
-      // Начальные стили от GSAP
       gsap.set(element, fromVars);
 
       const anim = gsap.to(element, {
@@ -152,7 +177,7 @@ export const GsapAnim = ({
       const trigger = ScrollTrigger.create({
         trigger: element,
         start: triggerStart,
-        end: 'bottom top',
+        end,
         once: once || !reverseOnLeave,
         onEnter: () => anim.play(),
         onLeave: () => {
@@ -164,7 +189,7 @@ export const GsapAnim = ({
         onLeaveBack: () => {
           if (!once && reverseOnLeave) anim.reverse();
         },
-        markers: false,
+        markers,
       });
 
       triggers.push(trigger);
@@ -175,7 +200,7 @@ export const GsapAnim = ({
     return () => {
       triggers.forEach(trigger => trigger.kill());
     };
-  }, [animation, duration, ease, triggerStart, targets, stagger, reverseOnLeave, once, delay]);
+  }, [animation, duration, ease, triggerStart, end, targets, stagger, reverseOnLeave, once, delay, x, y, scale, markers]);
 
   return (
     <div ref={el} className={cn(className)} style={{ display: 'contents' }}>

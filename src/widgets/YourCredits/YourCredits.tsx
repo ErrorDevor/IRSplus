@@ -1,8 +1,10 @@
 'use client';
 
+import React, { useEffect, useRef } from "react";
 import styles from './YourCredits.module.scss';
 import clsx from 'clsx'
 import Image from "next/image";
+import { gsap } from 'gsap';
 import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { useMediaQuery } from '@/shared/hooks/useMediaQuery';
 import { BackgroundText } from '@/shared/ui/BackgroundText';
@@ -56,6 +58,7 @@ type LabelData = {
 export const YourCredits = ({ className }: { className?: string }) => {
     const isMobile = useMediaQuery('(max-width: 1480px)');
     const chunkPattern = isMobile ? [3, 2, 2, 2] : [3, 2, 3, 1];
+    const tagsBlockRef = useRef<HTMLDivElement | null>(null);
 
     const labelChunks: LabelData[][] = [];
     let currentIndex = 0;
@@ -81,30 +84,55 @@ export const YourCredits = ({ className }: { className?: string }) => {
         currentIndex += size;
     });
 
+    useEffect(() => {
+        if (!tagsBlockRef.current) return;
+
+        const ctx = gsap.context(() => {
+            const rows = gsap.utils.toArray('[data-row]');
+
+            gsap.set(rows, { opacity: 0, scale: 0.9 });
+
+            gsap.to(rows, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: tagsBlockRef.current,
+                    start: "top 80%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+        }, tagsBlockRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <section className={clsx(styles.yourCreditsSection, className)}>
-            <GsapAnim
-                animation="fade"
-                duration={1.0}
-                ease="power3.out"
-                stagger={0.1}
-                triggerStart="top 80%"
-                targets={[
-                    `[data-anim="image"]`,
-                    `[data-anim="union"]`,
-                    `[data-anim^="tagRow"]`,
-                    `[data-anim="text"]`,
-                    `[data-anim="button"]`,
-                ]}>
-                <div className={styles.yourCreditsSection__leftSide}>
-                    <div className={styles.yourCreditsSection__leftSide__imageBlock}>
+            <div className={styles.yourCreditsSection__leftSide}>
+                <div className={styles.yourCreditsSection__leftSide__imageBlock}>
+                    <GsapAnim
+                        animation="fade-scale"
+                        markers={false}
+                        triggerStart="top 80%"
+                        targets={[`[data-anim="image"]`]}
+                    >
                         <div data-anim="image" className={styles.yourCreditsSection__leftSide__imageBlock__image}>
-                            <Image                    
-                                src="/images/YourCredits/img1.webp" alt="YourCreditsImage"
+                            <Image src="/images/YourCredits/img1.webp" alt="YourCreditsImage"
                                 width={318} height={488}
                                 style={{ objectFit: "cover", objectPosition: "-125px", }}
                             />
                         </div>
+                    </GsapAnim>
+
+                    <GsapAnim
+                        animation="fade-scale"
+                        markers={false}
+                        triggerStart="top 80%"
+                        targets={[`[data-anim="union"]`]}
+                    >
                         <div data-anim="union" className={styles.yourCreditsSection__leftSide__imageBlock__union}>
                             <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.1" fillRule="evenodd" clipRule="evenodd" d="M31.0327 5.17212C31.0327 2.31564 28.7171 0 25.8606 
@@ -126,27 +154,34 @@ export const YourCredits = ({ className }: { className?: string }) => {
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
                             </svg>
                         </div>
+                    </GsapAnim>
 
-                        <div className={styles.yourCreditsSection__leftSide__tagsBlock}>
-                            {labelChunks.map((row, rowIndex) => (
-                                <div
-                                    key={rowIndex}
-                                    data-anim={`tagRow${rowIndex + 1}`}
-                                    className={styles.tagRow}
-                                >
-                                    {row.map((label, index) => (
-                                        <LabelBenefitWrapper
-                                            key={index + rowIndex * 10}
-                                            index={index + rowIndex * 10}
-                                            label={label}
-                                        />
-                                    ))}
-                                </div>))}
-                        </div>
+                    <div ref={tagsBlockRef} className={styles.yourCreditsSection__leftSide__tagsBlock}>
+                        {labelChunks.map((row, rowIndex) => (
+                            <div
+                                key={rowIndex}
+                                data-row
+                                className={styles.tagRow}
+                            >
+                                {row.map((label, index) => (
+                                    <LabelBenefitWrapper
+                                        key={index + rowIndex * 10}
+                                        index={index + rowIndex * 10}
+                                        label={label}
+                                    />
+                                ))}
+                            </div>))}
                     </div>
                 </div>
+            </div>
 
-                <div className={styles.yourCreditsSection__rightSide}>
+            <div className={styles.yourCreditsSection__rightSide}>
+                <GsapAnim
+                    animation="fade-scale"
+                    markers={false}
+                    triggerStart="top 60%"
+                    targets={[`[data-anim="text"]`]}
+                >
                     <div data-anim="text" className={styles.yourCreditsSection__rightSide__title}>
                         <h1>Your Credits & Incentives <BackgroundText>Are Here</BackgroundText></h1>
                         <p>Most business owners are unaware of the treasure trove within their reach.
@@ -157,12 +192,20 @@ export const YourCredits = ({ className }: { className?: string }) => {
                             Hiring Credits, and Incentives.
                         </p>
                     </div>
+                </GsapAnim>
+
+                <GsapAnim
+                    animation="fade-scale"
+                    markers={false}
+                    triggerStart="top 80%"
+                    targets={[`[data-anim="button"]`]}
+                >
                     <div data-anim="button" className={styles.button}>
                         <Button text="Claim Your Unseen Benefits" textSize="14px" textColor="#fff"
                             borderRadius="18px" bg="#396CF0" iconSrc="/icons/arrowUp.svg" iconPosition="right" />
                     </div>
-                </div>
-            </GsapAnim>
+                </GsapAnim>
+            </div>
         </section>
     );
 };

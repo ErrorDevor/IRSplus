@@ -1,8 +1,10 @@
 'use client';
 
+import React, { useEffect, useRef } from "react";
 import styles from './OurMission.module.scss';
 import clsx from 'clsx'
 import Image from "next/image";
+import { gsap } from 'gsap';
 import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { CircleIcon } from '@/shared/ui/CircleIcon';
 import { GradientText } from '@/shared/ui/GradientText';
@@ -33,23 +35,43 @@ const labelBenefitsData = [
 ];
 
 export const OurMission = ({ className }: { className?: string }) => {
+    const labelBlockRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (!labelBlockRef.current) return;
+
+        const ctx = gsap.context(() => {
+            const rows = gsap.utils.toArray('[data-row]');
+
+            gsap.set(rows, { opacity: 0, scale: 0.9 });
+
+            gsap.to(rows, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.6,
+                scrollTrigger: {
+                    trigger: labelBlockRef.current,
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                },
+            });
+        }, labelBlockRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section className={clsx(styles.OurMissionSection, className)}>
-            <GsapAnim animation="fade"
-                duration={1.0}
-                ease="power3.out"
-                stagger={0.1}
-                triggerStart="top 100%"
-                targets={[
-                    `[data-anim="left"]`,
-                    `[data-anim="image"]`,
-                    `[data-anim="union"]`,
-                    `[data-anim^="benefit-"]`
-                ]}
-            >
-                <div className={styles.OurMissionSection__wrapper}>
-                    <div data-anim="left" className={styles.OurMissionSection__wrapper__leftSide}>
+            <div className={styles.OurMissionSection__wrapper}>
+                <GsapAnim
+                    animation="fade-scale"
+                    markers={false}
+                    triggerStart="top 80%"
+                    targets={[`[data-anim="left-text"]`]}
+                >
+                    <div data-anim="left-text" className={styles.OurMissionSection__wrapper__leftSide}>
                         <h1><CircleIcon
                             color="#E6F8AF"
                             iconSrc="/icons/flashOne.svg"
@@ -65,8 +87,15 @@ export const OurMission = ({ className }: { className?: string }) => {
                         <p>Businesses that leverage these investments strategically, witness both tremendous savings and additional money that can be reinvested into the business</p>
                         <p><strong>At IRSplus, we help businesses make the most of the opportunities available to them in order to save money. As strategic partners and advisors, we help you apply and qualify for credits and incentives, turning a loss into a positive cash flow.</strong></p>
                     </div>
-                    <div className={styles.OurMissionSection__wrapper__rightSide}>
-                        <div className={styles.OurMissionSection__wrapper__rightSide__imageBlock}>
+                </GsapAnim>
+                <div className={styles.OurMissionSection__wrapper__rightSide}>
+                    <div ref={labelBlockRef} className={styles.OurMissionSection__wrapper__rightSide__imageBlock}>
+                        <GsapAnim
+                            animation="fade-scale"
+                            markers={false}
+                            triggerStart="top 80%"
+                            targets={[`[data-anim="image"]`, `[data-anim="union"]`]}
+                        >
                             <div data-anim="image" className={styles.OurMissionSection__wrapper__rightSide__imageBlock__image}>
                                 <Image className={styles.ourMissionImage}
                                     priority
@@ -97,29 +126,29 @@ export const OurMission = ({ className }: { className?: string }) => {
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
                                 </svg>
                             </div>
+                        </GsapAnim>
 
-                            {labelBenefitsData.map((item, index) => (
-                                <div key={index} data-anim={`benefit-${index}`} className={styles[`rightSideLabelBenefit${index + 1}`]}>
-                                    <LabelBenefit
-                                        iconSrc={item.iconSrc}
-                                        title={item.title}
-                                        text={item.text}
-                                        bg={item.bg}
-                                        iconColor={item.iconColor}
-                                        titleSize="18px"
-                                        titleColor="#000"
-                                        textSize="14px"
-                                        textColor="#000"
-                                        borderRadius="62px"
-                                        iconSize={20}
-                                        iconFrameSize={50}
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        {labelBenefitsData.map((item, index) => (
+                            <div key={index} data-row className={styles[`rightSideLabelBenefit${index + 1}`]}>
+                                <LabelBenefit
+                                    iconSrc={item.iconSrc}
+                                    title={item.title}
+                                    text={item.text}
+                                    bg={item.bg}
+                                    iconColor={item.iconColor}
+                                    titleSize="18px"
+                                    titleColor="#000"
+                                    textSize="14px"
+                                    textColor="#000"
+                                    borderRadius="62px"
+                                    iconSize={20}
+                                    iconFrameSize={50}
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </GsapAnim>
+            </div>
         </section>
     );
 };

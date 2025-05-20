@@ -2,19 +2,17 @@
 @use '/src/app/styles/mixins.scss' as *;
 
 .guadiensSection {
+    position: relative;
     background-color: #F7F9FC;
 
     &__wrapper {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: stretch;
         width: 100%;
-        max-width: 1512px;
         height: auto;
         margin: 0 auto;
         padding: rem(94) vw(40) rem(94) 0;
-        gap: vw(110);
 
         &__leftSide {
             display: flex;
@@ -85,10 +83,21 @@
 }
 
 .gridItems {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    width: 100%;
+}
+
+.centerCircle {
+    position: absolute;
+    background: $color-background;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .squareItems1,
@@ -109,11 +118,15 @@
 .squareItems2 {
     justify-content: center;
     align-items: center;
+    border-radius: 36px;
+    background: #F7F9FC;
 }
 
 .squareItems3 {
     justify-content: flex-end;
     align-items: flex-start;
+    border-radius: 36px;
+    background: #F7F9FC;
 }
 
 .squareItems4 {

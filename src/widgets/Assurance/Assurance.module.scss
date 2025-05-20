@@ -10,7 +10,7 @@
     width: 100%;
     max-width: 1512px;
     margin: 0 auto;
-    padding: rem(125) vw(118) rem(105) vw(118);
+    padding: rem(125) 0;
     overflow: hidden;
 
     &__title {
@@ -21,8 +21,8 @@
         max-width: 635px;
         gap: rem(30);
         margin-top: rem(20);
+        margin-bottom: vw(78);
         color: $color-foreground-dark;
-        // opacity: 0;
 
         h1 {
             text-align: center;
@@ -45,102 +45,142 @@
 }
 
 .sliderSection {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding: rem(20) vw(40) rem(20) 0;
-    margin-top: vw(78);
+    height: 100vh;
     gap: vw(56);
-    opacity: 0;
+    max-width: 1512px;
+    overflow: hidden;
+    margin: 0 auto;
+}
 
-    &__paginationBlock {
-        display: flex;
+.sliderSectionWrapper {
+    position: relative;
+    display: flex;
+    height: 600vh;
+}
 
-        .dots {
-            display: flex;
-            flex-direction: column;
-            gap: rem(10);
-            align-items: center;
-            justify-content: center;
+.paginationBlock {
+    display: flex;
+    flex-direction: column;
+    margin-left: rem(20);
+}
+
+.dots {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(57, 108, 240, 0.3);
+    border-radius: 50%;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.activeDot {
+    width: 6px;
+    height: 28px;
+    border-radius: 20px;
+    background-color: $color-primary;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    max-width: rem(400);
+    height: 100%;
+    gap: rem(25);
+    padding: rem(60) 0;
+    z-index: 2;
+
+    .textItem {
+        opacity: 0.2;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+
+        h1 {
+            font-size: clamp-font(24, 26);
+            font-weight: $font-weight-medium;
+            line-height: 1.3;
+            color: #22282B;
+            text-align: left;
+
+            @media (max-width: 980px) {
+                text-align: center;
+            }
         }
 
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: rgba(57, 108, 240, 0.3);
-            border-radius: 50%;
-            transition:
-                width 0.3s ease,
-                height 0.3s ease,
-                background-color 0.3s ease;
+        p {
+            margin-top: rem(12);
+            font-size: clamp-font(16, 18);
+            font-weight: $font-weight-medium;
+            line-height: 1.4;
+            color: $small-text;
+            text-align: left;
+
+            @media (max-width: 980px) {
+                text-align: center;
+            }
         }
 
-        .activeDot {
-            width: 6px;
-            height: 28px;
-            border-radius: 20px;
-            background-color: $color-primary;
-        }
-    }
-
-    &__textBlock {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: rem(400);
-        gap: rem(25);
-
-        .textItem {
-            opacity: 0.2;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
-
-            h1 {
-                font-size: clamp-font(24, 26);
-                font-weight: $font-weight-medium;
-                line-height: 1.3;
-                color: #22282B;
-            }
-
-            p {
-                margin-top: rem(12);
-                font-size: clamp-font(16, 18);
-                font-weight: $font-weight-medium;
-                line-height: 1.4;
-                color: $small-text;
-            }
-
-            h1,
-            p {
-                white-space: normal !important;
-                overflow: visible !important;
-                text-overflow: unset !important;
-            }
-
-            &.activeText {
-                opacity: 1;
-                pointer-events: auto;
-            }
+        &.activeText {
+            opacity: 1;
+            pointer-events: auto;
         }
     }
 }
 
-.imageBlock,
-.slideItem {
+.imageBlock {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    padding: rem(12);
+
+    @media (max-width: 980px) {
+        order: 1;
+    }
+}
+
+.imageInnerBlock,
+.imagesItems {
     position: relative;
-    width: rem(724);
-    height: auto;
-    max-height: rem(572);
-    aspect-ratio: 724 / 572;
-    min-width: vw(354);
+    width: 100%;
+    height: 100%;
+    max-width: rem(624);
+    max-height: rem(472);
+    min-width: rem(354);
     min-height: rem(260);
-    border-radius: 36px;
-    margin-left: vw(34);
+    border-radius: rem(36);
 
     :global(.swiper) {
+        width: 100%;
+        height: 100%;
         overflow: visible;
+    }
+
+    :global(.swiper-slide) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+        width: 354px;
+        border-radius: rem(26);
     }
 }
 
@@ -149,8 +189,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    background-repeat: no-repeat;
     transform: scaleX(-1);
+    border-radius: inherit;
 }
 
 @media (max-width: 980px) {
@@ -160,38 +200,43 @@
 
     .sliderSection {
         flex-direction: column;
+        height: 100%;
+    }
 
-        &__paginationBlock {
-            order: 3;
+    // .sliderSectionWrapper {
+    //     display: none;
+    // }
 
-            .dots {
-                flex-direction: row;
-            }
+    .paginationBlock {
+        order: 3;
+    }
 
-            .activeDot {
-                width: 28px;
-                height: 6px;
-            }
-        }
+    .dots {
+        flex-direction: row;
+    }
 
-        &__textBlock {
-            order: 2;
-            width: 100%;
-            max-width: rem(600);
-            padding: 0 rem(12);
+    .activeDot {
+        width: 28px;
+        height: 6px;
+    }
 
-            .textItem {
-                display: none;
-            }
+    .textBlock {
+        order: 2;
+        width: 100%;
+        max-width: rem(600);
+        padding: 0 rem(12);
+    }
 
-            .activeText {
-                display: block;
-            }
-        }
+    .textItem {
+        display: none;
+    }
+
+    .activeText {
+        display: block;
     }
 
     .imageBlock,
-    .slideItem {
+    .imagesItems {
         order: 1;
         max-width: 100%;
         margin-left: 0;
@@ -199,13 +244,7 @@
 }
 
 @media (max-width: 480px) {
-    .sliderSection__textBlock {
+    .textBlock {
         width: 92%;
-    }
-
-    .imageBlock,
-    .slideItem {
-        width: 354px;
-        border-radius: 26px;
     }
 }

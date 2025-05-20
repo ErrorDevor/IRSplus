@@ -40,7 +40,7 @@ export const Guadiens = ({ className }: { className?: string }) => {
                             <p data-anim="p" data-opacity="0.7">Given the intricate nature of tax regulations, seeking professional guidance is a wise move:</p>
                         </div>
                     </GsapAnim>
-                    
+
                     <GsapAnim
                         animation="slide-left"
                         duration={1.2}
@@ -63,11 +63,13 @@ export const Guadiens = ({ className }: { className?: string }) => {
 
                 <div className={styles.guadiensSection__wrapper__rightSide}>
                     <div className={styles.gridItems}>
+                        <div data-anim="circle" className={styles.centerCircle} />
+
                         <GsapAnim
                             animation="fade"
                             duration={1.0}
                             ease="power2.out"
-                            triggerStart="top 90%"
+                            triggerStart="top 80%"
                             targets='[data-anim="item1"]'
                         >
                             <div data-anim="item1" className={styles.squareItems1}>
@@ -107,14 +109,14 @@ export const Guadiens = ({ className }: { className?: string }) => {
                             </div>
                         </GsapAnim>
 
-                        <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item2"]'>
-                            <div data-anim="item2" className={styles.squareItems2}>
-                                <div className={styles.cardsImagePlaceholder}>
+                        <div className={styles.squareItems2}>
+                            <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 80%" targets='[data-anim="item2"]'>
+                                <div data-anim="item2" className={styles.cardsImagePlaceholder}>
                                     <div className={styles.cardsImagePlaceholder__border}></div>
                                     <div className={styles.cardsImagePlaceholder__image}></div>
                                 </div>
-                            </div>
-                        </GsapAnim>
+                            </GsapAnim>
+                        </div>
 
                         <GsapAnim animation="corner-left-dn" duration={1.1} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item3"]'>
                             <div data-anim="item3" className={styles.squareItems3}>
