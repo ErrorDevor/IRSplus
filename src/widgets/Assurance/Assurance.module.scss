@@ -51,7 +51,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     gap: vw(56);
     max-width: 1512px;
     overflow: hidden;
@@ -100,8 +100,7 @@
     width: 100%;
     max-width: rem(400);
     height: 100%;
-    gap: rem(25);
-    // padding: rem(60) 0;
+    gap: rem(55);
     z-index: 2;
 
     .textItem {
@@ -202,10 +201,6 @@
         flex-direction: column;
         height: 100%;
     }
-
-    // .sliderSectionWrapper {
-    //     display: none;
-    // }
 
     .paginationBlock {
         order: 3;

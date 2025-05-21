@@ -7,7 +7,7 @@
     justify-content: center;
     width: 100%;
     height: auto;
-    padding: rem(234) vw(30) rem(100) vw(30);
+    padding: rem(170) 0 rem(75) 0;
 
     &__title {
         text-align: center;
@@ -78,5 +78,6 @@
 
     .union {
         opacity: 0.4;
+        top: rem(-30);
     }
 }

@@ -7,8 +7,11 @@ import { Tag } from '@/shared/ui/Tag';
 import { GradientText } from '@/shared/ui/GradientText';
 import { CircleIcon } from '@/shared/ui/CircleIcon';
 import { Button } from '@/shared/ui/Button';
+import { useIsMobile } from "@/shared/hooks/useIsMobile";
 
 export const Guadiens = ({ className }: { className?: string }) => {
+    const isMobile = useIsMobile();
+
     return (
         <section className={clsx(styles.guadiensSection, className)}>
             <div className={styles.guadiensSection__wrapper}>
@@ -74,14 +77,28 @@ export const Guadiens = ({ className }: { className?: string }) => {
                         >
                             <div data-anim="item1" className={styles.squareItems1}>
                                 <div className={styles.cardsItem}>
-                                    <CircleIcon
-                                        color="#396CF0"
-                                        iconSrc="/icons/profile2user.svg"
-                                        size={61}
-                                        iconSize={24}
-                                        borderRadius="50px"
-                                    />
-                                    <h1>Tax Experts</h1>
+                                    <div className={styles.cardsItemTitle}>
+                                        <CircleIcon
+                                            color="#396CF0"
+                                            iconSrc="/icons/profile2user.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Tax Experts</h1>
+                                    </div>
+
+                                    <div className={styles.cardsItemTitleMobile}>
+                                        <CircleIcon
+                                            color="#396CF0"
+                                            iconSrc="/icons/profile2user.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Tax Experts</h1>
+                                    </div>
+
                                     <p>We specialize in decoding complex regulations. This saves time,and money and helps prevent missed opportunities.</p>
                                 </div>
 
@@ -118,18 +135,38 @@ export const Guadiens = ({ className }: { className?: string }) => {
                             </GsapAnim>
                         </div>
 
-                        <GsapAnim animation="corner-left-dn" duration={1.1} ease="power2.out" triggerStart="top 100%" targets='[data-anim="item3"]'>
+                        <GsapAnim
+                            animation="corner-left-dn"
+                            duration={1.1}
+                            ease="power2.out"
+                            triggerStart="top 100%"
+                            targets='[data-anim="item3"]'
+                        >
                             <div data-anim="item3" className={styles.squareItems3}>
                                 <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
-                                    <CircleIcon
-                                        color="#fff"
-                                        iconSrc="/icons/oldPhone.svg"
-                                        size={61}
-                                        iconSize={24}
-                                        borderRadius="50px"
-                                    />
-                                    <h1>Reducing Risks</h1>
-                                    <p>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
+                                    <div className={styles.cardsItemTitle}>
+                                        <CircleIcon
+                                            color="#fff"
+                                            iconSrc="/icons/oldPhone.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Reducing Risks</h1>
+                                    </div>
+
+                                    <div className={styles.cardsItemTitleMobile}>
+                                        <CircleIcon
+                                            color="#fff"
+                                            iconSrc="/icons/oldPhone.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Reducing Risks</h1>
+                                    </div>
+                                    <p className={styles.cardsItemTextMobile}>The rapid adoption of cloud-based accounting benefits everyone. Businesses gain efficiency, accuracy, and flexibility, while accounting firms provide more streamlined services</p>
+                                    <p className={styles.cardsItemText}>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
                                 </div>
                             </div>
                         </GsapAnim>
@@ -143,14 +180,28 @@ export const Guadiens = ({ className }: { className?: string }) => {
                         >
                             <div data-anim="item4" className={styles.squareItems4}>
                                 <div className={styles.cardsItem}>
-                                    <CircleIcon
-                                        color="#396CF0"
-                                        iconSrc="/icons/starWhite.svg"
-                                        size={61}
-                                        iconSize={24}
-                                        borderRadius="50px"
-                                    />
-                                    <h1>Maximizing Benefits</h1>
+                                    <div className={styles.cardsItemTitle}>
+                                        <CircleIcon
+                                            color="#396CF0"
+                                            iconSrc="/icons/starWhite.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Maximizing Benefits</h1>
+                                    </div>
+
+                                    <div className={styles.cardsItemTitleMobile}>
+                                        <CircleIcon
+                                            color="#396CF0"
+                                            iconSrc="/icons/starWhite.svg"
+                                            size={isMobile ? 36 : 61}
+                                            iconSize={isMobile ? 16 : 24}
+                                            borderRadius="50px"
+                                        />
+                                        <h1>Maximizing Benefits</h1>
+                                    </div>
+
                                     <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don&apos;t overlook your potential savings.</p>
                                 </div>
                                 <div className={styles.cardCircle}></div>

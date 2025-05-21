@@ -179,7 +179,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
                 <GsapAnim
                     animation="fade-scale"
                     markers={false}
-                    triggerStart="top 60%"
+                    triggerStart="top 80%"
                     targets={[`[data-anim="text"]`]}
                 >
                     <div data-anim="text" className={styles.yourCreditsSection__rightSide__title}>
@@ -197,7 +197,7 @@ export const YourCredits = ({ className }: { className?: string }) => {
                 <GsapAnim
                     animation="fade-scale"
                     markers={false}
-                    triggerStart="top 80%"
+                    triggerStart="top 100%"
                     targets={[`[data-anim="button"]`]}
                 >
                     <div data-anim="button" className={styles.button}>
