@@ -1,0 +1,127 @@
+[
+    {
+        "label": "Architecture & Engineering",
+        "href": "https://irsplus.com/industries/architecture-and-engineering",
+        "icon": "/icons/nav/architecture.svg"
+    },
+    {
+        "label": "Automotive & Electric Vehicles",
+        "href": "https://irsplus.com/industries/automotive-and-electric-vehicles",
+        "icon": "/icons/nav/automotive.svg"
+    },
+    {
+        "label": "Beauty & Salon Services",
+        "href": "https://irsplus.com/industries/beauty-and-salon-services",
+        "icon": "/icons/nav/beauty.svg"
+    },
+    {
+        "label": "Biotech & Pharmaceuticals",
+        "href": "https://irsplus.com/industries/biotech-and-pharmaceuticals",
+        "icon": "/icons/nav/biotech.svg"
+    },
+    {
+        "label": "Cannabis",
+        "href": "https://irsplus.com/industries/cannabis",
+        "icon": "/icons/nav/cannabis.svg"
+    },
+    {
+        "label": "Clean Energy & Sustainability",
+        "href": "https://irsplus.com/industries/clean-energy-and-sustainability",
+        "icon": "/icons/nav/cleanEnergy.svg"
+    },
+    {
+        "label": "Construction & Contracting",
+        "href": "https://irsplus.com/industries/construction-and-contracting",
+        "icon": "/icons/nav/construction.svg"
+    },
+    {
+        "label": "Digital Marketing & Advertising",
+        "href": "https://irsplus.com/industries/digital-marketing-and-advertising",
+        "icon": "/icons/nav/digital.svg"
+    },
+    {
+        "label": "E-Commerce & Online Retail",
+        "href": "https://irsplus.com/industries/e-commerce-and-online-retail",
+        "icon": "/icons/nav/ecommerce.svg"
+    },
+    {
+        "label": "Financial Technology (Fintech)",
+        "href": "https://irsplus.com/industries/financial-technology-fintech",
+        "icon": "/icons/nav/financial.svg"
+    },
+    {
+        "label": "Gym & Fitness Centers",
+        "href": "https://irsplus.com/industries/gym-and-fitness-centers",
+        "icon": "/icons/nav/gym.svg"
+    },
+    {
+        "label": "Healthcare & Telemedicine",
+        "href": "https://irsplus.com/industries/healthcare-and-telemedicine",
+        "icon": "/icons/nav/healthcare.svg"
+    },
+    {
+        "label": "Higher Education Institutes",
+        "href": "https://irsplus.com/industries/higher-education-institutes",
+        "icon": "/icons/nav/education.svg"
+    },
+    {
+        "label": "Logistics & Supply Chain Management",
+        "href": "https://irsplus.com/industries/logistics-and-supply-chain-management",
+        "icon": "/icons/nav/logistics.svg"
+    },
+    {
+        "label": "Manufacturing & Production",
+        "href": "https://irsplus.com/industries/manufacturing-and-production",
+        "icon": "/icons/nav/manufacturing.svg"
+    },
+    {
+        "label": "Non-Profit Organizations",
+        "href": "https://irsplus.com/industries/non-profit-organizations",
+        "icon": "/icons/nav/nonProfit.svg"
+    },
+    {
+        "label": "Professional Services (Consulting, Legal, Accounting)",
+        "href": "https://irsplus.com/industries/professional-services-consulting-legal-accounting",
+        "icon": "/icons/nav/professional.svg"
+    },
+    {
+        "label": "Real Estate & Property Management",
+        "href": "https://irsplus.com/industries/real-estate-and-property-management",
+        "icon": "/icons/nav/realEstate.svg"
+    },
+    {
+        "label": "Renewable Energy",
+        "href": "https://irsplus.com/industries/renewable-energy",
+        "icon": "/icons/nav/renewable.svg"
+    },
+    {
+        "label": "Restaurants & Hospitality",
+        "href": "https://irsplus.com/industries/restaurants-and-hospitality",
+        "icon": "/icons/nav/restaurants.svg"
+    },
+    {
+        "label": "Retail Stores & Chains",
+        "href": "https://irsplus.com/industries/retail-stores-and-chains",
+        "icon": "/icons/nav/retail.svg"
+    },
+    {
+        "label": "Sporting Goods & Athletics",
+        "href": "https://irsplus.com/industries/sporting-goods-and-athletics",
+        "icon": "/icons/nav/sporting.svg"
+    },
+    {
+        "label": "Technology & Software Development",
+        "href": "https://irsplus.com/industries/technology-and-software-development",
+        "icon": "/icons/nav/technology.svg"
+    },
+    {
+        "label": "Transportation & Trucking",
+        "href": "https://irsplus.com/industries/transportation-and-trucking",
+        "icon": "/icons/nav/transportation.svg"
+    },
+    {
+        "label": "Travel & Tourism",
+        "href": "https://irsplus.com/industries/travel-and-tourism",
+        "icon": "/icons/nav/travel.svg"
+    }
+]

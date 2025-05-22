@@ -1,13 +1,17 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from './Header.module.scss';
 import clsx from 'clsx'
 import Image from "next/image";
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import linksNav from '../../data/linksNav.json';
 import { Button } from '@/shared/ui/Button';
+
+import linksNav from '../../data/linksNav.json';
+import { SimpleDropdown } from './Main/SimpleDropdown';
+import { MegaDropdown } from './Main/MegaDropdown';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +43,9 @@ export const Header = ({ className }: { className?: string }) => {
         return () => ctx.revert();
     }, []);
 
+    const [openedDropdown, setOpenedDropdown] = useState<string | null>(null);
+    const dropdownLabels = ['Refer n’ Earn', 'Practice Areas', 'Industries'];
+
     return (
         <header className={clsx(styles.headerSection, className)}>
             <div className={styles.headerOverlay} />
@@ -65,10 +72,41 @@ export const Header = ({ className }: { className?: string }) => {
 
                 <nav ref={navRef} className={clsx(styles.nav, className)}>
                     <ul className={styles.nav__menu}>
-                        {linksNav.map(({ label, href }, index) => (
-                            <li key={index} className={clsx(label === 'Home' && styles.active)}>
+                        {linksNav.map(({ label, href, links }, index) => (
+                            <li
+                                key={index}
+                                className={clsx(
+                                    label === 'Incentives & Credits' && styles.active,
+                                    dropdownLabels.includes(label) && openedDropdown === label && styles.active
+                                )}
+                            >
                                 {href ? (
                                     <a href={href}>{label}</a>
+                                ) : dropdownLabels.includes(label) ? (
+                                    <>
+                                        <button
+                                            className={clsx(
+                                                styles.nav__menu__dropdownTrigger,
+                                                openedDropdown === label && styles.open
+                                            )}
+                                            onClick={() =>
+                                                setOpenedDropdown(prev => (prev === label ? null : label))
+                                            }
+                                        >
+                                            {label}
+                                            <span className={styles.icon} aria-hidden="true" />
+                                        </button>
+
+                                        {label === 'Refer n’ Earn' && links && (
+                                            <div className={styles.simpleDropdownWrapper}>
+                                                <SimpleDropdown
+                                                    links={links}
+                                                    isActive={openedDropdown === label}
+                                                    onClose={() => setOpenedDropdown(null)}
+                                                />
+                                            </div>
+                                        )}
+                                    </>
                                 ) : (
                                     <button className={styles.nav__menu__dropdownTrigger}>
                                         {label}
@@ -78,6 +116,16 @@ export const Header = ({ className }: { className?: string }) => {
                             </li>
                         ))}
                     </ul>
+
+                    {['Practice Areas', 'Industries'].includes(openedDropdown ?? '') && (
+                        <div className={styles.dropdownWrapper} key={openedDropdown}>
+                            <MegaDropdown
+                                isActive={true}
+                                type={openedDropdown === 'Practice Areas' ? 'practice' : 'industries'}
+                                onClose={() => setOpenedDropdown(null)}
+                            />
+                        </div>
+                    )}
                 </nav>
             </div>
 

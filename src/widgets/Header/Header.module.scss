@@ -10,7 +10,6 @@
     left: 0;
     width: 100%;
     z-index: 10;
-    overflow: hidden;
     background-color: transparent;
     padding: rem(20) vw(35) rem(12) rem(20);
 
@@ -72,6 +71,7 @@
 }
 
 .nav {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,12 +88,14 @@
         list-style: none;
         padding: 0;
         margin: 0 vw(6);
-        gap: rem(6);
+        gap: 6px;
 
         li {
+            position: relative;
             text-align: center;
             white-space: nowrap;
             height: 32px;
+            transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 
             a,
             .nav__menu__dropdownTrigger {
@@ -101,17 +103,19 @@
                 align-items: center;
                 justify-content: center;
                 height: 100%;
-                padding: 0 vw(6);
+                padding: 0 12px;
                 font-size: clamp-font(12, 14);
                 font-weight: $font-weight-medium;
                 line-height: 1;
                 letter-spacing: $letter-spacing-4;
                 color: $color-foreground-dark;
                 text-decoration: none;
+                transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
             }
 
+            &.open,
             &.active {
-                padding: 8px 14px;
+                padding: 8px 0;
                 border-radius: 14px;
                 background-color: $color-secondary;
             }
@@ -134,6 +138,13 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 display: inline-block;
+                transition: transform 0.6s ease;
+            }
+
+            &.open {
+                .icon {
+                    transform: rotate(180deg);
+                }
             }
         }
     }

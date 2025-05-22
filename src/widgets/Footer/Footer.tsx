@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import styles from './Footer.module.scss';
-import linkGroups from '../../data/linkGroups.json';
+import linkGroups from '../../data/linkFooter.json';
 import { GsapAnim } from '@/shared/lib/Animations/Animations';
 import { Button } from '@/shared/ui/Button';
 

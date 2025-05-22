@@ -1,10 +1,37 @@
 [
-    { "label": "Home", "href": "https://irsplus.com/" },
-    { "label": "Incentives & Credits", "href": "https://irsplus.com/incentives-and-credits" },
-    { "label": "Practice Areas" },
-    { "label": "Industries" },
-    { "label": "Guidance", "href": "https://irsplus.com/blog" },
-    { "label": "About us", "href": "https://irsplus.com/about-us" },
-    { "label": "Refer n’ Earn" }
-  ]
-  
+  {
+    "label": "Home",
+    "href": "https://irsplus.com/"
+  },
+  {
+    "label": "Incentives & Credits",
+    "href": "https://irsplus.com/incentives-and-credits"
+  },
+  {
+    "label": "Practice Areas"
+  },
+  {
+    "label": "Industries"
+  },
+  {
+    "label": "Guidance",
+    "href": "https://irsplus.com/blog"
+  },
+  {
+    "label": "About us",
+    "href": "https://irsplus.com/about-us"
+  },
+  {
+    "label": "Refer n’ Earn",
+    "links": [
+      {
+        "label": "Marketing Co’s & Sales Teams",
+        "href": "https://irsplus.com/erc/refer-marketing"
+      },
+      {
+        "label": "Individual Affiliates",
+        "href": "https://irsplus.com/erc/refer"
+      }
+    ]
+  }
+]

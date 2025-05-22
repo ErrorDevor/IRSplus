@@ -1,0 +1,259 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.dropdownWrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.megaDropdown {
+    position: absolute;
+    display: flex;
+    top: calc(100% + 8px);
+    left: 0;
+    width: max-content;
+    height: 520px;
+    min-width: 770px;
+    max-width: 880px;
+    padding: vw(8);
+    gap: 26px;
+    border-radius: vw(18);
+    background: #F7F9FC;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+.linksBlock {
+    padding: rem(20);
+    width: fit-content;
+    width: 672px;
+    max-width: 380px;
+    border-radius: 14px;
+    background: $color-background;
+    gap: rem(26);
+
+    h1 {
+        font-size: 12px;
+        font-weight: 652;
+        line-height: 1.1;
+        letter-spacing: $letter-spacing-4;
+        color: $color-primary;
+    }
+}
+
+.rightBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 0;
+
+    &__up,
+    &__mid,
+    &__dn {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-size: 12px;
+            font-weight: 652;
+            line-height: 1.1;
+            letter-spacing: $letter-spacing-12;
+            color: $color-primary;
+        }
+    }
+
+    &__up {
+        gap: rem(24);
+
+        &__cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: rem(28);
+        }
+    }
+}
+
+.linkIcon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.icon {
+    margin-top: 2px;
+    vertical-align: middle;
+    width: 8px;
+    height: 8px;
+    background-image: url('/icons/nav/arrowUpLink.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.cardsText {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    h3 {
+        font-size: 14px;
+        font-weight: $font-weight-medium;
+        line-height: 1.1;
+        letter-spacing: $letter-spacing-2;
+        color: $color-foreground-dark;
+    }
+
+    p {
+        font-size: 12px;
+        font-weight: $font-weight-medium;
+        line-height: 1.1;
+        letter-spacing: $letter-spacing-2;
+        color: $color-foreground-dark;
+        opacity: 0.5;
+    }
+}
+
+.infoLabelBlock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.infoLabel {
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: linear-gradient(255deg, #a4bdfe 16.14%, #7a9cf5 103.93%);
+
+    p {
+        color: $color-foreground-light;
+        font-size: 10px;
+        font-weight: $font-weight-bold;
+        line-height: 1.1;
+        letter-spacing: $letter-spacing-4;
+    }
+}
+
+.linksIndustriesBlock,
+.linksPracticeBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linksContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.linksScrollContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #F3F5F8 transparent;
+}
+
+.linksScrollContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+.linksScrollContainer::-webkit-scrollbar-thumb {
+    background-color: #E2E2E2;
+    border-radius: 4px;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: $font-weight-medium;
+    line-height: 1.1;
+    letter-spacing: $letter-spacing-2;
+    color: $color-foreground-dark;
+    text-decoration: none;
+}
+
+.linkItemIcon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.sectionIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.linkSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.sectionHeader {
+    display: flex;
+    gap: 8px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: $font-weight-medium;
+        line-height: 1.2;
+        letter-spacing: $letter-spacing-minus-2;
+        color: $color-primary;
+        text-decoration: none;
+    }
+}
+
+.scrollBlurTop,
+.scrollBlurBottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.scrollBlurTop {
+    top: 0;
+    background: linear-gradient(to bottom, $color-background 30%, transparent);
+}
+
+.scrollBlurBottom {
+    bottom: 0;
+    background: linear-gradient(to top, $color-background 30%, transparent);
+}

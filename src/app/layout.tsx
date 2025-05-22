@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter_Tight } from 'next/font/google';
 import "./globals.scss";
+import { Header } from '@/widgets/Header';
+import { Footer } from '@/widgets/Footer';
 
 const interTight = Inter_Tight({
   subsets: ['latin'],
@@ -17,7 +19,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={interTight.variable}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

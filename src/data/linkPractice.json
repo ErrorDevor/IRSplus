@@ -1,0 +1,180 @@
+[
+    {
+        "title": "COVID Tax Credits",
+        "titleIcon": "/icons/nav/covidTaxCredit.svg",
+        "links": [
+            {
+                "label": "ERC Services",
+                "href": "https://irsplus.com/erc"
+            },
+            {
+                "label": "SETC Services",
+                "href": "https://irsplus.com/setc"
+            },
+            {
+                "label": "PPL Loan Assistance for Borrowers",
+                "href": "https://irsplus.com/practice-areas/ppp-loan-assistance"
+            },
+            {
+                "label": "Provider Relief Fund",
+                "href": "https://irsplus.com/practice-areas/provider-relief-fund"
+            }
+        ]
+    },
+    {
+        "title": "Tax",
+        "titleIcon": "/icons/nav/tax.svg",
+        "links": [
+            {
+                "label": "Business Tax",
+                "href": "https://irsplus.com/practice-areas/business-tax"
+            },
+            {
+                "label": "Individual & Family Tax",
+                "href": "https://irsplus.com/practice-areas/individual-and-family-tax"
+            },
+            {
+                "label": "International Tax",
+                "href": "https://irsplus.com/practice-areas/international-tax"
+            },
+            {
+                "label": "State & Local Tax (SALT)",
+                "href": "https://irsplus.com/practice-areas/state-and-local-tax-salt"
+            },
+            {
+                "label": "Business Tax Credits & Incentives",
+                "href": "https://irsplus.com/practice-areas/business-tax-credits-and-incentives"
+            },
+            {
+                "label": "R&D Tax Credits",
+                "href": "https://irsplus.com/practice-areas/r-and-d-tax-credits-1"
+            }
+        ]
+    },
+    {
+        "title": "Assurance",
+        "titleIcon": "/icons/nav/assurance.svg",
+        "links": [
+            {
+                "label": "Financial Assurance",
+                "href": "https://irsplus.com/practice-areas/financial-assurance"
+            },
+            {
+                "label": "Non-Financial Assurance",
+                "href": "https://irsplus.com/practice-areas/non-financial-assurance"
+            },
+            {
+                "label": "Information Assurances",
+                "href": "https://irsplus.com/practice-areas/information-assurance"
+            }
+        ]
+    },
+    {
+        "title": "Private Client",
+        "titleIcon": "/icons/nav/privateClient.svg",
+        "links": [
+            {
+                "label": "Wealth Management",
+                "href": "https://irsplus.com/practice-areas/wealth-management"
+            },
+            {
+                "label": "Risk Management",
+                "href": "https://irsplus.com/practice-areas/risk-management"
+            }
+        ]
+    },
+    {
+        "title": "Outsourcing",
+        "titleIcon": "/icons/nav/outsourcing.svg",
+        "links": [
+            {
+                "label": "Outsourced Accounting",
+                "href": "https://irsplus.com/practice-areas/outsourced-accounting"
+            },
+            {
+                "label": "CFO Advisory Services",
+                "href": "https://irsplus.com/practice-areas/cfo-advisory-services"
+            },
+            {
+                "label": "Payroll & HR",
+                "href": "https://irsplus.com/practice-areas/payroll-and-hr"
+            }
+        ]
+    },
+    {
+        "title": "Business Advisory",
+        "titleIcon": "/icons/nav/businessAdvisory.svg",
+        "links": [
+            {
+                "label": "Business Valuation",
+                "href": "https://irsplus.com/practice-areas/business-valuation"
+            },
+            {
+                "label": "Business Applications Advisory Services",
+                "href": "https://irsplus.com/practice-areas/business-applications-advisory-services"
+            },
+            {
+                "label": "Blockchain Accounting & Tax Services",
+                "href": "https://irsplus.com/practice-areas/blockchain-accounting-and-tax-services"
+            },
+            {
+                "label": "Forensic Services",
+                "href": "https://irsplus.com/practice-areas/forensic-services"
+            },
+            {
+                "label": "Data & Insights",
+                "href": "https://irsplus.com/practice-areas/data-and-insights"
+            },
+            {
+                "label": "Digital Transformation & Cybersecurity",
+                "href": "https://irsplus.com/practice-areas/digital-transformation-and-cybersecurity"
+            },
+            {
+                "label": "ESG",
+                "href": "https://irsplus.com/practice-areas/esg"
+            },
+            {
+                "label": "Government Contracting Consulting",
+                "href": "https://irsplus.com/practice-areas/government-contracting-consulting"
+            },
+            {
+                "label": "M&A Advisory & Brokerage Services",
+                "href": "https://irsplus.com/practice-areas/m-and-a-advisory-and-brokerage-services"
+            },
+            {
+                "label": "Retirement Plan Services",
+                "href": "https://irsplus.com/practice-areas/retirement-plan-services"
+            },
+            {
+                "label": "Succession Planning",
+                "href": "https://irsplus.com/practice-areas/succession-planning"
+            },
+            {
+                "label": "Technical Accounting Consulting Services",
+                "href": "https://irsplus.com/practice-areas/technical-accounting-consulting-services"
+            },
+            {
+                "label": "Transaction Advisory",
+                "href": "https://irsplus.com/practice-areas/transaction-advisory"
+            },
+            {
+                "label": "Treasury Optimization Services",
+                "href": "https://irsplus.com/practice-areas/treasury-optimization-services"
+            }
+        ]
+    },
+    {
+        "title": "IRSplusTALENT",
+        "titleIcon": "/icons/nav/IRSplusTALENT.svg",
+        "links": [
+            {
+                "label": "Financial & Accounting Staffing",
+                "href": "https://irsplus.com/irsplus-talent"
+            },
+            {
+                "label": "IT Staffing",
+                "href": "https://irsplus.com/irsplus-talent"
+            }
+        ]
+    }
+]
