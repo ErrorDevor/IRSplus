@@ -105,7 +105,8 @@ export const Challenges = ({ className }: { className?: string }) => {
             <div className={styles.challengesSection__cardBlock}>
                 {challenges.map(({ icon, title, text }, index) => (
                     <div key={index} className={styles.challengesSection__cardBlock__item}>
-                        <div className={styles.challengesSection__cardBlock__item__title}><CircleIcon
+                        <div className={styles.challengesSection__cardBlock__item__title}>
+                            <CircleIcon
                             color="#E6F8AF"
                             iconSrc={icon}
                             size={48}
