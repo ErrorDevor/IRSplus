@@ -18,6 +18,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.lock-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -36,12 +42,12 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-primary; 
+  background: $color-primary;
   border-radius: 10px;
 }
 

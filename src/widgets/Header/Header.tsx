@@ -67,6 +67,20 @@ export const Header = ({ className }: { className?: string }) => {
     };
 
     useEffect(() => {
+        const body = document.body;
+
+        if (isBurgerOpen) {
+            body.classList.add('lock-scroll');
+        } else {
+            body.classList.remove('lock-scroll');
+        }
+
+        return () => {
+            body.classList.remove('lock-scroll');
+        };
+    }, [isBurgerOpen]);
+
+    useEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.8 } });
 
@@ -272,7 +286,11 @@ export const Header = ({ className }: { className?: string }) => {
                                                 <SimpleDropdown
                                                     links={links}
                                                     isActive={openedDropdown === label}
-                                                    onClose={() => setOpenedDropdown(null)}
+                                                    onClose={() => {
+                                                        if (openedDropdown === label) {
+                                                            setOpenedDropdown(null);
+                                                        }
+                                                    }}
                                                 />
                                             </div>
                                         )}
@@ -318,7 +336,13 @@ export const Header = ({ className }: { className?: string }) => {
                         gap="9px"
                         iconSrc="/icons/arrowDown.svg"
                         iconPosition="right" iconSize="18px"
+                        withDropdown
+                        dropdownLinks={[
+                            { label: "Client Login", href: "https://irsplus.com/clientlogin" },
+                            { label: "Affiliate Login", href: "https://setc.irsplus.com/affiliate/login/" },
+                        ]}
                     />
+
                     <Button height="50px" text="Contact us" textSize="14px" textColor="#fff"
                         borderRadius="18px" bg="#396CF0"
                         padding="19px 20px"

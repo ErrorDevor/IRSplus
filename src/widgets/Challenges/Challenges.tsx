@@ -44,25 +44,25 @@ export const Challenges = ({ className }: { className?: string }) => {
                 pin: true,
                 markers: false,
                 onEnter: () => showCards(),
-                
+
             });
 
-            ScrollTrigger.create({
-                trigger: sectionSelector,
-                start: "bottom bottom",
-                end: "top top",
-                onEnterBack: () => showCards(),
-                onLeave: () => hideCards(),
-                onLeaveBack: () => hideCards(),
-            });
+            // ScrollTrigger.create({
+            //     trigger: sectionSelector,
+            //     start: "bottom bottom",
+            //     end: "top top",
+            //     onEnterBack: () => showCards(),
+            //     onLeave: () => hideCards(),
+            //     onLeaveBack: () => hideCards(),
+            // });
 
-            ScrollTrigger.create({
-                trigger: sectionSelector,
-                start: "bottom bottom", 
-                end: "top top",         
-                onLeave: () => hideCards(),
-                onLeaveBack: () => hideCards(),
-            });
+            // ScrollTrigger.create({
+            //     trigger: sectionSelector,
+            //     start: "bottom bottom",
+            //     end: "top top",
+            //     onLeave: () => hideCards(),
+            //     onLeaveBack: () => hideCards(),
+            // });
 
             function showCards() {
                 gsap.to(itemsSelector, {
@@ -106,32 +106,33 @@ export const Challenges = ({ className }: { className?: string }) => {
                 {challenges.map(({ icon, title, text }, index) => (
                     <div key={index} className={styles.challengesSection__cardBlock__item}>
                         <div className={styles.challengesSection__cardBlock__item__title}>
+                            {index === 0 && (
+                                <div className={styles.challengesSection__cardBlock__item__title__vector}>
+                                    <svg width="732" height="206" viewBox="0 0 732 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 162.591C230.909 159.648 447.989 -21.03 722.321 193.491" stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
+                                        <defs>
+                                            <linearGradient id="paint0_linear_4144_43148" x1="-39.1159" y1="77.5154" x2="813.43" y2="101.73" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0.156961" stopColor="#EBFDB8" />
+                                                <stop offset="0.950233" stopColor="white" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            )}
+
                             <CircleIcon
-                            color="#E6F8AF"
-                            iconSrc={icon}
-                            size={48}
-                            iconSize={24}
-                            borderRadius="8.5px"
-                        />
+                                color="#E6F8AF"
+                                iconSrc={icon}
+                                size={48}
+                                iconSize={24}
+                                borderRadius="8.5px"
+                            />
                             <h1>{title}</h1>
                         </div>
 
                         <p>{text}</p>
                     </div>
                 ))}
-            </div>
-
-            <div className={styles.challengesSection__vector}>
-                <svg width="732" height="206" viewBox="0 0 732 206" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 162.591C230.909 159.648 447.989 -21.03 722.321 193.491" stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
-                    <defs>
-                        <linearGradient id="paint0_linear_4144_43148" x1="-39.1159" y1="77.5154" x2="813.43" y2="101.73" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.156961" stopColor="#EBFDB8" />
-                            <stop offset="0.950233" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
             </div>
         </section>
     );

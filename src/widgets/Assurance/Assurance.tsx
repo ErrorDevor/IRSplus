@@ -84,8 +84,8 @@ export const Assurance = ({ className }: { className?: string }) => {
         const numSlides = imgItem.length;
         const trigger = ScrollTrigger.create({
             trigger: sliderRef.current,
-            start: 'top+=10% 20%',
-            end: `+=${numSlides * 100}%`,
+            start: 'center center',
+            end: `+=${numSlides * 100}%`, 
             scrub: 1,
             pin: true,
             markers: false,

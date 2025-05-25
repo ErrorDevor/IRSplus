@@ -25,7 +25,7 @@ export const SimpleDropdown = ({ links, isActive = false, onClose }: Props) => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setIsVisible(false); 
+        setIsVisible(false);
       }
     };
 
@@ -50,19 +50,21 @@ export const SimpleDropdown = ({ links, isActive = false, onClose }: Props) => {
   const onTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
     if (e.propertyName === 'opacity' && !isVisible) {
       setShouldRender(false);
-      onClose?.(); 
+      onClose?.();
     }
   };
 
+  console.log(isActive, shouldRender, isVisible);
   if (!shouldRender) return null;
 
   return (
-    <div ref={dropdownRef}
-      className={`${styles.dropdown} ${isVisible ? styles.active : ''}`}
+    <div
+      ref={dropdownRef}
+      className={`${styles.dropdown} ${isVisible ? styles.activeDropdown : ''}`}
       onTransitionEnd={onTransitionEnd}
     >
       {links.map((link, idx) => (
-        <a key={idx} href={link.href} className={styles.link}>
+        <a key={idx} href={link.href} className={styles.simpleDropdownLink}>
           {link.label}
         </a>
       ))}

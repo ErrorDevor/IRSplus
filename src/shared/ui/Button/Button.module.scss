@@ -1,5 +1,10 @@
 @use '/src/app/styles/variables.scss' as *;
 
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .button {
   cursor: pointer;
   width: auto;
@@ -9,7 +14,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  // align-self: center;
   white-space: nowrap;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -23,4 +27,47 @@
 
 .withShadow:hover {
   box-shadow: 0 4px 5px rgba(49, 49, 49, 0.3);
+}
+
+.dropdownButton {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: calc(100% + 8px);
+  left: 0;
+  background: $color-background;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  width: 140px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s ease;
+  
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.dropdownLink {
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  font-weight: $font-weight-medium;
+  line-height: 1.1;
+  letter-spacing: $letter-spacing-4;
+  color: $color-foreground-dark;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.6s ease, color 0.6s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    color: $color-primary;
+  }
 }
