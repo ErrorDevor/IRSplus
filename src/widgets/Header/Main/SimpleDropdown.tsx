@@ -54,7 +54,6 @@ export const SimpleDropdown = ({ links, isActive = false, onClose }: Props) => {
     }
   };
 
-  console.log(isActive, shouldRender, isVisible);
   if (!shouldRender) return null;
 
   return (

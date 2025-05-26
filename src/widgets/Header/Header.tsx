@@ -139,7 +139,7 @@ export const Header = ({ className }: { className?: string }) => {
 
                                                             <div
                                                                 className={clsx(
-                                                                    label === 'Refer n’ Earn' ? styles.simpleDropdownWrapper : styles.customDropdownWrapper,
+                                                                    label === 'Refer n’ Earn' ? styles.simpleDropdownWrapperBurger : styles.customDropdownWrapperBurger,
                                                                     isActive && styles.visible
                                                                 )}
                                                             >
