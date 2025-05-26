@@ -163,6 +163,7 @@
 
 @media (max-width: 480px) {
     .yourCreditsSection {
+        gap: rem(50);
         &__leftSide {
             &__tagsBlock {
                 bottom: rem(-100);

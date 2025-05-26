@@ -7,18 +7,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: rem(60);
+    gap: rem(46);
     padding: rem(69) vw(204) rem(87) vw(204);
     z-index: 1;
 
     &__title {
-        width: 70%;
+        width: 100%;
+        max-width: 752px;
         color: $color-foreground-dark;
         opacity: 0;
 
         h1 {
             text-align: center;
-            font-size: clamp-font(30, 48);
+            font-size: 3rem;
             font-weight: $font-weight-medium;
             line-height: 1.2;
             letter-spacing: $letter-spacing-2;
@@ -27,13 +28,9 @@
 
     &__cardBlock {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        width: 100%;
-        max-width: 1512px;
         gap: 70px;
-        z-index: 1;
 
         &__item {
             display: flex;
@@ -43,7 +40,8 @@
             flex: 1 1 0;
             max-width: 300px;
             width: 100%;
-            gap: rem(40);
+            gap: rem(20);
+
 
             &__title {
                 position: relative;
@@ -100,7 +98,7 @@
             align-items: center;
             flex-wrap: nowrap;
             gap: rem(20);
-            margin-bottom: 120px;
+            margin-bottom: 140px;
 
             &__item {
                 max-width: none;
@@ -123,32 +121,23 @@
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 480px) {
     .challengesSection {
         align-items: flex-start;
 
         &__title {
-            width: 100%;
+            margin-top: rem(38);
 
             h1 {
+                font-size: 2rem;
                 text-align: start;
             }
         }
-
-        // &__cardBlock {
-        //     &__item {
-        //         &__vector {
-        //             transform: scale(0.8) !important;
-        //             left: -200px;
-        //             bottom: -810px;
-        //         }
-        //     }
-        // }
     }
 
     .challengesSection__cardBlock__item__title__vector {
         transform: scale(1) !important;
         left: -80px;
-        bottom: -610px;
+        bottom: -646px;
     }
 }

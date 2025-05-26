@@ -29,7 +29,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
                         animation="fade-scale"
                         stagger={0.2}
                         markers={false}
-                        triggerStart="top 80%"
+                        triggerStart="top 100%"
                         targets={[`[data-anim="button"]`, `[data-anim="links"]`]}
                     >
                         <div data-anim="button" className={styles.button}>

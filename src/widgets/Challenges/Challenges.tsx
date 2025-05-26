@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './Challenges.module.scss';
 import clsx from 'clsx'
 import gsap from 'gsap';
@@ -30,6 +30,8 @@ const challenges = [
 gsap.registerPlugin(ScrollTrigger);
 
 export const Challenges = ({ className }: { className?: string }) => {
+    const pathRef = useRef<SVGPathElement | null>(null);
+
     useEffect(() => {
         const ctx = gsap.context(() => {
             const itemsSelector = `.${styles.challengesSection__cardBlock__item}`;
@@ -46,23 +48,6 @@ export const Challenges = ({ className }: { className?: string }) => {
                 onEnter: () => showCards(),
             });
 
-            // ScrollTrigger.create({
-            //     trigger: sectionSelector,
-            //     start: "bottom bottom",
-            //     end: "top top",
-            //     onEnterBack: () => showCards(),
-            //     onLeave: () => hideCards(),
-            //     onLeaveBack: () => hideCards(),
-            // });
-
-            // ScrollTrigger.create({
-            //     trigger: sectionSelector,
-            //     start: "bottom bottom",
-            //     end: "top top",
-            //     onLeave: () => hideCards(),
-            //     onLeaveBack: () => hideCards(),
-            // });
-
             function showCards() {
                 gsap.to(itemsSelector, {
                     opacity: 1,
@@ -71,19 +56,38 @@ export const Challenges = ({ className }: { className?: string }) => {
                     ease: "power2.in",
                 });
             }
-
-            // function hideCards() {
-            //     gsap.to(itemsSelector, {
-            //         opacity: 0,
-            //         stagger: 0.2,
-            //         duration: 0.5,
-            //         ease: "power2.out",
-            //     });
-            // }
         });
 
         return () => ctx.revert();
     }, []);
+
+    useEffect(() => {
+    const ctx = gsap.context(() => {
+        if (!pathRef.current) return;
+
+        const path = pathRef.current;
+        const length = path.getTotalLength();
+
+        gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+        });
+
+        gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: `.${styles.challengesSection__cardBlock}`,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                markers: false,
+            },
+        });
+    });
+
+    return () => ctx.revert();
+}, []);
 
     return (
         <section className={clsx(styles.challengesSection, className)}>
@@ -108,7 +112,7 @@ export const Challenges = ({ className }: { className?: string }) => {
                             {index === 0 && (
                                 <div className={styles.challengesSection__cardBlock__item__title__vector}>
                                     <svg width="732" height="206" viewBox="0 0 732 206" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 162.591C230.909 159.648 447.989 -21.03 722.321 193.491" stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
+                                        <path ref={pathRef} d="M-39.9128 105.575L220.023 16.2251C230.266 12.7042 240.127 22.5164 236.773 32.8155C218.83 87.9212 197.045 164.609 210.822 162.591C230.909 159.648 447.989 -21.03 722.321 193.491" stroke="url(#paint0_linear_4144_43148)" strokeWidth="30" />
                                         <defs>
                                             <linearGradient id="paint0_linear_4144_43148" x1="-39.1159" y1="77.5154" x2="813.43" y2="101.73" gradientUnits="userSpaceOnUse">
                                                 <stop offset="0.156961" stopColor="#EBFDB8" />
