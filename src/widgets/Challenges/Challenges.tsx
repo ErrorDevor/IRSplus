@@ -44,7 +44,6 @@ export const Challenges = ({ className }: { className?: string }) => {
                 pin: true,
                 markers: false,
                 onEnter: () => showCards(),
-
             });
 
             // ScrollTrigger.create({
@@ -73,14 +72,14 @@ export const Challenges = ({ className }: { className?: string }) => {
                 });
             }
 
-            function hideCards() {
-                gsap.to(itemsSelector, {
-                    opacity: 0,
-                    stagger: 0.2,
-                    duration: 0.5,
-                    ease: "power2.out",
-                });
-            }
+            // function hideCards() {
+            //     gsap.to(itemsSelector, {
+            //         opacity: 0,
+            //         stagger: 0.2,
+            //         duration: 0.5,
+            //         ease: "power2.out",
+            //     });
+            // }
         });
 
         return () => ctx.revert();
