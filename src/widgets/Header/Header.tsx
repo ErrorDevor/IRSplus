@@ -102,6 +102,8 @@ export const Header = ({ className }: { className?: string }) => {
         return () => ctx.revert();
     }, []);
 
+    /* Something Went Wrong...*/
+
     return (
         <header className={clsx(styles.headerSection, className)}>
             <div className={styles.headerOverlay} />
