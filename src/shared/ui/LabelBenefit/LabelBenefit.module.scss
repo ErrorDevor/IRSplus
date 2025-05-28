@@ -15,6 +15,7 @@
 }
 
 .labelTitle {
+  white-space: nowrap;
   font-weight: $font-weight-bold;
   user-select: none;
   line-height: 120%;

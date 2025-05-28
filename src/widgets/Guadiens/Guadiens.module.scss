@@ -8,12 +8,12 @@
     &__wrapper {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
         width: 100%;
         max-width: 1512px;
         height: auto;
         margin: 0 auto;
-        padding: rem(94) vw(40) rem(94) 0;
+        padding: rem(94) vw(149) rem(94) 0;
 
         &__leftSide {
             display: flex;
@@ -36,7 +36,7 @@
                 padding-left: vw(40);
 
                 h1 {
-                    font-size: clamp-font(36, 65);
+                    font-size: clamp-font(28, 65);
                     font-weight: $font-weight-medium;
                     line-height: 1;
                     letter-spacing: $letter-spacing-minus-2;
@@ -74,28 +74,28 @@
         }
 
         &__rightSide {
+            position: relative;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            padding: rem(20);
+            flex-direction: column;
+
+            &__upItem {
+                display: flex;
+                align-items: flex-end;
+            }
+
+            &__dnItem {
+                display: flex;
+            }
         }
     }
-}
-
-.gridItems {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
 }
 
 .centerCircle {
     position: absolute;
     background: $color-background;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 200px;
+    height: 200px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -107,6 +107,8 @@
 .squareItems4 {
     position: relative;
     display: flex;
+    width: 100%;
+    height: 100%;
     max-width: 410px;
     max-height: 310px;
 }
@@ -114,13 +116,15 @@
 .squareItems1 {
     justify-content: flex-end;
     align-items: flex-end;
+    min-width: 176px;
 }
 
 .squareItems2 {
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     border-radius: 36px;
     background: #F7F9FC;
+    min-width: 176px;
 }
 
 .squareItems3 {
@@ -128,11 +132,13 @@
     align-items: flex-start;
     border-radius: 36px;
     background: #F7F9FC;
+    min-width: 176px;
 }
 
 .squareItems4 {
     justify-content: flex-start;
     align-items: flex-start;
+    min-width: 176px;
 }
 
 .cardsItem {
@@ -200,7 +206,6 @@
     right: 10px;
     width: 136px;
     height: 136px;
-    background-color: $color-background;
     border-radius: 50%;
     border: 35px solid $color-secondary;
     z-index: 0;
@@ -208,8 +213,8 @@
 
 .cardUnion {
     position: absolute;
-    top: 160px;
-    left: -16px;
+    top: 130px;
+    left: -66px;
     z-index: 0;
 }
 
@@ -220,25 +225,27 @@
     align-items: flex-end;
     width: 100%;
     height: 100%;
-    border-radius: 36px;
-    margin-left: rem(40);
 
     &__border {
         position: absolute;
+        bottom: 0;
+        left: 0;
         width: 207px;
         height: 207px;
         border-radius: 40px;
-        margin-left: rem(12);
+        margin-left: rem(57);
         margin-bottom: rem(52);
+        z-index: 0;
         border: 2px solid $color-primary;
     }
 
     &__image {
-        position: absolute;
-        margin: 12px 12px 0 0;
+        position: relative;
+        z-index: 5;
         width: 207px;
         height: 207px;
         border-radius: 36px;
+        margin-left: rem(45);
         margin-bottom: rem(40);
         background: url("/images/Guadiens/guadiensImage.webp") center/cover no-repeat;
     }
@@ -249,22 +256,33 @@
 }
 
 @media (max-width: 980px) {
-    .guadiensSection__wrapper {
-        flex-direction: column;
-        padding: rem(60) 0;
+    .guadiensSection {
+        &__wrapper {
+            flex-direction: column;
+            padding: rem(60) rem(19) 0 rem(19);
 
-        &__leftSide {
-            width: 80%;
-            max-width: none;
+            &__leftSide {
+                gap: rem(32);
+
+                &__tags {
+                    padding-left: 0;
+                }
+
+                &__title {
+                    padding-left: 0;
+
+                    p {
+                        margin-top: rem(24);
+                    }
+                }
+            }
+
+            &__rightSide {
+                margin-top: rem(49);
+            }
         }
     }
 
-    .gridItems {
-        width: auto;
-    }
-}
-
-@media (max-width: 510px) {
     .guadiensSection__wrapper__leftSide__buttonFrame {
         display: none;
     }
@@ -274,13 +292,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        background: linear-gradient(to right, #fff 0%, #F7F9FC 100%);
-        margin-top: 0;
-        padding: rem(40);
+        margin-top: rem(42);
+        padding: 0 rem(42);
         gap: rem(24);
 
         h4 {
-            // width: 100%;
             margin-bottom: vw(29);
             font-size: clamp-font(20, 22);
             font-weight: $font-weight-medium;
@@ -292,10 +308,9 @@
             color: $color-primary;
         }
     }
+}
 
-    .guadiensSection__rightSide {
-        padding: 0;
-    }
+@media (max-width: 510px) {
 
     .squareItems2,
     .squareItems3 {
@@ -303,16 +318,22 @@
     }
 
     .cardsImagePlaceholder {
-        margin-left: rem(-11);
+        margin-left: 0;
 
         &__border {
-            transform: scale(0.8) !important;
-            margin-bottom: rem(-5);
+            width: 123px;
+            height: 123px;
+            border-radius: 18px;
+            margin-left: 39px;
+            margin-bottom: 27px;
         }
 
         &__image {
-            transform: scale(0.8) !important;
-            margin-bottom: rem(-11);
+            width: 123px;
+            height: 123px;
+            margin-left: 34px;
+            margin-bottom: 21px;
+            border-radius: 18px;
         }
     }
 
@@ -350,14 +371,19 @@
     }
 
     .cardCircle {
-        transform: scale(0.7) !important;
-        bottom: 0;
-        right: 0;
+        transform: scale(0.5) !important;
+        bottom: -60px;
+        right: -14px;
     }
 
     .cardUnion {
-        transform: scale(0.7) !important;
-        top: 44px;
-        left: -57px;
+        transform: scale(0.5) !important;
+        top: -50px;
+        left: -50px;
+    }
+
+    .buttonFrameMobile {
+        margin-top: 42px;
+        padding: 0 20px 20px 20px;
     }
 }

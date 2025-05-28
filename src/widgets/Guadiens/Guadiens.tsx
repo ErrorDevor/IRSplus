@@ -65,18 +65,19 @@ export const Guadiens = ({ className }: { className?: string }) => {
                 </div>
 
                 <div className={styles.guadiensSection__wrapper__rightSide}>
-                    <div className={styles.gridItems}>
-                        <div data-anim="circle" className={styles.centerCircle} />
+                    <div data-anim="circle" className={styles.centerCircle} />
 
-                        <GsapAnim
-                            animation="fade"
-                            duration={1.0}
-                            ease="power2.out"
-                            triggerStart="top 80%"
-                            targets='[data-anim="item1"]'
-                        >
-                            <div data-anim="item1" className={styles.squareItems1}>
-                                <div className={styles.cardsItem}>
+                    <div className={styles.guadiensSection__wrapper__rightSide__upItem}>
+
+                        <div className={styles.squareItems1}>
+                            <GsapAnim
+                                animation="fade"
+                                duration={1.0}
+                                ease="power2.out"
+                                triggerStart="top 80%"
+                                targets='[data-anim="item1"]'
+                            >
+                                <div data-anim="item1" className={styles.cardsItem}>
                                     <div className={styles.cardsItemTitle}>
                                         <CircleIcon
                                             color="#396CF0"
@@ -123,27 +124,30 @@ export const Guadiens = ({ className }: { className?: string }) => {
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
                                     </svg>
                                 </div>
-                            </div>
-                        </GsapAnim>
+                            </GsapAnim>
+                        </div>
 
                         <div className={styles.squareItems2}>
                             <GsapAnim animation="corner-right-up" duration={1.0} ease="power2.out" triggerStart="top 80%" targets='[data-anim="item2"]'>
                                 <div data-anim="item2" className={styles.cardsImagePlaceholder}>
-                                    <div className={styles.cardsImagePlaceholder__border}></div>
                                     <div className={styles.cardsImagePlaceholder__image}></div>
+                                    <div className={styles.cardsImagePlaceholder__border}></div>
                                 </div>
                             </GsapAnim>
                         </div>
+                    </div>
 
-                        <GsapAnim
-                            animation="corner-left-dn"
-                            duration={1.1}
-                            ease="power2.out"
-                            triggerStart="top 100%"
-                            targets='[data-anim="item3"]'
-                        >
-                            <div data-anim="item3" className={styles.squareItems3}>
-                                <div className={clsx(styles.cardsItem, styles.cardsItemOther)}>
+                    <div className={styles.guadiensSection__wrapper__rightSide__dnItem}>
+
+                        <div className={styles.squareItems3}>
+                            <GsapAnim
+                                animation="corner-left-dn"
+                                duration={1.1}
+                                ease="power2.out"
+                                triggerStart="top 100%"
+                                targets='[data-anim="item3"]'
+                            >
+                                <div data-anim="item3" className={clsx(styles.cardsItem, styles.cardsItemOther)}>
                                     <div className={styles.cardsItemTitle}>
                                         <CircleIcon
                                             color="#fff"
@@ -168,18 +172,18 @@ export const Guadiens = ({ className }: { className?: string }) => {
                                     <p className={styles.cardsItemTextMobile}>The rapid adoption of cloud-based accounting benefits everyone. Businesses gain efficiency, accuracy, and flexibility, while accounting firms provide more streamlined services</p>
                                     <p className={styles.cardsItemText}>We ensure compliance with regulations, minimizing the risk of errors that could lead to penalties or missed benefits.</p>
                                 </div>
-                            </div>
-                        </GsapAnim>
+                            </GsapAnim>
+                        </div>
 
-                        <GsapAnim
-                            animation="fade"
-                            duration={1.0}
-                            ease="power2.out"
-                            triggerStart="top 90%"
-                            targets='[data-anim="item1"]'
-                        >
-                            <div data-anim="item4" className={styles.squareItems4}>
-                                <div className={styles.cardsItem}>
+                        <div className={styles.squareItems4}>
+                            <GsapAnim
+                                animation="fade"
+                                duration={1.0}
+                                ease="power2.out"
+                                triggerStart="top 90%"
+                                targets='[data-anim="item1"]'
+                            >
+                                <div data-anim="item4" className={styles.cardsItem}>
                                     <div className={styles.cardsItemTitle}>
                                         <CircleIcon
                                             color="#396CF0"
@@ -205,8 +209,8 @@ export const Guadiens = ({ className }: { className?: string }) => {
                                     <p>Every cent counts. Our tax professionals can help identify the incentives and credits you qualify for, ensuring you don&apos;t overlook your potential savings.</p>
                                 </div>
                                 <div className={styles.cardCircle}></div>
-                            </div>
-                        </GsapAnim>
+                            </GsapAnim>
+                        </div>
                     </div>
                 </div>
             </div>

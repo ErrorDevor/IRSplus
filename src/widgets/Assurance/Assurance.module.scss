@@ -10,7 +10,7 @@
     width: 100%;
     max-width: 1512px;
     margin: 0 auto;
-    padding: rem(125) 0;
+    padding: rem(105) vw(118);
     overflow: hidden;
 
     &__title {
@@ -44,6 +44,10 @@
             opacity: 0.8;
         }
     }
+
+    @media (max-width: 1366px) {
+        padding: rem(105) vw(40);
+    }
 }
 
 .sliderSection {
@@ -54,7 +58,6 @@
     height: 100%;
     gap: vw(56);
     max-width: 1512px;
-    overflow: hidden;
     margin: 0 auto;
     padding: rem(40) 0;
 }
@@ -68,7 +71,6 @@
 .paginationBlock {
     display: flex;
     flex-direction: column;
-    margin-left: rem(20);
 }
 
 .dots {
@@ -194,7 +196,7 @@
     border-radius: inherit;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
     .assuranceSection {
         padding: rem(71) vw(18) rem(36) vw(18);
     }

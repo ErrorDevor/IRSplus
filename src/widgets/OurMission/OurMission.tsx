@@ -65,49 +65,53 @@ export const OurMission = ({ className }: { className?: string }) => {
     return (
         <section className={clsx(styles.OurMissionSection, className)}>
             <div className={styles.OurMissionSection__wrapper}>
-                <GsapAnim
-                    animation="fade-scale"
-                    markers={false}
-                    triggerStart="top 80%"
-                    targets={[`[data-anim="left-text"]`]}
-                >
-                    <div data-anim="left-text" className={styles.OurMissionSection__wrapper__leftSide}>
-                        <h1><CircleIcon
-                            color="#E6F8AF"
-                            iconSrc="/icons/flashOne.svg"
-                            size={39}
-                            iconSize={20}
-                            borderRadius="6px"
-                            inline={true}
-                        />Learn how to navigate
-                            the maze and <GradientText>increase cash flow</GradientText> with tax
-                            incentives & credits
-                        </h1>
-                        <p>Federal, state, and local governments in the United States strategically employ tax credits and incentives as a means to achieve a variety of economic and societal goals. These initiatives are carefully designed to encourage specific behaviors, stimulate economic growth, and foster positive outcomes for both businesses and individuals. </p>
-                        <p>Businesses that leverage these investments strategically, witness both tremendous savings and additional money that can be reinvested into the business</p>
-                        <p><strong>At IRSplus, we help businesses make the most of the opportunities available to them in order to save money. As strategic partners and advisors, we help you apply and qualify for credits and incentives, turning a loss into a positive cash flow.</strong></p>
-                    </div>
-                </GsapAnim>
-                <div className={styles.OurMissionSection__wrapper__rightSide}>
-                    <div ref={labelBlockRef} className={styles.OurMissionSection__wrapper__rightSide__imageBlock}>
-                        <GsapAnim
-                            animation="fade-scale"
-                            markers={false}
-                            triggerStart="top 80%"
-                            targets={[`[data-anim="image"]`, `[data-anim="union"]`]}
-                        >
-                            <div data-anim="image" className={styles.OurMissionSection__wrapper__rightSide__imageBlock__image}>
-                                <Image className={styles.ourMissionImage}
+                <div className={styles.OurMissionSection__wrapper__inner}>
+                    <GsapAnim
+                        animation="fade-scale"
+                        markers={false}
+                        triggerStart="top 80%"
+                        targets={[`[data-anim="left-text"]`]}
+                    >
+                        <div data-anim="left-text" className={styles.OurMissionSection__wrapper__inner__leftSide}>
+                            <h1><CircleIcon
+                                color="#E6F8AF"
+                                iconSrc="/icons/flashOne.svg"
+                                size={39}
+                                iconSize={20}
+                                borderRadius="6px"
+                                inline={true}
+                            />Learn how to navigate
+                                the maze and <GradientText>increase cash flow</GradientText> with tax
+                                incentives & credits
+                            </h1>
+                            <div className={styles.OurMissionSection__wrapper__inner__leftSide__subtitle}>
+                                <p>Federal, state, and local governments in the United States strategically employ tax credits and incentives as a means to achieve a variety of economic and societal goals. These initiatives are carefully designed to encourage specific behaviors, stimulate economic growth, and foster positive outcomes for both businesses and individuals. </p>
+                                <p>Businesses that leverage these investments strategically, witness both tremendous savings and additional money that can be reinvested into the business</p>
+                                <p><strong>At IRSplus, we help businesses make the most of the opportunities available to them in order to save money. As strategic partners and advisors, we help you apply and qualify for credits and incentives, turning a loss into a positive cash flow.</strong></p>
+                            </div>
+                        </div>
+                    </GsapAnim>
+
+                    <div className={styles.OurMissionSection__wrapper__inner__rightSide}>
+                        <div ref={labelBlockRef} className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock}>
+                            <GsapAnim
+                                animation="fade-scale"
+                                markers={false}
+                                triggerStart="top 80%"
+                                targets={[`[data-anim="image"]`, `[data-anim="union"]`]}
+                            >
+                                {/* <div data-anim="image" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__image}> */}
+                                <Image data-anim="image" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__image}
                                     priority
                                     src="/images/OurMission/ourMission.webp" alt="OurMissionImage"
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
-                            </div>
+                                {/* </div> */}
 
-                            <div data-anim="union" className={styles.OurMissionSection__wrapper__rightSide__imageBlock__union}>
-                                <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.1" fillRule="evenodd" clipRule="evenodd" d="M31.0327 5.17212C31.0327 2.31564 28.7171 0 25.8606 
+                                <div data-anim="union" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__union}>
+                                    <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.1" fillRule="evenodd" clipRule="evenodd" d="M31.0327 5.17212C31.0327 2.31564 28.7171 0 25.8606 
                         0H5.17212C2.31564 0 0 2.31563 0 5.17212V25.8606C0 28.7171 2.31563 31.0327 5.17212 31.0327H25.8606C28.7171 31.0327 
                         31.0327 28.7171 31.0327 25.8606V5.17212ZM31.0327 65.1682C31.0327 62.3117 28.7171 59.9961 25.8606 59.9961H5.17212C2.31564 
                         59.9961 0 62.3117 0 65.1682V85.8567C0 88.7132 2.31563 91.0288 5.17212 91.0288H25.8606C28.7171 91.0288 31.0327 88.7132 
@@ -124,30 +128,34 @@ export const OurMission = ({ className }: { className?: string }) => {
                         57.6805 62.0659 54.824V36.2048ZM124.132 98.2698C124.132 95.4133 121.817 93.0977 118.96 93.0977H98.2717C95.4152 
                         93.0977 93.0996 95.4133 93.0996 98.2698V118.958C93.0996 121.815 95.4152 124.13 98.2717 124.13H118.96C121.817 
                         124.13 124.132 121.815 124.132 118.958V98.2698Z" fill="#2459DF" />
-                                </svg>
-                            </div>
-                        </GsapAnim>
+                                    </svg>
+                                </div>
+                            </GsapAnim>
 
-                        {labelBenefitsData.map((item, index) => (
-                            <div key={index} data-row className={styles[`rightSideLabelBenefit${index + 1}`]}>
-                                <LabelBenefit
-                                    iconSrc={item.iconSrc}
-                                    title={item.title}
-                                    text={item.text}
-                                    bg={item.bg}
-                                    iconColor={item.iconColor}
-                                    titleSize="18px"
-                                    titleColor="#000"
-                                    textSize="14px"
-                                    textColor="#000"
-                                    borderRadius="62px"
-                                    iconSize={20}
-                                    iconFrameSize={50}
-                                />
-                            </div>
-                        ))}
+                            {labelBenefitsData.map((item, index) => (
+                                <div key={index} data-row className={styles[`rightSideLabelBenefit${index + 1}`]}>
+                                    <LabelBenefit
+                                        iconSrc={item.iconSrc}
+                                        title={item.title}
+                                        text={item.text}
+                                        bg={item.bg}
+                                        iconColor={item.iconColor}
+                                        titleSize="18px"
+                                        titleColor="#000"
+                                        textSize="14px"
+                                        textColor="#000"
+                                        borderRadius="62px"
+                                        iconSize={20}
+                                        iconFrameSize={50}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+
+
+
             </div>
         </section>
     );
