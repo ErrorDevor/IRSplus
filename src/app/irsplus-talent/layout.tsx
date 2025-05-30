@@ -10,7 +10,7 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   title: 'IRSplus - Tax | Incentives | Advisory',
-  description: 'IRSplus Talent',
+  description: 'Incentives and Credits',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -17,13 +17,15 @@ interface LabelBenefitProps {
   textSize?: string;
   textColor?: string;
   fontWeight?: number | string;
+  textWrap?: "nowrap" | "normal" | "pre" | "pre-wrap" | "break-spaces";
 
   // Background & border
   bg?: string;
   borderColor?: string;
   borderWidth?: string;
   borderRadius?: string;
-
+  maxWidthValue?: string;
+  
   // CircleIcon props
   iconColor: string;
   iconSrc: string;
@@ -45,11 +47,13 @@ export const LabelBenefit: React.FC<LabelBenefitProps> = ({
   textSize = "14px",
   textColor = "#000",
   fontWeight = 500,
+  textWrap = "nowrap",
 
   bg = "#fff",
   borderColor = "transparent",
   borderWidth = "1px",
   borderRadius = "12px",
+  maxWidthValue = "auto",
 
   iconColor,
   iconSrc,
@@ -66,6 +70,8 @@ export const LabelBenefit: React.FC<LabelBenefitProps> = ({
         backgroundColor: bg,
         border: `${borderWidth} solid ${borderColor}`,
         borderRadius: borderRadius,
+        maxWidth: maxWidthValue,
+
       }}
     >
       <CircleIcon
@@ -96,6 +102,7 @@ export const LabelBenefit: React.FC<LabelBenefitProps> = ({
             fontSize: textSize,
             color: textColor,
             fontWeight: fontWeight,
+            whiteSpace: textWrap,
           }}
         >
           {text}

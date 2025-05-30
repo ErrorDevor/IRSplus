@@ -62,32 +62,32 @@ export const Challenges = ({ className }: { className?: string }) => {
     }, []);
 
     useEffect(() => {
-    const ctx = gsap.context(() => {
-        if (!pathRef.current) return;
+        const ctx = gsap.context(() => {
+            if (!pathRef.current) return;
 
-        const path = pathRef.current;
-        const length = path.getTotalLength();
+            const path = pathRef.current;
+            const length = path.getTotalLength();
 
-        gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
+            gsap.set(path, {
+                strokeDasharray: length,
+                strokeDashoffset: length,
+            });
+
+            gsap.to(path, {
+                strokeDashoffset: 0,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: `.${styles.challengesSection__cardBlock}`,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                    markers: false,
+                },
+            });
         });
 
-        gsap.to(path, {
-            strokeDashoffset: 0,
-            ease: "none",
-            scrollTrigger: {
-                trigger: `.${styles.challengesSection__cardBlock}`,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                markers: false,
-            },
-        });
-    });
-
-    return () => ctx.revert();
-}, []);
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section className={clsx(styles.challengesSection, className)}>

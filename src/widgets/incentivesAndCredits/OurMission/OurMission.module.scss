@@ -2,18 +2,9 @@
 @use '/src/app/styles/mixins.scss' as *;
 
 .OurMissionSection {
-    // position: relative;
-    // display: flex;
-    // padding: rem(20) vw(16);
-    // height: auto;
-    // gap: 20px;
     padding: vw(20);
 
     &__wrapper {
-        // position: relative;
-        // display: flex;
-        // justify-content: space-between;
-        // align-items: center;
         border-radius: vw(44);
         background-color: #F7F9FC;
         padding: rem(65) vw(100) rem(100) vw(60);
@@ -21,10 +12,6 @@
         max-width: 1512px;
         margin: 0 auto;
 
-        // overflow: hidden;
-        // width: 100%;
-        // max-width: 1512px;
-        // margin: 0 auto;
         &__inner {
             display: flex;
             justify-content: space-between;
@@ -36,9 +23,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: rem(40);
-                // flex: 1 1 auto;
                 max-width: 620px;
-                // padding: rem(81) 0 rem(100) vw(60);
                 opacity: 0;
 
                 h1 {
@@ -64,8 +49,6 @@
                         opacity: 0.7;
                     }
                 }
-
-
             }
 
             &__rightSide {
@@ -75,9 +58,6 @@
                 justify-content: center;
                 align-items: center;
                 height: vw(25);
-                // max-width: 100%;
-                // padding: rem(40) vw(160) rem(40) vw(20);
-                // z-index: 1;
 
                 &__imageBlock {
                     position: relative;
@@ -85,29 +65,12 @@
                     height: 472px;
                     aspect-ratio: 1/1;
                     z-index: 1;
-                    // display: flex;
-                    // justify-content: center;
-                    // align-items: center;
-                    // border-radius: 36px;
 
                     &__image {
-                        // width: 376px;
-                        // height: 472px;
                         object-fit: cover;
                         object-position: -75px;
                         border-radius: rem(36);
-
-                        // opacity: 0;
                     }
-
-                    // .ourMissionImage {
-                    //     border-radius: 36px;
-                    //     z-index: 5;
-                    //     // object-fit: cover;
-                    //     // object-position: -75px;
-                    // }
-
-                    // }
 
                     &__union {
                         position: absolute;
@@ -115,18 +78,12 @@
                         top: 170px;
                         z-index: -1;
                         pointer-events: none;
-                        // opacity: 0;
                     }
                 }
             }
         }
     }
 }
-
-// .ourMissionImage {
-//     width: 376px;
-//     height: 409px;
-// }
 
 .rightSideLabelBenefit1 {
     position: absolute;
@@ -153,10 +110,6 @@
     .rightSideLabelBenefit2 {
         left: -60px;
     }
-
-    // .OurMissionSection__wrapper__inner__rightSide {
-    //     padding-right: vw(100);
-    // }
 }
 
 @media (max-width: 980px) {

@@ -100,14 +100,12 @@ export const OurMission = ({ className }: { className?: string }) => {
                                 triggerStart="top 80%"
                                 targets={[`[data-anim="image"]`, `[data-anim="union"]`]}
                             >
-                                {/* <div data-anim="image" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__image}> */}
                                 <Image data-anim="image" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__image}
                                     priority
                                     src="/images/OurMission/ourMission.webp" alt="OurMissionImage"
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
-                                {/* </div> */}
 
                                 <div data-anim="union" className={styles.OurMissionSection__wrapper__inner__rightSide__imageBlock__union}>
                                     <svg width="125" height="125" viewBox="0 0 125 125" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,9 +151,6 @@ export const OurMission = ({ className }: { className?: string }) => {
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </section>
     );
