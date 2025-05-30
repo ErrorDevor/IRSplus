@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef } from "react";
 import styles from './PostsSection.module.scss';
 import clsx from 'clsx'
 import Image from "next/image";

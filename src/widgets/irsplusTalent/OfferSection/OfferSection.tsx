@@ -156,7 +156,7 @@ export const OfferSection = ({ className }: { className?: string }) => {
                         targets={[`[data-anim="card-dn"]`]}
                     >
                         <div data-anim="card-dn" className={styles.offerSection__cardsBlock__cardsRightBlock__dnCard}>
-                            <h3>Get started with America's</h3>
+                            <h3>Get started with America&apos;s</h3>
                             <h3>Top Rated ERC Tax Firm Today</h3>
 
                             <GsapAnim
