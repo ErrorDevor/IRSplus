@@ -104,17 +104,26 @@ export const HeroSection = ({ className }: { className?: string }) => {
                         <h4>AGENT</h4>
                         <p>Hi James!</p>
                         <p>How can I help you?</p>
+
+                        <svg className={styles.heroSection__circleAgentBlock__message__part} width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.0002 37C23.0002 37 3.50283 37 2.00024 37C0.500312 37 0.000279748 34 2.00024 33.5C6.00021 31 10.5002 27 10.5002 27L10.7024 26.5615C17.6826 19.7864 22.2296 10.5214 22.9084 0.197266L23.0002 0V37Z" fill="#fff" />
+                        </svg>
                     </div>
                 </div>
+
                 <div data-anim="agent2" className={styles.heroSection__circleAgent2} />
                 <div data-anim="agent3" className={styles.heroSection__circleAgent3} />
                 <div data-anim="agent5" className={styles.heroSection__circleAgent5} />
 
                 <div data-anim="agent4" className={styles.heroSection__circleAgentBlock4}>
-                    <div className={styles.heroSection__circleAgentBlock__message}>
+                    <div className={styles.heroSection__circleAgentBlock4__message}>
                         <h4>AGENT</h4>
                         <p>Hi James!</p>
                         <p>How can I help you?</p>
+
+                        <svg className={styles.heroSection__circleAgentBlock4__message__part} width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.0002 37C23.0002 37 3.50283 37 2.00024 37C0.500312 37 0.000279748 34 2.00024 33.5C6.00021 31 10.5002 27 10.5002 27L10.7024 26.5615C17.6826 19.7864 22.2296 10.5214 22.9084 0.197266L23.0002 0V37Z" fill="#fff" />
+                        </svg>
                     </div>
 
                     <div className={styles.heroSection__circleAgentBlock4__circleAgent4} />
@@ -130,7 +139,7 @@ export const HeroSection = ({ className }: { className?: string }) => {
 
                         <div className={styles.heroSection__inner__title__subtitle__subtitle2}>
                             <p>to Unprecedented Heights</p>
-                            
+
                             <div className={styles.svgArrow}>
                                 <svg width="51" height="34" viewBox="0 0 51 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
