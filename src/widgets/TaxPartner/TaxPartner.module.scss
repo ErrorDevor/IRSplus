@@ -1,5 +1,5 @@
-@use '/src/app/styles/variables.scss' as *;
-@use '/src/app/styles/mixins.scss' as *;
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
 
 .taxPartnerSection {
   position: relative;
@@ -23,15 +23,16 @@
   }
 
   &__image {
+    transform: scaleX(-1);
     z-index: 0;
     border-radius: rem(36);
-    transform: scaleX(-1) !important;
     object-fit: cover;
     object-position: rem(140) -10px;
-    opacity: 0;
+    //opacity: 0;
 
     @media (max-width: 480px) {
-      transform: scaleX(1);
+      transform: none;
+      // transform: scaleX(-1);
       object-position: -408px top;
     }
   }
@@ -41,7 +42,12 @@
     inset: 0;
     display: flex;
     z-index: 1;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(57, 108, 240, 0.2) 40%, #396CF0 100%);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(57, 108, 240, 0.2) 40%,
+      #396cf0 100%
+    );
     opacity: 0;
   }
 
@@ -101,8 +107,7 @@
 
 @media (max-width: 800px) {
   .taxPartnerSection {
-    height: rem(700);
-    margin-top: rem(40);
+    height: 700px;
 
     &__wrapper {
       justify-content: center;
@@ -110,7 +115,12 @@
     }
 
     &__overlay {
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(57, 108, 240, 0.2) 40%, #396CF0 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(57, 108, 240, 0.2) 40%,
+        #396cf0 100%
+      );
     }
 
     &__innerBlock {
@@ -140,6 +150,14 @@
     align-items: center;
     text-align: center;
     gap: rem(24);
+
+    h1 {
+      font-size: 32px;
+    }
+
+    p {
+      width: 100%;
+    }
   }
 
   .taxPartnerSection__innerBlock__mainText {

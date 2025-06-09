@@ -35,7 +35,7 @@ export const OfferSection = ({ className }: { className?: string }) => {
                 duration: 0.2,
                 scrollTrigger: {
                     trigger: `.${styles.offerSection__cardsBlock__cardsRightBlock}`,
-                    start: "top top",
+                    start: "top center",
                     end: "bottom center",             
                     scrub: 1,
                     markers: false,
@@ -153,7 +153,7 @@ export const OfferSection = ({ className }: { className?: string }) => {
                         animation="slide-bottom"
                         markers={false}
                         triggerStart="top 90%"
-                        targets={[`[data-anim="card-dn"]`]}
+                        targets={[`[data-anim="card-dn"]`, `[data-anim="button"]`]}
                     >
                         <div data-anim="card-dn" className={styles.offerSection__cardsBlock__cardsRightBlock__dnCard}>
                             <h3>Get started with America&apos;s</h3>
@@ -162,7 +162,7 @@ export const OfferSection = ({ className }: { className?: string }) => {
                             <GsapAnim
                                 animation="fade"
                                 markers={false}
-                                triggerStart="top 90%"
+                                triggerStart="top-=200px 80%"
                                 targets={[`[data-anim="button"]`]}
                             >
                                 <div data-anim="button" className={styles.offerSection__cardsBlock__cardsRightBlock__dnCard__button}>

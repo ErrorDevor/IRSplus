@@ -21,7 +21,7 @@ export const TaxPartner = ({ className }: { className?: string }) => {
                         `[data-anim="overlay"]`
                     ]}
                 >
-                    <Image data-anim="image" src="/images/TaxPartner/partner.webp" alt="TaxPartnerImage"
+                    <Image  src="/images/TaxPartner/partner.webp" alt="TaxPartnerImage"
                         priority
                         className={styles.taxPartnerSection__image} fill
                     />
