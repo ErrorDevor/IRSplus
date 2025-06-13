@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import styles from "./HeroSlider.module.scss";
 import Image from "next/image";
 

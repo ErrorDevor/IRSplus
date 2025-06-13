@@ -41,7 +41,7 @@ export const WhoWeAre = ({ className }: { className?: string }) => {
 
           <div className={styles.innerBlock__textBlock}>
             <h1>
-              The Nation's <span className={styles.coloredText}>Top</span>{" "}
+              The Nation&apos;s <span className={styles.coloredText}>Top</span>{" "}
               ERC Firm{" "}
               <span className={styles.underlineAccent}>At Your Service</span>
             </h1>
