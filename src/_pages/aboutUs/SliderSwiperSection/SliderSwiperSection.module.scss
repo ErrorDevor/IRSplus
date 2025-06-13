@@ -18,7 +18,7 @@
     color: $color-foreground-dark;
 
     @media (max-width: 980px) {
-      padding: 0 0 0 vw(100) !important;
+      padding: 0 0 0 vw(100);
     }
 
     @media (max-width: 480px) {
@@ -46,7 +46,7 @@
   margin-left: vw(328);
 
   @media (max-width: 980px) {
-    margin-left: vw(100) !important;
+    margin-left: vw(100);
   }
 
   @media (max-width: 480px) {
