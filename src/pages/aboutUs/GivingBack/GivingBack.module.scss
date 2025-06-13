@@ -1,0 +1,202 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.givingBackSection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1512px;
+  padding: rem(83) rem(20) rem(75) rem(22);
+}
+
+.mainWindow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 922px;
+  height: 521px;
+  padding: rem(107) 0 rem(20) 0;
+  border-radius: 44px;
+  background: linear-gradient(
+    180deg,
+    #396cf0 10%,
+    rgba(56, 96, 210, 1) 20%,
+    rgba(56, 96, 210, 0) 100%
+  );
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(28);
+    color: $color-foreground-light;
+
+    h1 {
+      text-align: center;
+      max-width: 564px;
+      font-size: clamp-font(32, 65);
+      font-weight: $font-weight-medium;
+      line-height: 1.1;
+      letter-spacing: $letter-spacing-minus-2;
+
+      @media (max-width: 480px) {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      text-align: center;
+      max-width: 428px;
+      font-size: 16px;
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-2;
+      opacity: 0.7;
+    }
+  }
+}
+
+.chessPlate {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.smallWindow {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: -104px;
+  width: rem(251);
+  gap: rem(24);
+  padding: rem(32) rem(20) rem(20) rem(20);
+  border-radius: 36px;
+  background-color: $color-background;
+  box-shadow: 5px 8px 38px rgba(49, 49, 49, 0.1);
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(20);
+
+    h4 {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 652;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-12;
+      color: $color-foreground-dark;
+      opacity: 0.5;
+    }
+
+    &__subtitle {
+      h1,
+      h2 {
+        font-size: clamp-font(24, 32);
+        font-weight: $font-weight-medium;
+        line-height: 1.14;
+        letter-spacing: $letter-spacing-minus-2;
+        color: #3961d3;
+
+        @media (max-width: 480px) {
+        font-size: 24px;
+      }
+      }
+
+      h2 {
+        color: $color-foreground-dark;
+      }
+    }
+  }
+}
+
+.circlePhoto1 {
+  position: absolute;
+  left: 54%;
+  top: -12px;
+}
+
+.circlePhoto2 {
+  position: absolute;
+  top: 20%;
+  right: -200px;
+}
+
+.circlePhoto3 {
+  position: absolute;
+  right: -37px;
+  bottom: 10%;
+}
+
+.circlePhoto4 {
+  position: absolute;
+  top: 12%;
+  left: -52px;
+}
+
+.circlePhoto5 {
+  position: absolute;
+  left: -20%;
+  bottom: 12%;
+}
+
+.circlePhoto6 {
+  position: absolute;
+  top: 14%;
+  left: -40px;
+}
+
+@media (max-width: 800px) {
+  .circleImage3,
+  .circlePhoto5 {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainWindow {
+    height: 460px;
+    padding: rem(85) 0 rem(20) 0;
+
+    &__title {
+      h1 {
+        max-width: 272px;
+      }
+
+      p {
+        max-width: 264px;
+      }
+    }
+  }
+
+  .circlePhoto1 {
+    left: -33px;
+    top: 11%;
+  }
+
+  .circlePhoto3 {
+    right: -10px;
+    bottom: 25%;
+  }
+
+  .circlePhoto4 {
+    left: -42px;
+  }
+
+  .circlePhoto6 {
+    left: 54%;
+    top: -40px;
+  }
+
+  .chessPlate {
+    transform: scale(0.7) !important;
+    right: -15px;
+    top: -15px;
+  }
+}

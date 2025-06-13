@@ -1,0 +1,43 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.boxBorder {
+  position: relative;
+  display: inline-block;
+  padding: 1.25vw 1.5vw;
+  z-index: 0;
+  top: -6px;
+
+  p {
+    font-weight: $font-weight-regular;
+    line-height: 1.25;
+    letter-spacing: $letter-spacing-minus-2;
+    position: relative;
+    background: linear-gradient(45deg, #7a9cf5 33%, #a4bdfe 66%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 136px;
+    padding: 0.2vw;
+    background: linear-gradient(255deg, #a4bdfe 16.14%, #7a9cf5 103.93%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  @media (max-width: 480px) {
+    padding: rem(10) rem(20);
+    top: -3px;
+  }
+}

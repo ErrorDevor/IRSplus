@@ -1,10 +1,10 @@
-import { HeroSection } from '@/widgets/incentivesAndCredits/HeroSection';
-import { YourCredits } from '@/widgets/incentivesAndCredits/YourCredits';
-import { OurMission } from '@/widgets/incentivesAndCredits/OurMission';
-import { Here } from '@/widgets/incentivesAndCredits/Here';
-import { Challenges } from '@/widgets/incentivesAndCredits/Challenges';
-import { Guadiens } from '@/widgets/incentivesAndCredits/Guadiens';
-import { Assurance } from '@/widgets/incentivesAndCredits/Assurance';
+import { HeroSection } from '@/pages/incentivesAndCredits/HeroSection';
+import { YourCredits } from '@/pages/incentivesAndCredits/YourCredits';
+import { OurMission } from '@/pages/incentivesAndCredits/OurMission';
+import { Here } from '@/pages/incentivesAndCredits/Here';
+import { Challenges } from '@/pages/incentivesAndCredits/Challenges';
+import { Guadiens } from '@/pages/incentivesAndCredits/Guadiens';
+import { Assurance } from '@/pages/incentivesAndCredits/Assurance';
 import { TaxPartner } from '@/widgets/TaxPartner';
 
 export default function IncentivesPage() {

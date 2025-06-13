@@ -1,0 +1,41 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.sliderSection {
+  display: flex;
+  padding: rem(83) 0 rem(74) 0;
+}
+
+.carouselWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: rem(76);
+  opacity: 0.3;
+}
+
+.carouselFrame {
+  display: flex;
+  align-items: center;
+  gap: vw(51);
+  animation: scroll 60s linear infinite;
+  width: max-content;
+}
+
+.Image {
+  width: auto;
+  height: 76px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

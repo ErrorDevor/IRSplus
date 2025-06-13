@@ -1,0 +1,64 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.aboutUsSection {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1512px;
+  gap: vw(125);
+  padding: rem(58) rem(41) rem(83) rem(41);
+
+  &__leftFrame {
+    display: flex;
+    flex-direction: row;
+    gap: rem(6);
+  }
+
+  &__rightFrame {
+    display: flex;
+    flex-direction: column;
+    gap: rem(50);
+    max-width: 768px;
+
+    h1 {
+      font-size: clamp-font(28, 55);
+      font-weight: $font-weight-medium;
+      line-height: 1.1;
+      letter-spacing: $letter-spacing-minus-2;
+
+      @media (max-width: 480px) {
+        font-size: 28px;
+      }
+    }
+
+    p {
+      max-width: 687px;
+      font-size: clamp-font(16, 20);
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-2;
+      opacity: 0.8;
+
+      @media (max-width: 480px) {
+        font-size: 16px;
+        max-width: 326px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: rem(75) rem(44) rem(73) rem(20);
+  }
+}
+
+@media (max-width: 680px) {
+  .aboutUsSection {
+    flex-direction: column;
+    gap: rem(32);
+
+    &__rightFrame {
+      gap: rem(32);
+    }
+  }
+}

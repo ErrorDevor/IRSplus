@@ -1,8 +1,8 @@
-import { HeroSection } from '@/widgets/irsplusTalent/HeroSection';
-import { PostsSection } from '@/widgets/irsplusTalent/PostsSection';
-import { ExperienceSection } from '@/widgets/irsplusTalent/ExperienceSection';
-import { ServicesSection } from '@/widgets/irsplusTalent/ServicesSection';
-import { OfferSection } from '@/widgets/irsplusTalent/OfferSection';
+import { HeroSection } from '@/pages/irsplusTalent/HeroSection';
+import { PostsSection } from '@/pages/irsplusTalent/PostsSection';
+import { ExperienceSection } from '@/pages/irsplusTalent/ExperienceSection';
+import { ServicesSection } from '@/pages/irsplusTalent/ServicesSection';
+import { OfferSection } from '@/pages/irsplusTalent/OfferSection';
 import { TaxPartner } from '@/widgets/TaxPartner';
 
 export default function TalentPage() {

@@ -1,0 +1,1 @@
+export { SliderSwiperSection } from './SliderSwiperSection'

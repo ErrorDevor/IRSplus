@@ -1,0 +1,59 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.cardCompany {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: rem(33);
+  padding: rem(32) rem(8) rem(8) rem(8);
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    color: $color-foreground-dark;
+
+    h1 {
+      text-align: center;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    p {
+      text-align: center;
+      font-weight: $font-weight-medium;
+      line-height: 1.2;
+      letter-spacing: 0;
+      opacity: 0.7;
+    }
+  }
+
+  &__dn {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    &__iconWithLogo {
+      position: relative;
+      display: flex;
+      flex: 1 0;
+
+      &__inner {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 110%;
+        height: 100%;
+        background-color: #fff;
+        border-radius: rem(88);
+      }
+    }
+  }
+}

@@ -1,0 +1,469 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: rem(189) 0 0 0;
+
+  &__upFrame {
+    display: flex;
+    flex-direction: column;
+    gap: rem(36);
+    width: 100%;
+    max-width: 652px;
+
+    h1 {
+      text-align: center;
+      font-size: clamp-font(36, 65);
+      font-weight: $font-weight-medium;
+      line-height: 1.05;
+      letter-spacing: $letter-spacing-minus-2;
+      opacity: 0;
+
+      @media (max-width: 480px) {
+        font-size: 36px;
+      }
+    }
+
+    p {
+      text-align: center;
+      font-size: clamp-font(16, 20);
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-2;
+      opacity: 0;
+
+      @media (max-width: 480px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__midFrame {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1512px;
+    margin-top: rem(74);
+
+    &__imageBlock {
+      position: relative;
+      width: 324px;
+      height: 616px;
+
+      &__image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+        opacity: 0;
+      }
+
+      @media (max-width: 480px) {
+        width: 212px;
+        height: 390px;
+      }
+    }
+  }
+
+  &__dnFrame {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1512px;
+    padding: rem(72) rem(62) rem(29) rem(40);
+    margin-top: rem(50);
+
+    .line {
+      position: absolute;
+      top: 0;
+      left: rem(40);
+      right: rem(40);
+      height: 1.5px;
+      background-color: rgba(0, 0, 0, 0.1);
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    h3 {
+      max-width: 315px;
+      font-size: clamp-font(24, 36);
+      font-weight: $font-weight-medium;
+      line-height: 36px;
+      letter-spacing: $letter-spacing-minus-2;
+      opacity: 0;
+      @media (max-width: 480px) {
+        font-size: 24px;
+      }
+    }
+
+    p {
+      max-width: 276px;
+      font-size: clamp-font(16, 20);
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-2;
+      opacity: 0;
+
+      @media (max-width: 480px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__slider {
+    display: flex;
+    width: 100%;
+    height: 135px;
+    margin-top: rem(29);
+    opacity: 0;
+    overflow: hidden;
+
+    @media (max-width: 480px) {
+      margin-top: rem(36);
+    }
+  }
+}
+
+.background {
+  position: absolute;
+  top: 200px;
+  right: -210px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.union {
+  position: absolute;
+  left: -70px;
+  bottom: 250px;
+  opacity: 0;
+}
+
+.labelBenefit1 {
+  position: absolute;
+  left: -170px;
+  top: 50px;
+  z-index: 1;
+  opacity: 0;
+}
+
+.labelBenefit2 {
+  position: absolute;
+  right: -150px;
+  bottom: 200px;
+  z-index: 1;
+  opacity: 0;
+}
+
+.labelBenefit3 {
+  position: absolute;
+  left: -350px;
+  bottom: 160px;
+  z-index: 1;
+  opacity: 0;
+
+  @media (max-width: 1042px) {
+    left: -160px;
+  }
+}
+
+.blockWithCubeWrapperLight {
+  position: absolute;
+  top: 84px;
+  right: -300px;
+  width: 100%;
+  height: 100%;
+  max-width: 180px;
+  max-height: 161px;
+  z-index: 1;
+  opacity: 0;
+
+  &__blockWithCube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &__bigCube {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      right: 0;
+      bottom: 0;
+      width: 137px;
+      height: 132px;
+      gap: rem(12);
+      padding: rem(16) rem(23) rem(24) rem(26);
+      border-radius: 0 18px 18px 18px;
+      background: $color-background;
+      box-shadow: 5px 5px 38px rgba(31, 31, 31, 0.05);
+
+      p {
+        font-size: 20px;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        letter-spacing: 0;
+        color: #0e0e0e;
+      }
+    }
+
+    &__smallCube {
+      position: absolute;
+      top: -2px;
+      left: 10px;
+      width: 40px;
+      aspect-ratio: 1/1;
+      border-radius: 9px;
+      background: $color-background;
+      box-shadow: 5px 5px 38px rgba(31, 31, 31, 0.05);
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: inherit;
+        clip-path: url(#clipPath_flowAround);
+        -webkit-clip-path: url(#clipPath_flowAround);
+      }
+
+      &::before {
+        bottom: 7px;
+        left: 39px;
+        transform: rotate(270deg);
+      }
+
+      &::after {
+        top: 39px;
+        left: 16px;
+        transform: rotate(90deg);
+      }
+    }
+
+    svg {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1366px) {
+      transform: scale(0.8) !important;
+    }
+  }
+}
+
+.blockWithCubeWrapperColor {
+  position: absolute;
+  top: 120px;
+  left: -450px;
+  width: 100%;
+  height: 100%;
+  max-width: 213px;
+  max-height: 190px;
+  z-index: 0;
+  opacity: 0;
+
+  &__blockWithCube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &__bigCube {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      left: 0;
+      top: 0;
+      width: 190px;
+      height: auto;
+      gap: rem(12);
+      padding: rem(16) rem(23) rem(24) rem(26);
+      border-radius: 18px 18px 0 18px;
+      background: linear-gradient(90deg, #a4bdfe -26.14%, #7a9cf5 103.93%);
+      box-shadow: 5px 5px 38px rgba(31, 31, 31, 0.05);
+      z-index: 1;
+
+      @media (max-width: 780px) {
+        border-radius: 18px 18px 18px 0;
+        background: linear-gradient(180deg, #a4bdfe -26.14%, #7a9cf5 103.93%);
+      }
+
+      p {
+        font-size: 20px;
+        font-weight: $font-weight-medium;
+        line-height: 25px;
+        letter-spacing: 0;
+        color: $color-foreground-light;
+      }
+    }
+
+    &__smallCube {
+      position: absolute;
+      bottom: 4px;
+      right: -10px;
+      width: 40px;
+      aspect-ratio: 1/1;
+      border-radius: 9px;
+      background: #7a9cf5;
+      box-shadow: 5px 5px 38px rgba(31, 31, 31, 0.05);
+      z-index: 0;
+
+      @media (max-width: 780px) {
+        bottom: 4px;
+        left: -34px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: inherit;
+        clip-path: url(#clipPath_flowAround);
+        -webkit-clip-path: url(#clipPath_flowAround);
+      }
+
+      &::before {
+        top: -16px;
+        left: 6px;
+        transform: rotate(270deg);
+
+        @media (max-width: 780px) {
+          transform: rotate(170deg);
+          top: -16px;
+          left: 18px;
+        }
+      }
+
+      &::after {
+        top: 4px;
+        left: -17px;
+        transform: rotate(90deg);
+
+        @media (max-width: 780px) {
+          transform: rotate(0deg);
+          top: 5px;
+          left: 39px;
+        }
+      }
+    }
+
+    svg {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .blockWithCubeWrapperColor {
+    transform: scale(0.8) !important;
+    top: 120px;
+    left: -240px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .blockWithCubeWrapperLight {
+    top: -80px;
+    right: -30px;
+  }
+}
+
+@media (max-width: 780px) {
+  .blockWithCubeWrapperColor {
+    transform: scale(0.8) !important;
+    top: 550px;
+    left: -100px;
+  }
+
+  .heroSection__dnFrame {
+    margin-top: rem(122);
+  }
+}
+
+@media (max-width: 680px) {
+  .heroSection {
+    padding: rem(142) 0 0 0;
+    &__upFrame {
+      padding: 0 rem(20);
+    }
+
+    &__midFrame {
+      margin-top: rem(116);
+    }
+
+    &__dnFrame {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: rem(56) 0 rem(36) rem(20);
+      // margin-top: rem(122);
+      gap: rem(24);
+
+      h3 {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .background {
+    display: none;
+  }
+
+  .union {
+    transform: scale(0.9) !important;
+    left: -40px;
+    bottom: 535px;
+  }
+
+  .labelBenefit1 {
+    transform: scale(0.6) !important;
+    left: -120px;
+    top: 60px;
+  }
+
+  .labelBenefit2 {
+    transform: scale(0.6) !important;
+    left: 70px;
+    top: 80px;
+  }
+
+  .labelBenefit3 {
+    transform: scale(0.6) !important;
+    left: 80px;
+    bottom: -80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blockWithCubeWrapperLight {
+    transform: scale(0.9) !important;
+    top: -100px;
+    right: -50px;
+  }
+
+  .blockWithCubeWrapperColor {
+    top: 320px;
+    left: -100px;
+  }
+
+  .union {
+    transform: scale(0.8) !important;
+    left: -50px;
+    bottom: 320px;
+  }
+}

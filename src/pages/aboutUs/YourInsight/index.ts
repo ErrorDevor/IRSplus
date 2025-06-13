@@ -1,0 +1,1 @@
+export { YourInsight } from './YourInsight'

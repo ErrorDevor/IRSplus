@@ -1,0 +1,53 @@
+@use "/src/app/styles/variables.scss" as *;
+@use "/src/app/styles/mixins.scss" as *;
+
+.servicesSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto;
+  padding: rem(62) rem(34);
+  gap: rem(41);
+
+  &__title {
+    width: 100%;
+    max-width: 695px;
+    text-align: center;
+    font-size: clamp-font(32, 55);
+    font-weight: $font-weight-medium;
+    line-height: 1.32;
+    letter-spacing: $letter-spacing-minus-2;
+
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    width: 100%;
+    max-width: 585px;
+
+    p {
+      text-align: center;
+      font-size: clamp-font(16, 20);
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
+      letter-spacing: $letter-spacing-2;
+      opacity: 0.9;
+    }
+  }
+}
+
+.union {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  @media (max-width: 480px) {
+    transform: scaleY(-1) scale(0.7) !important;
+    left: -220px;
+    top: 300px;
+  }
+}

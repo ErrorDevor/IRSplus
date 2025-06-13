@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./CircleIcon.module.scss";
 
 interface CircleIconProps {
-    color: string;
+    color?: string;
+    background?: string;
     iconSrc: string;
     alt?: string;
     size?: number;
@@ -11,10 +12,13 @@ interface CircleIconProps {
     border?: number;
     borderColor?: string;
     inline?: boolean;
+    scale?: number;
+    marginBot?: number;
 }
 
 export const CircleIcon: React.FC<CircleIconProps> = ({
     color,
+    background,
     iconSrc,
     alt = "icon",
     size = 40,
@@ -23,6 +27,8 @@ export const CircleIcon: React.FC<CircleIconProps> = ({
     border = 0,
     borderColor = "#fff",
     inline = false,
+    scale = 1,
+    marginBot,
   }) => {
     const WrapperTag = inline ? "span" : "div";
   
@@ -30,11 +36,13 @@ export const CircleIcon: React.FC<CircleIconProps> = ({
       <WrapperTag
         className={`${styles.circleIconFrame} ${inline ? styles.inline : ""}`}
         style={{
-          backgroundColor: color,
+          background: background ? background : color,
           width: size,
           height: size,
           border: border > 0 ? `${border}px solid ${borderColor}` : "none",
           borderRadius: borderRadius,
+          marginBottom: marginBot,
+          transform: `scale(${scale})`,
         }}
       >
         <img

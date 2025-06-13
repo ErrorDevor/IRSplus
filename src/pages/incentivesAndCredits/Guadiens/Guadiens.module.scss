@@ -1,0 +1,389 @@
+@use '/src/app/styles/variables.scss' as *;
+@use '/src/app/styles/mixins.scss' as *;
+
+.guadiensSection {
+    position: relative;
+    background-color: #F7F9FC;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1512px;
+        height: auto;
+        margin: 0 auto;
+        padding: rem(94) vw(149) rem(94) 0;
+
+        &__leftSide {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 300px;
+            max-width: 482px;
+            gap: rem(50);
+
+            &__tags {
+                display: flex;
+                flex-direction: row;
+                gap: rem(6);
+                padding-left: vw(40);
+                opacity: 0;
+            }
+
+            &__title {
+                color: $color-foreground-dark;
+                padding-left: vw(40);
+
+                h1 {
+                    font-size: clamp-font(28, 65);
+                    font-weight: $font-weight-medium;
+                    line-height: 1;
+                    letter-spacing: $letter-spacing-minus-2;
+                    opacity: 0;
+                }
+
+                p {
+                    margin-top: rem(40);
+                    font-size: clamp-font(16, 20);
+                    font-weight: $font-weight-medium;
+                    line-height: 1.4;
+                    letter-spacing: $letter-spacing-2;
+                    opacity: 0;
+                }
+            }
+
+            &__buttonFrame {
+                background: linear-gradient(to right, #fff 0%, #F7F9FC 100%);
+                margin-top: rem(60);
+                padding: rem(40);
+
+                h4 {
+                    width: 80%;
+                    margin-bottom: vw(29);
+                    font-size: clamp-font(20, 22);
+                    font-weight: $font-weight-medium;
+                    line-height: 1.3;
+                }
+
+                .coloredText {
+                    font-weight: $font-weight-bold;
+                    color: $color-primary;
+                }
+            }
+        }
+
+        &__rightSide {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            &__upItem {
+                display: flex;
+                align-items: flex-end;
+            }
+
+            &__dnItem {
+                display: flex;
+            }
+        }
+    }
+}
+
+.centerCircle {
+    position: absolute;
+    background: $color-background;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.squareItems1,
+.squareItems2,
+.squareItems3,
+.squareItems4 {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 410px;
+    max-height: 310px;
+}
+
+.squareItems1 {
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-width: 176px;
+}
+
+.squareItems2 {
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 36px;
+    background: #F7F9FC;
+    min-width: 176px;
+}
+
+.squareItems3 {
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 36px;
+    background: #F7F9FC;
+    min-width: 176px;
+}
+
+.squareItems4 {
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 176px;
+}
+
+.cardsItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: rem(36);
+    padding: rem(24);
+    background-color: $color-background;
+    max-width: 327px;
+    z-index: 1;
+
+    h1 {
+        margin-top: rem(43);
+        font-size: clamp-font(14, 20);
+        font-weight: $font-weight-medium;
+        line-height: 1.3;
+        color: #22282B;
+    }
+
+    p {
+        margin-top: rem(12);
+        font-size: clamp-font(12, 16);
+        font-weight: $font-weight-medium;
+        line-height: 1.4;
+        color: $small-text;
+    }
+}
+
+.cardsItemTitleMobile {
+    display: none;
+}
+
+.cardsItemText {
+    display: block;
+}
+
+.cardsItemTextMobile {
+    display: none;
+}
+
+.cardsItemOther {
+    background-color: $color-secondary;
+    margin-right: rem(30);
+    margin-top: rem(30);
+
+    h1 {
+        font-size: clamp-font(14, 20);
+        font-weight: $font-weight-medium;
+        line-height: 1.3;
+        color: #22282B;
+    }
+
+    p {
+        font-size: clamp-font(12, 16);
+        font-weight: $font-weight-medium;
+        line-height: 1.4;
+        color: #4E4E4E;
+    }
+}
+
+.cardCircle {
+    position: absolute;
+    bottom: -47px;
+    right: 10px;
+    width: 136px;
+    height: 136px;
+    border-radius: 50%;
+    border: 35px solid $color-secondary;
+    z-index: 0;
+}
+
+.cardUnion {
+    position: absolute;
+    top: 130px;
+    left: -66px;
+    z-index: 0;
+}
+
+.cardsImagePlaceholder {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+
+    &__border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 207px;
+        height: 207px;
+        border-radius: 40px;
+        margin-left: rem(57);
+        margin-bottom: rem(52);
+        z-index: 0;
+        border: 2px solid $color-primary;
+    }
+
+    &__image {
+        position: relative;
+        z-index: 5;
+        width: 207px;
+        height: 207px;
+        border-radius: 36px;
+        margin-left: rem(45);
+        margin-bottom: rem(40);
+        background: url("/images/IRSplusIncentivesAndCredits/Guadiens/guadiensImage.webp") center/cover no-repeat;
+    }
+}
+
+.buttonFrameMobile {
+    display: none;
+}
+
+@media (max-width: 980px) {
+    .guadiensSection {
+        &__wrapper {
+            flex-direction: column;
+            padding: rem(60) rem(19) 0 rem(19);
+
+            &__leftSide {
+                gap: rem(32);
+
+                &__tags {
+                    padding-left: 0;
+                }
+
+                &__title {
+                    padding-left: 0;
+
+                    p {
+                        margin-top: rem(24);
+                    }
+                }
+            }
+
+            &__rightSide {
+                margin-top: rem(49);
+            }
+        }
+    }
+
+    .guadiensSection__wrapper__leftSide__buttonFrame {
+        display: none;
+    }
+
+    .buttonFrameMobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: rem(42);
+        padding: 0 rem(42);
+        gap: rem(24);
+
+        h4 {
+            margin-bottom: vw(29);
+            font-size: clamp-font(20, 22);
+            font-weight: $font-weight-medium;
+            line-height: 1.3;
+        }
+
+        .coloredText {
+            font-weight: $font-weight-bold;
+            color: $color-primary;
+        }
+    }
+}
+
+@media (max-width: 510px) {
+
+    .squareItems2,
+    .squareItems3 {
+        border-radius: rem(18);
+    }
+
+    .cardsImagePlaceholder {
+        margin-left: 0;
+
+        &__border {
+            width: 123px;
+            height: 123px;
+            border-radius: 18px;
+            margin-left: 39px;
+            margin-bottom: 27px;
+        }
+
+        &__image {
+            width: 123px;
+            height: 123px;
+            margin-left: 34px;
+            margin-bottom: 21px;
+            border-radius: 18px;
+        }
+    }
+
+    .cardsItem {
+        padding: rem(12);
+        border-radius: rem(18);
+
+        h1 {
+            margin-top: 0;
+        }
+    }
+
+    .cardsItemOther {
+        margin-right: rem(13);
+        margin-top: rem(13);
+    }
+
+    .cardsItemTitle {
+        display: none;
+    }
+
+    .cardsItemTitleMobile {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 11px;
+    }
+
+    .cardsItemText {
+        display: none;
+    }
+
+    .cardsItemTextMobile {
+        display: block;
+    }
+
+    .cardCircle {
+        transform: scale(0.5) !important;
+        bottom: -60px;
+        right: -14px;
+    }
+
+    .cardUnion {
+        transform: scale(0.5) !important;
+        top: -50px;
+        left: -50px;
+    }
+
+    .buttonFrameMobile {
+        margin-top: 42px;
+        padding: 0 20px 20px 20px;
+    }
+}
