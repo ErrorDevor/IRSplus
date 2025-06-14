@@ -18,8 +18,23 @@ export const ExperienceSection = ({ className }: { className?: string }) => {
       >
         <div data-anim="title" className={styles.experienceSection__title}>
           <div>
-            We look beyond skills and <BoxBorder>experience</BoxBorder>, and
-            consider passion for innovation and drive{" "}
+            We look beyond skills and{" "}
+            <BoxBorder
+              fontSizeMinPx={20}
+              fontSizeMaxPx={32}
+              fontSizeVW={1.8}
+              fontWeightMin={400}
+              fontWeightMax={500}
+              paddingMin={[10, 20]}
+              paddingMax={[18, 36]}
+              paddingVW={[1.2, 2.4]}
+              borderMin={2}
+              borderMax={3}
+              borderVW={0.25}
+            >
+              experience
+            </BoxBorder>
+            , and consider passion for innovation and drive{" "}
             <BackgroundText>equally important</BackgroundText>
           </div>
         </div>

@@ -10,18 +10,26 @@
   margin: 0 auto;
   padding: rem(62) rem(34);
   gap: rem(41);
+  background-image: url("/images/IRSplusAboutUs/Services/unionBg.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
 
   &__title {
     width: 100%;
     max-width: 695px;
-    text-align: center;
-    font-size: clamp-font(32, 55);
-    font-weight: $font-weight-medium;
-    line-height: 1.32;
-    letter-spacing: $letter-spacing-minus-2;
+    h1 {
+      text-align: center;
+      font-size: clamp-font(32, 55);
+      font-weight: $font-weight-medium;
+      line-height: 55px;
+      letter-spacing: $letter-spacing-minus-2;
 
-    @media (max-width: 480px) {
-      font-size: 32px;
+      @media (max-width: 480px) {
+        font-size: 32px;
+        line-height: 1.32;
+        vertical-align: text-bottom;
+      }
     }
   }
 
@@ -40,14 +48,32 @@
   }
 }
 
-.union {
-  position: absolute;
-  left: 0;
-  top: 0;
+.mobileTitle {
+  display: none;
+}
 
-  @media (max-width: 480px) {
-    transform: scaleY(-1) scale(0.7) !important;
-    left: -220px;
-    top: 300px;
+@media (max-width: 480px) {
+  .servicesSection__title {
+    display: none;
+  }
+
+  .mobileTitle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 695px;
+    h1 {
+      text-align: center;
+      font-size: clamp-font(32, 55);
+      font-weight: $font-weight-medium;
+      line-height: 55px;
+      letter-spacing: $letter-spacing-minus-2;
+
+      @media (max-width: 480px) {
+        font-size: 32px;
+        line-height: 1.32;
+        vertical-align: text-bottom;
+      }
+    }
   }
 }

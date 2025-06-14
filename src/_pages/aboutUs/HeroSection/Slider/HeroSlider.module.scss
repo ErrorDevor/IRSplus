@@ -1,7 +1,9 @@
+@use "/src/app/styles/mixins.scss" as *;
+
 .carouselFrame {
   display: flex;
   align-items: center;
-  gap: 3vw;
+  gap: vw(66);
   width: max-content;
   will-change: transform;
 }
@@ -12,8 +14,10 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-  width: 280px;
-  height: 75px;
+  width: vw(280);
+  min-width: 180px;
+  height: vw(75);
+  min-height: 60px;
   overflow: hidden;
   pointer-events: auto;
 

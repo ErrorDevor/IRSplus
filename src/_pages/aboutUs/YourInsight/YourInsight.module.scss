@@ -23,16 +23,20 @@
       gap: rem(26);
       color: $color-foreground-dark;
 
-      h1 {
-        max-width: rem(400);
-        font-size: clamp-font(32, 44);
-        font-weight: $font-weight-medium;
-        line-height: 52px;
-        letter-spacing: $letter-spacing-minus-2;
+      &__h1 {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          max-width: rem(896);
+          font-size: clamp-font(32, 44);
+          font-weight: $font-weight-medium;
+          line-height: 52px;
+          letter-spacing: $letter-spacing-minus-2;
 
-        @media (max-width: 480px) {
-          font-size: 32px;
-          line-height: 40px;
+          @media (max-width: 480px) {
+            font-size: 32px;
+            line-height: 40px;
+          }
         }
       }
 
@@ -257,7 +261,7 @@
 @media (max-width: 980px) {
   .yourInsightSection {
     flex-direction: column;
-    padding: rem(71) rem(20) rem(0) rem(20);
+    padding: rem(71) rem(20) 0 rem(20);
     gap: rem(44);
 
     &__leftSide {

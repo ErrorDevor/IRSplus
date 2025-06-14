@@ -82,11 +82,9 @@ export const OurMission = ({ className }: { className?: string }) => {
                 <CircleIcon
                   color="#E6F8AF"
                   iconSrc="/icons/flashOne.svg"
-                  size={39}
-                  iconSize={20}
-                  borderRadius="6px"
-                  scale={isMobile ? 0.8 : 1}
-                  marginBot={8}
+                  size={isMobile ? 28 : 39}
+                  iconSize={isMobile ? 15 : 23}
+                  borderRadius={isMobile ? 4 : 6}
                   inline={true}
                 />
                 Established with a Vision{" "}
@@ -116,7 +114,7 @@ export const OurMission = ({ className }: { className?: string }) => {
                     bg="#396CF0"
                     iconSrc="/icons/arrowUp.svg"
                     iconPosition="right"
-                    iconSize="18px"
+                    iconSize={isMobile ? 8 : 18}
                     href="https://irsplus.com/incentives-and-credits"
                   />
                 </div>

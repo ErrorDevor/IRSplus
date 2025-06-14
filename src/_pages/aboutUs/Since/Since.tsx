@@ -39,7 +39,7 @@ export const Since = ({ className }: { className?: string }) => {
       scrollTrigger: {
         trigger: wrapper,
         start: "top top",
-        end: "+=400%",
+        end: "+=150%",
         scrub: 1,
         pin: section,
         anticipatePin: 1,

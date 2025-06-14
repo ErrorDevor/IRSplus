@@ -33,7 +33,8 @@ export const GivingBack = ({ className }: { className?: string }) => {
           <GsapAnim
             animation="fade-scale"
             ease="power3.out"
-            triggerStart="top 80%"
+            triggerStart="top 96%"
+            markers={false}
             targets={[`[data-anim="button"]`]}
           >
             <div data-anim="button" className={styles.button}>
@@ -45,8 +46,9 @@ export const GivingBack = ({ className }: { className?: string }) => {
                 bg="#396CF0"
                 iconSrc="/icons/arrowUp.svg"
                 iconPosition="right"
-                iconSize="18px"
+                iconSize={isMobile ? 10 : 18}
                 href="https://irsplus.com/about-us"
+                minWidth="211px"
               />
             </div>
           </GsapAnim>

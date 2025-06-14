@@ -128,12 +128,15 @@ export const YourInsight = ({ className }: { className?: string }) => {
     <section className={clsx(styles.yourInsightSection, className)}>
       <div className={styles.yourInsightSection__leftSide}>
         <div className={styles.yourInsightSection__leftSide__title}>
-          <h1>
-            By the Numbers:{" "}
-            <span className={styles.coloredText}>
-              Your Insight, Our Metrics
-            </span>
-          </h1>
+          <div className={styles.yourInsightSection__leftSide__title__h1}>
+            <h1>By the Numbers:</h1>
+            <h1>
+              <span className={styles.coloredText}>
+                Your Insight, Our Metrics
+              </span>
+            </h1>
+          </div>
+
           <p>Professionalism, integrity, and a client-centric approach.</p>
         </div>
 

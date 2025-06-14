@@ -34,7 +34,7 @@ interface ButtonProps {
 
   iconSrc?: string;
   iconPosition?: "left" | "right";
-  iconSize?: string;
+  iconSize?: string | number;
 
   onClick?: () => void;
 

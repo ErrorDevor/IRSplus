@@ -29,11 +29,10 @@ export const AboutUs = ({ className }: { className?: string }) => {
           <CircleIcon
             color="#E6F8AF"
             iconSrc="/icons/coin.svg"
-            size={44}
-            iconSize={22}
-            borderRadius="8px"
-            inline={true}
-            scale={isMobile ? 0.7 : 1}           
+            size={isMobile ? 23 : 44}
+            iconSize={isMobile ? 11 : 22}
+            borderRadius={isMobile ? 4 : 8}
+            inline={true}        
           />
           success for many years
         </h1>
